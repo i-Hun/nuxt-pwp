@@ -1,0 +1,16 @@
+@import 'embed.scss';
+@import 'highlight.github.min.scss';
+
+.default-layout {
+  background-color: #eee;
+}
+
+.text-cell {
+  background-color: #fff;
+  padding: 20px;
+  margin: 2em 0em 0em 0em;
+}
+
+.hljs {
+  background-color: transparent;
+}
