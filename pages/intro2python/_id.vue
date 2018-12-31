@@ -1,5 +1,5 @@
 <template>
-  <section class="section post">
+  <section class="section post content">
     <div v-for="cell in cells" class="cell">
       <!-- исправить вложенность -->
       <div v-if="cell.cell_type === 'code'" class="code-cell">
@@ -13,7 +13,7 @@
             v-html="output.data['text/html'].join('')"></div>
         </div>
       </div>
-      <div class='text-block' v-if="cell.cell_type === 'markdown'" v-html="markdowned(cell.source.join(''))">
+      <div class='text-cell' v-if="cell.cell_type === 'markdown'" v-html="markdowned(cell.source.join(''))">
       </div>
     </div>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css" />
@@ -22,7 +22,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
-  </section></template>
+  </section>
+</template>
 
 <script>
 

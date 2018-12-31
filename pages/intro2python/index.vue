@@ -8,21 +8,14 @@
 </template>
 
 <script>
+	import {intro2pythonPosts} from '@/data/data';
+	
 	export default {
 		name: 'intro2python-index',
 		data() {
 			return {
 				img: "intro2python/img/main.jpg",
-				posts: [
-					{
-						id: "basics-of-neural-networks",
-						title: "Basics of Neural Networks",
-						titleRu: "Основы нейронных сетей",
-						lang: "ru",
-						img: "data-science/img/main.jpg",
-						description: ""
-					}
-				]
+				posts: intro2pythonPosts
 			}
 		}
 	}

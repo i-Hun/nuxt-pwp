@@ -1,5 +1,5 @@
 <template>
-  <section class="section post">
+  <section class="section post content">
     <div v-for="cell in cells" class="cell">
       <!-- исправить вложенность -->
       <div v-if="cell.cell_type === 'code'" class="code-cell">
@@ -32,9 +32,6 @@ var md = require('markdown-it')({
   linkify: true,
   typographer: true
 }).use(require('markdown-it-mathjax')());
-
-
-
 
 export default {
   name: 'data-science-page',

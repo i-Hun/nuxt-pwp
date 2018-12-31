@@ -1,10 +1,8 @@
 <template>
 	<section class="default-layout">
-		<Navbar/>
 		<div class="container">
-			<div class="content">
-				<nuxt />
-			</div>
+			<Navbar/>
+			<nuxt />
 		</div>
 	</section>
 </template>

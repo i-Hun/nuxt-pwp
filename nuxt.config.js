@@ -1,5 +1,8 @@
-const pkg = require('./package')
+const pkg = require('./package');
+// const dataSciencePosts = require('data/data.js')
+import {dataSciencePosts, intro2pythonPosts} from './data/data.js';
 
+export default dataSciencePosts;
 module.exports = {
   mode: 'universal',
 
@@ -7,11 +10,11 @@ module.exports = {
   ** Headers of the page<meta name="theme-color" content="#ffffff">
   */
   head: {
-    title: pkg.name,
+    title: "Oleg Nagornyy",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'description', name: 'description', content: "Oleg Nagornyy's personal web site" },
       { name: 'theme-color', content: '#ffffff'}
     ],
     link: [
@@ -24,7 +27,10 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#f77' },
+  loading: {
+    color: 'blue',
+    height: '2px'
+  },
 
   /*
   ** Global CSS
@@ -45,7 +51,7 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
-    'nuxt-buefy',
+    // 'nuxt-buefy',
     '@nuxtjs/markdownit'
   ],
   /*
@@ -53,6 +59,18 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  generate: {
+    routes: function () {
+      const dataScienceUrls = dataSciencePosts.map((post) => {
+        return "/data-science/" + post.id;
+      })
+      const intro2pythonUrls = intro2pythonPosts.map((post) => {
+        return "/intro2python/" + post.id;
+      })
+      return dataScienceUrls.concat(intro2pythonUrls);
+    }
   },
 
   /*

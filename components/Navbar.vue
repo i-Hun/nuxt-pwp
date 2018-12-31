@@ -1,34 +1,18 @@
 <template>
 	<nav class="navbar" role="navigation" aria-label="main navigation">
-	  <div class="navbar-brand">
-	    <div class="navbar-item">Oleg Nagornyy</div>
-
-	    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	    </a>
-	  </div>
-
-	  <div id="navbarBasicExample" class="navbar-menu">
-	    <div class="navbar-start">
-	      <a class="navbar-item">
-	        Home
-	      </a>
-	      <div class="navbar-item has-dropdown is-hoverable">
-	        <a class="navbar-link">
-	          Cources
-	        </a>
-
-	        <div class="navbar-dropdown">
-	        	<nuxt-link class="navbar-item" to="/data-science" active-class="is-active">Data Science</nuxt-link>
-		        <nuxt-link class="navbar-item" to="/intro2python" active-class="is-active">Introduction to Python</nuxt-link>
-	        </div>
-	      </div>
-	      <a class="navbar-item">
-	        About
-	      </a>
-	    </div>
-	  </div>
+		<nuxt-link class="navbar-item" to="/" active-class="is-active">Oleg Nagornyy</nuxt-link>
+		<nuxt-link class="navbar-item" to="/data-science" active-class="is-active">Data Science</nuxt-link>
+		<nuxt-link class="navbar-item" to="/intro2python" active-class="is-active">Introduction to Python</nuxt-link>
+		<nuxt-link class="navbar-item" to="/events" active-class="is-active">Events</nuxt-link>
+		<nuxt-link class="navbar-item" to="/bookmarks" active-class="is-active">Bookmarks</nuxt-link>
 	</nav>
 </template>
+
+<style>
+	.navbar-item {
+		margin-right: 20px;
+	}
+	.is-active {
+		font-weight: 700;
+	}
+</style>
