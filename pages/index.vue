@@ -62,6 +62,19 @@
       </li>
     </ul>
   </div>
+
+  <div class="awards">
+    <h1>Awards</h1>
+
+    <ul>
+      <li>Oxford Russian Fund scholarship for MA students (2015–2016, 2016–2017).</li>
+      <li>Oxford Russian Fund scholarship for PhD students (2017–2018).</li>
+      <li>Best final thesis competition by Russian Public Opinion Research Center (1st prize in nomination "Best MA thesis”).</li>
+      <li>Winner of the International Olympiad Competitions for University Students and Graduates by HSE, programme “Complex Social Analysis”, 2015.</li>
+      <li>Increased State Academic Scholarship, OmSU, 2013–2014.</li>
+      <li>Winner of the All-Russian Olympiad of schoolchildren on Social theory at regional stage, 2010.</li>
+    </ul>
+  </div>
 </div>
 </template>
 

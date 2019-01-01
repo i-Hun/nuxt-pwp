@@ -16,18 +16,13 @@
       <div class='text-cell' v-if="cell.cell_type === 'markdown'" v-html="markdowned(cell.source.join(''))">
       </div>
     </div>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.min.js"></script> -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
   </section>
 </template>
 
 <script>
 
 var md = require('markdown-it')({
+  injected: true,
   html: true,
   linkify: true,
   typographer: true
@@ -35,10 +30,15 @@ var md = require('markdown-it')({
 
 export default {
   name: 'data-science-page',
-  data() {
-      return {
-        cells: []
-      }
+  head: {
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', ssr: false },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js', ssr: false }
+    ]
+  },
+  mounted(){
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    hljs.initHighlightingOnLoad();
   },
   asyncData (context) {
     console.log("asyncData", context.params)

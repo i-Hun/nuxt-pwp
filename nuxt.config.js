@@ -20,7 +20,7 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
       { rel: 'apple-touch-icon', href: '/favicons/apple-touch-icon.png', sizes: '180x180'},
-      { rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'},
+      { rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'}
     ]
   },
 
@@ -51,7 +51,6 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
-    // 'nuxt-buefy',
     '@nuxtjs/markdownit'
   ],
   /*
