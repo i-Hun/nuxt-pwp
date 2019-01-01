@@ -50,6 +50,7 @@ export default {
   methods: {
     markdowned: function (text) {
       var result = md.render(text);
+      result = result.replace("img/", "/img/content/")
       return result
     }
   }

@@ -3,7 +3,7 @@
   <h1 class='intro'>Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.</h1>
 
   <ul class="contacts">
-    <li><a href="/nagornyy_cv.pdf">Download CV</a></li>
+    <li><a href="/files/nagornyy_cv.pdf">Download CV</a></li>
     <li>Email: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
     <li>VK: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
     <li>Telegram: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
