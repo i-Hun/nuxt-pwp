@@ -1,8 +1,11 @@
 <template>
 <div class="main">
-  <h1 class='intro'>Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.</h1>
+  <div class="intro block">
+    <img class="intro-avatar" src="/img/avatar.jpg">
+    <h1 class='intro-text'>Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.</h1>
+  </div>
 
-  <ul class="contacts">
+  <ul class="contacts block">
     <li><a href="/files/nagornyy_cv.pdf">Download CV</a></li>
     <li>Email: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
     <li>VK: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
@@ -14,15 +17,16 @@
     <li><a href="https://scholar.google.ru/citations?user=fz9W8oMAAAAJ&hl=en&oi=sra" target="_blank">Google Scholar</a></li>
   </ul>
 
-  <div class="education">
-    <h1>Education</h1>
+  <div class="education block">
+    <h2>Education</h2>
     <ul>
       <li>2017–2020 Full-time Advanced Doctoral Programme in Social Sciences.</li>
       <li>2015–2017 Master in Sociology Higher School of Economics.</li>
       <li>2010–2015 Diploma in Sociology Omsk State University.</li>
     </ul>
-
-    <h1>Additional Education</h1>
+  </div>
+  <div class="block">
+    <h2>Additional Education</h2>
     <ul>
       <li>
         <nuxt-link to="/events/d97rg6bf60332qahmh9la0ar30@group.calendar.google.com" active-class="is-active">InLibery Summer School in Georgia</nuxt-link>
@@ -37,8 +41,8 @@
       <li>A. Casilli's workshop “Digital Methods: How to Study Online Social Interactions”, 9–10 December 2015, St. Petersburg, Russia.</li>
     </ul>
   </div>
-  <div class="publication">
-    <h1>Publications</h1>
+  <div class="publication block">
+    <h2>Publications</h2>
     <ol>
       <li class="csl-entry">Koltsova, O., Nikolenko, S., Alexeeva, S., Nagornyy, O., &amp; Koltcov, S. (2017). Detecting Interethnic Relations with the Data from Social Media. In <i>Digital Transformation and Global Society</i> (pp. 16–30). Springer, Cham. <a href="https://doi.org/10.1007/978-3-319-69784-0_2">https://doi.org/10.1007/978-3-319-69784-0_2</a></li>
       <li class="csl-entry">Nagornyy, O. (2018). Topics of Ethnic Discussions in Russian Social Media. In D. A. Alexandrov, A. V. Boukhanovsky, A. V. Chugunov, Y. Kabanov, &amp; O. Koltsova (Eds.), <i>Digital Transformation and Global Society</i> (Vol. 859, pp. 83–94). Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-02846-6_7">https://doi.org/10.1007/978-3-030-02846-6_7</a></li>
@@ -53,8 +57,8 @@
       <li class="csl-entry">Рыков, Ю. Г., &amp; Нагорный, О. С. (2017). Область Интернет-исследований в социальных науках. <i>Социологическое Обозрение</i>, <i>16</i>(3), 366–394. Retrieved from <a href="https://sociologica.hse.ru/2017-16-3/210184656.html">https://sociologica.hse.ru/2017-16-3/210184656.html</a></li>
     </ol>
   </div>
-  <div class="conferences">
-    <h1>Conferences</h1>
+  <div class="conferences block">
+    <h2>Conferences</h2>
     <ul>
       <li v-for='conference in conferences'>
         {{conference.title}}. {{conference.place.country}} {{conference.place.flag}}, {{conference.place.city}}. {{formatConfDate(conference.date.start, conference.date.end)}}.
@@ -64,7 +68,7 @@
   </div>
 
   <div class="awards">
-    <h1>Awards</h1>
+    <h2>Awards</h2>
 
     <ul>
       <li>Oxford Russian Fund scholarship for MA students (2015–2016, 2016–2017).</li>
@@ -79,8 +83,25 @@
 </template>
 
 <style scoped lang='scss'>
+  .block {
+    margin: 2rem 0 2rem 0;
+  }
+
   .intro {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .intro-text {
     font-weight: 300;
+    margin: 0;
+  }
+
+  .intro-avatar {
+    border-radius: 100%;
+    weight: 128px;
+    height: 128px;
+    margin-right: 1rem;
   }
 
 

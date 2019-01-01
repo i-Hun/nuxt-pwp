@@ -1,6 +1,6 @@
 const pkg = require('./package');
 // const dataSciencePosts = require('data/data.js')
-import {dataSciencePosts, intro2pythonPosts} from './data/data.js';
+import {dataSciencePosts, intro2pythonPosts, events} from './data/data.js';
 
 export default dataSciencePosts;
 module.exports = {
@@ -14,13 +14,20 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: "Oleg Nagornyy's personal web site" },
-      { name: 'theme-color', content: '#ffffff'}
+      { hid: 'description', name: 'Oleg Nagornyy\'s personal website', content: "Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE." },
+      { name: 'theme-color', content: '#ffffff'},
+      { hid: 'og:title', property: 'og:title', content: 'Oleg Nagornyy'},
+      { hid: 'og:description', property: 'og:description', content: 'Hi! I am Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I\'m working as Research assistant and Lecturer at HSE.'},
+      { hid: 'og:image', property: 'og:image', content: '/img/cover.jpg'},
+      { hid: 'og:type', property: 'og:type', content: 'profile'},
+      { hid: 'profile::first_name', property: 'profile::first_name', content: 'Oleg'},
+      { hid: 'profile::last_name', property: 'profile::last_name', content: 'Nagornyy'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
       { rel: 'apple-touch-icon', href: '/favicons/apple-touch-icon.png', sizes: '180x180'},
-      { rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'}
+      { rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'},
+
     ]
   },
 
@@ -68,7 +75,12 @@ module.exports = {
       const intro2pythonUrls = intro2pythonPosts.map((post) => {
         return "/intro2python/" + post.id;
       })
-      return dataScienceUrls.concat(intro2pythonUrls);
+
+      const eventsUrls = events.map((event) => {
+        return "/events/" + event.id;
+      })
+
+      return dataScienceUrls.concat(intro2pythonUrls).concat(eventsUrls);
     }
   },
 

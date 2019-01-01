@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 <div class="content">
 	<h1>Latest bookmarks</h1>
 	<ul class='bookmarks'>
@@ -39,7 +39,6 @@ time {
             const bookmarks = await app.$axios.$get(
                 `https://www.diigo.com/interact_api/load_user_profile_items?sort=updated&count=100&username=ihun_marks`
             );
-            console.log('bookmarks', bookmarks)
             return {
             	bookmarks: bookmarks['items']
             };
@@ -47,3 +46,4 @@ time {
  
 	}
 </script>
+ -->

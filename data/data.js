@@ -66,18 +66,37 @@ const dataSciencePosts = [
 ]
 
 const intro2pythonPosts = [
-		{
-			id: "python-review",
-			title: "Python review",
-			titleRu: "Обзор языка Python",
-			lang: "ru",
-		},
-		{
-			id: "syntax",
-			title: "Syntax",
-			titleRu: "Синтаксис языка Python",
-			lang: "ru",
-		}
-	]
+	{
+		id: "python-review",
+		title: "Python review",
+		titleRu: "Обзор языка Python",
+		lang: "ru",
+	},
+	{
+		id: "syntax",
+		title: "Syntax",
+		titleRu: "Синтаксис языка Python",
+		lang: "ru",
+	}
+]
 
-export {dataSciencePosts, intro2pythonPosts};
+const events = [
+	{
+		id: "nkodf5abeqrpa4tm7k31b26n2k@group.calendar.google.com",
+		title: "Summer school at Dubna 2018",
+		titleRu: "Летняя школа в Дубне 2018 г.",
+		lang: "ru",
+		img: "/img/dubna.jpg",
+		description: ""
+	},
+	{
+		id: "d97rg6bf60332qahmh9la0ar30@group.calendar.google.com",
+		title: "Databases",
+		titleRu: "Лeтняя школа InLiberty",
+		lang: "ru",
+		img: "/img/inliberty.jpg",
+		description: ""
+	},
+]
+
+export {dataSciencePosts, intro2pythonPosts, events};

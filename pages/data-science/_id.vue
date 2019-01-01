@@ -3,7 +3,7 @@
     <div v-for="cell in cells" class="cell">
       <!-- исправить вложенность -->
       <div v-if="cell.cell_type === 'code'" class="code-cell">
-        <pre><code class="python" v-html="cell.source.join('')"></code></pre>
+        <pre class="line-numbers"><code class="language-python" v-html="cell.source.join('')"></code></pre>
       </div>
       <div v-if="cell.hasOwnProperty('outputs') && cell.outputs.length">
         <div v-for="output in cell.outputs">
@@ -31,14 +31,20 @@ var md = require('markdown-it')({
 export default {
   name: 'data-science-page',
   head: {
+    link: [
+      { rel: 'stylesheet', href: '/css/prism.css' },
+    ],
     script: [
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', ssr: false },
-      { src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js', ssr: false }
+      { src: '/js/prism.js', ssr: false },
+      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-python.js', ssr: false },
+      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js', ssr: false }
     ]
   },
   mounted(){
     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    hljs.initHighlightingOnLoad();
+    // hljs.initHighlightingOnLoad();
+    Prism.highlightAll();
   },
   asyncData (context) {
     console.log("asyncData", context.params)

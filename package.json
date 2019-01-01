@@ -21,7 +21,8 @@
     "mathjax": "^2.7.5",
     "moment": "^2.23.0",
     "nuxt": "^2.0.0",
-    "nuxt-buefy": "^0.2.1"
+    "nuxt-buefy": "^0.2.1",
+    "prismjs": "^1.15.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
