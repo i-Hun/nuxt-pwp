@@ -10,11 +10,11 @@ module.exports = {
   ** Headers of the page<meta name="theme-color" content="#ffffff">
   */
   head: {
-    title: "Oleg Nagornyy",
+    title: "Oleg Nagornyy's personal website",
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'Oleg Nagornyy\'s personal website', content: "Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE." },
+      { hid: 'description', name: 'description', content: "Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE." },
       { name: 'theme-color', content: '#ffffff'},
       { hid: 'og:title', property: 'og:title', content: 'Oleg Nagornyy'},
       { hid: 'og:description', property: 'og:description', content: 'Hi! I am Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I\'m working as Research assistant and Lecturer at HSE.'},
@@ -107,14 +107,11 @@ module.exports = {
     //   }
     // }
     extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
+      config.module.rules.push({
         test: /\.ipynb$/,
         exclude: /node_modules/,
         loader: 'raw-loader'
-        })
-      }
+      })
     }
   },
 }

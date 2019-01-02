@@ -90,11 +90,21 @@
   .intro {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .intro-text {
     font-weight: 300;
     margin: 0;
+    width: 80%;
+  }
+
+  @media only screen and (max-width: 120px) {
+    .intro-text {
+      font-weight: 300;
+      margin: 0;
+      width: 100%;
+    }
   }
 
   .intro-avatar {
