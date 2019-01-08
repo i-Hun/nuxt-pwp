@@ -17,15 +17,9 @@
 					</div> -->
 				</div>
 			</div>
-			<div class='text-cell' v-if="(cell.cell_type === 'markdown') & !('references' in cell.metadata)" v-html="markdowned(cell.source.join(''))">
+			<div class='text-cell' v-if="(cell.cell_type === 'markdown')" v-html="markdowned(cell.source.join(''))">
 			</div>
 
-			<div class='text-cell references' v-if="(cell.cell_type === 'markdown') & ('references' in cell.metadata)">
-				<details>
-					<summary><strong>References</strong></summary>
-					<div v-html="markdowned(cell.source.join(''))"></div>
-				</details>		
-			</div>
 		</div>
 		<div class="comments" v-if="isShowComments">
 			<Comments :pagePath="$nuxt.$route.path">
@@ -33,9 +27,7 @@
 		</div>
 		<div class="comments" v-else="isShowComments">
 			<button v-on:click="isShowComments = true">Show Comments</button>
-		</div>
-
-			
+		</div>			
 		
 	</section>
 </template>
@@ -50,7 +42,7 @@ var md = require('markdown-it')({
 	linkify: true,
 	typographer: true
 }).use(require('markdown-it-named-headings'))
-//.use(require('markdown-it-mathjax')());
+.use(require('markdown-it-mathjax')());
 
 export default {
 	name: 'data-science-page',
@@ -81,13 +73,13 @@ export default {
 			extensions: ["tex2jax.js"],
 			jax: ["input/TeX", "output/HTML-CSS"],
 			tex2jax: {
-				inlineMath: [['$','$']],
-				displayMath: [['$$','$$']],
+				inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+				displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
 				processEscapes: true
 			},
 			"HTML-CSS": { fonts: ["TeX"] }
 		});
-		
+
 		MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
 
@@ -112,7 +104,7 @@ export default {
 	methods: {
 		markdowned: function (text) {
 			var result = md.render(text);
-			result = result.replace("img/", "/img/content/");
+			result = result.replace(/img\//g, "/img/content/");
 			return result;
 		}
 	}
@@ -130,13 +122,31 @@ export default {
 	}
 
 	.note {
-		font-size: .9em;
-			float: right;
-			margin: -5rem -13rem 0 0rem;
-			width: 25%;
-			line-height: normal;
-			padding: 10px;
-			background: #eee;
+		font-size: .8em;
+		float: right;
+		margin: -6rem -15rem 0 0rem;
+		max-width: 40%;
+		width: 14rem;
+		line-height: normal;
+		font-style: italic;
+		font-weight: 100;
+	}
+
+
+	summary {
+		margin: -.5em -.5em 0;
+		padding: .5em;
+		cursor: pointer;
+		& > * {
+			border-bottom: 1px dashed #999;
+			display: inline;
+		}
+	}
+
+	details[open] {
+		border: 1px solid #aaa;
+		border-radius: 4px;
+		padding: .5em .5em 0;
 	}
 
 	.js-toc {

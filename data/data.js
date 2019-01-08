@@ -97,6 +97,22 @@ const events = [
 		img: "/img/inliberty.jpg",
 		description: ""
 	},
+	{
+		id: "2pu36mt6v6mt092pcuqnm1dm9s@group.calendar.google.com",
+		title: "Data Analysis with Python",
+		titleRu: "Прикладной анализ данных в Python",
+		lang: "en",
+		img: "/img/data-analysis-with-python.jpg",
+		description: ""
+	},
+	{
+		id: "m884ehsb1ha2qechg17ls6e16c@group.calendar.google.com",
+		title: "Practical programming and data analysis in special environments",
+		titleRu: "Практическое программирование и анализ данных в специализированных средах",
+		lang: "en",
+		img: "/img/data-analysis-with-python.jpg",
+		description: ""
+	},
 ]
 
 export {dataSciencePosts, intro2pythonPosts, events};

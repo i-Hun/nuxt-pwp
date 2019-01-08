@@ -4,17 +4,19 @@
 
 
 @import 'embed.scss';
+// @import 'firework.scss';
+
 // @import 'highlight.github.min.scss';
 
 
 html {
-		font-size: 18px;
-		min-width: 300px;
-		overflow-x: hidden;
-		overflow-y: scroll;
-		text-rendering: optimizeLegibility;
-		text-size-adjust: 100%;
-		word-wrap: break-word;
+	font-size: 18px;
+	min-width: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+	word-wrap: break-word;
 }
 
 body, button, input, select, textarea {
@@ -22,40 +24,40 @@ body, button, input, select, textarea {
 }
 
 table {
-		display: block;
-		width: 100%;
-		overflow-x: auto;
-		-webkit-overflow-scrolling: touch;
-		-ms-overflow-style: -ms-autohiding-scrollbar;
-		width: 100%;
-		max-width: 100%;
-		margin-bottom: 1rem;
-		background-color: transparent;
-		box-sizing: border-box;
-		display: table;
-		border-collapse: separate;
-		border-spacing: 2px;
-		border-color: grey;
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	background-color: transparent;
+	box-sizing: border-box;
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: grey;
 }
 
 th {
-		text-align: inherit;
+	text-align: inherit;
 }
 
 thead th {
-		vertical-align: bottom;
-		border-bottom: 2px solid #dee2e6;
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
 }
 
 table td, table th {
-		padding: .25rem;
-		vertical-align: top;
-		border-top: 1px solid #dee2e6;
+	padding: .25rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
 }
 
 body {
-		font-weight: 400;
-		line-height: 1.5;
+	font-weight: 400;
+	line-height: 1.5;
 }
 
 pre {
@@ -67,12 +69,24 @@ h1 {
 }
 
 audio, img, video {
-		height: auto;
-		max-width: 100%;
+	height: auto;
+	max-width: 100%;
 }
 
 li {
 	margin-bottom: .5rem
+}
+
+@media screen and (min-width: 970px) {
+	.layout {
+		margin-left: .75rem;
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.layout {
+		margin-left: 1.5rem;
+	}
 }
 
 .container {
@@ -81,26 +95,15 @@ li {
 
 @media screen and (min-width: 970px) {
 	.container {
-			width: 800px;
-			max-width: 60%;
-			margin-left: .75rem;
+		width: 820px;
+		max-width: 60%;
 	}
 }
 
-@media screen and (min-width: 1280px) {
-	.container {
-			// max-width: 1152px;
-			// width: 1152px;
-			margin-left: 1.5rem;
-	}
-}
 
 
 blockquote {
 	font-family: 'serif';
-	background-color: whitesmoke;
-	border-left: 5px solid #dbdbdb;
-	padding: 1.25em 1.5em;
 
 
 	footer {
@@ -121,6 +124,16 @@ code {
 	font-size: 0.875em;
 	font-weight: normal;
 	padding: 0.25em 0.5em 0.25em;
+}
+
+abbr[data-original-title], abbr[title] {
+	cursor: help;
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
 }
 
 .text-cell {

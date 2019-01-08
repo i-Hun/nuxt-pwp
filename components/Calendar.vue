@@ -188,21 +188,27 @@
 		padding-bottom: 50px;
 	}
 
-
-	@media (max-width: 700px) {
+	@media (max-width: 1280px) {
 		.schedule ul {
-			columns: 1;
+			columns: 3;
 		}
 	}
 
-	@media (min-width: 701px) {
+	@media (min-width: 1280px) {
+		.schedule ul {
+			columns: 4;
+		}
+	}
+
+	@media (max-width: 1024px) {
 		.schedule ul {
 			columns: 2;
 		}
 	}
-	@media (min-width: 1281px) {
+	
+	@media (max-width: 720px) {
 		.schedule ul {
-			columns: 3;
+			columns: 1;
 		}
 	}
 

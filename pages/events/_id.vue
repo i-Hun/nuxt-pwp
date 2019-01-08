@@ -21,6 +21,7 @@
 		components: {
 			Calendar
 		},
+		layout: 'calendar',
 		data() {
 			return {
 				calendarId: ""

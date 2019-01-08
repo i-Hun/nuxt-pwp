@@ -1,9 +1,7 @@
 <template>
-	<section class="default-layout layout">
-		<div class="container">
-			<Navbar/>
-			<nuxt />
-		</div>
+	<section class="calendar-layout layout">
+		<Navbar/>
+		<nuxt />
 	</section>
 </template>
 

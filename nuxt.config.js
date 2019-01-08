@@ -58,7 +58,8 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxtjs/sitemap'
   ],
   /*
   ** Axios module configuration
