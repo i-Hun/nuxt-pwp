@@ -1,10 +1,10 @@
 <template>
-<div class="posts">
+<div class="events">
 	<ul>
-		<li v-for="post in posts">
-			<a :href="'/events/' + post.id">
-				{{post.titleRu}}
-			</a>
+		<li v-for="event in events">
+			<nuxt-link :to="event.id">
+				{{event.titleRu}}
+			</nuxt-link>
 		</li>
 	</ul>
 </div>
@@ -16,7 +16,7 @@
 </style>
 
 <script>
-	import {events} from '@/data/data';
+	import events from '@/data/events.js';
 
 
 	export default {
@@ -24,7 +24,7 @@
 		data() {
 			return {
 				img: "/img/main.jpg",
-				posts: events
+				events: events
 			}
 		}
 	}

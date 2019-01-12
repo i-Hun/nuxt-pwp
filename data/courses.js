@@ -5,7 +5,8 @@ const dataSciencePosts = [
 		titleRu: "Полезные практики для работы с данными",
 		lang: "ru",
 		img: "/data-science/img/good-enough-practices.jpg",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "DBs",
@@ -13,7 +14,8 @@ const dataSciencePosts = [
 		titleRu: "Базы данных",
 		lang: "ru",
 		img: "/data-science/img/DBs.svg",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "feature_engineering",
@@ -21,7 +23,8 @@ const dataSciencePosts = [
 		titleRu: "Работа с признаками",
 		lang: "ru",
 		img: "/data-science/img/feature_engineering.jpg",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "clustering_and_topic_modelling",
@@ -29,7 +32,8 @@ const dataSciencePosts = [
 		titleRu: "Методы обучения без учителя",
 		lang: "ru",
 		img: "/data-science/img/clustering_and_topic_modelling.png",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "fair_models",
@@ -37,7 +41,8 @@ const dataSciencePosts = [
 		titleRu: "Честность при работе с моделями",
 		lang: "ru",
 		img: "/data-science/img/fair_models.png",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "language_models",
@@ -45,7 +50,8 @@ const dataSciencePosts = [
 		titleRu: "Языковые модели",
 		lang: "ru",
 		img: "/data-science/img/language_models.jpg",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "ensemble_learning",
@@ -53,15 +59,17 @@ const dataSciencePosts = [
 		titleRu: "Ансамблевые методы",
 		lang: "ru",
 		img: "/data-science/img/ensemble_learning2.jpg",
-		description: ""
+		description: "",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "basics-of-neural-networks",
 		title: "Basics of Neural Networks",
 		titleRu: "Основы нейронных сетей",
 		lang: "ru",
-		img: "/data-science/img/basics-of-neural-networks.gif",
-		description: ""
+		img: "/img/basics-of-neural-networks.gif",
+		description: "In this lesson we review the history of Neural Networks, analyze its inner structue and code simple network in Python.",
+		author: "Oleg Nagornyy"
 	},
 ]
 
@@ -71,48 +79,29 @@ const intro2pythonPosts = [
 		title: "Python review",
 		titleRu: "Обзор языка Python",
 		lang: "ru",
+		author: "Oleg Nagornyy"
 	},
 	{
 		id: "syntax",
 		title: "Syntax",
 		titleRu: "Синтаксис языка Python",
 		lang: "ru",
+		author: "Oleg Nagornyy"
 	}
 ]
 
-const events = [
+
+const courses = [
 	{
-		id: "nkodf5abeqrpa4tm7k31b26n2k@group.calendar.google.com",
-		title: "Summer school at Dubna 2018",
-		titleRu: "Летняя школа в Дубне 2018 г.",
-		lang: "ru",
-		img: "/img/dubna.jpg",
-		description: ""
+		title: "Data Science",
+		id: 'data-science',
+		lessons: dataSciencePosts
 	},
 	{
-		id: "d97rg6bf60332qahmh9la0ar30@group.calendar.google.com",
-		title: "Databases",
-		titleRu: "Лeтняя школа InLiberty",
-		lang: "ru",
-		img: "/img/inliberty.jpg",
-		description: ""
-	},
-	{
-		id: "2pu36mt6v6mt092pcuqnm1dm9s@group.calendar.google.com",
-		title: "Data Analysis with Python",
-		titleRu: "Прикладной анализ данных в Python",
-		lang: "en",
-		img: "/img/data-analysis-with-python.jpg",
-		description: ""
-	},
-	{
-		id: "m884ehsb1ha2qechg17ls6e16c@group.calendar.google.com",
-		title: "Practical programming and data analysis in special environments",
-		titleRu: "Практическое программирование и анализ данных в специализированных средах",
-		lang: "en",
-		img: "/img/data-analysis-with-python.jpg",
-		description: ""
-	},
+		title: "Intro to Python",
+		id: 'intro2python',
+		lessons: intro2pythonPosts
+	}
 ]
 
-export {dataSciencePosts, intro2pythonPosts, events};
+export default courses;
