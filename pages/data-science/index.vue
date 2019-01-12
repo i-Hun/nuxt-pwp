@@ -3,9 +3,8 @@
 	<ul>
 	<li class="post" v-for="post in posts">
 		<a :href="'/data-science/' + post.id">
-      <div>{{post.titleRu}}</div>
-      <p v-if='post.description'>{{post.description}}</p>
-	  </a>
+      		{{post.titleRu}}
+		</a>
   </li>
   </ul>
 </div>

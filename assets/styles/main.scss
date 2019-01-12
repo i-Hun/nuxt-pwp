@@ -4,6 +4,7 @@
 
 
 @import 'embed.scss';
+@import 'copy-tex.scss';
 // @import 'firework.scss';
 
 // @import 'highlight.github.min.scss';
@@ -136,12 +137,26 @@ abbr[title] {
     text-decoration: underline dotted;
 }
 
+a:link:hover, a:visited:hover {
+	color: #f41224;
+	border-color: rgba(244,18,36,.3);
+}
+
+a:visited {
+    color: #b40eb4;
+    border-color: rgba(180,14,180,.3);
+}
+
+a:link {
+    color: #004aff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,137,255,.3);
+    transition: color .3s ease,border-color .3s ease;
+}
+
 .text-cell {
 	background-color: #fff;
 	margin: 2em 0em 0em 0em;
 }
 
-.hljs {
-	background-color: transparent;
-}
 
