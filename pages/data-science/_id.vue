@@ -2,7 +2,6 @@
 	<section class="section post content">
 		<div class="js-toc"></div>
 		<div v-for="cell in cells" class="cell">
-			<!-- исправить вложенность -->
 			<div v-if="cell.cell_type === 'code'" class="code-cell">
 				<pre><code class="language-python" v-html="cell.source.join('')"></code></pre>
 			</div>
@@ -243,8 +242,9 @@ export default {
 		width: 300px;
 		font-size: 0.8rem;
 		color: #bbb;
-
-
+		overflow-y: scroll;
+		top: 0;
+		bottom: 0;
 		a {
 			opacity: 0.2;
 			text-decoration: none;
