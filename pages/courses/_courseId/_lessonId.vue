@@ -2,7 +2,7 @@
 	<section class="ipynb-post content">
 		<h1 id="lesson-title">{{lesson.title}}</h1>
 		<div class="meta">
-			Part of the course "<a :href="'/courses/' + course.id">{{course.title}}</a>". Author {{lesson.author}} and <a href="#references">many others</a>.
+			Part of the course "<a :href="'/courses/' + course.id">{{course.title}}</a>". Author {{lesson.author}}<span v-if='references && references.length'> and <a href="#references">many others</a></span>.
 		</div>
 		<IpynbCells :cells="cells"></IpynbCells>
 		<References :references="references"></References>
@@ -28,7 +28,7 @@ export default {
 	},
 	head () {
 		const title = `${this.lesson.title} from the course "${this.course.title}" by ${this.lesson.author}`;
-		const description = this.lesson.description ? this.lesson.description : `${this.lesson.title} from the ourse "${this.course.title}" by ${this.lesson.author}`
+		const description = this.lesson.description ? this.lesson.description : `${this.lesson.title} from the сourse "${this.course.title}" by ${this.lesson.author}`
 		return {
 			title: title,
 			meta: [
@@ -47,7 +47,7 @@ export default {
 					property: 'og:description',
 					content: description
 				},
-				{ name: 'author', content: this.lesson.author},
+				{ hid: 'author', name: 'author', content: this.lesson.author},
 			]
 		}
 	},

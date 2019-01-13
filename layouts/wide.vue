@@ -1,5 +1,5 @@
 <template>
-	<section class="calendar-layout layout">
+	<section class="wide-layout layout">
 		<Navbar/>
 		<nuxt />
 	</section>

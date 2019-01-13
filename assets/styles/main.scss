@@ -132,9 +132,9 @@ abbr[data-original-title], abbr[title] {
 }
 
 abbr[title] {
-    border-bottom: none;
-    text-decoration: underline;
-    text-decoration: underline dotted;
+	border-bottom: none;
+	text-decoration: underline;
+	text-decoration: underline dotted;
 }
 
 a:link:hover, a:visited:hover {
@@ -143,15 +143,15 @@ a:link:hover, a:visited:hover {
 }
 
 a:visited {
-    color: #b40eb4;
-    border-color: rgba(180,14,180,.3);
+	color: #b40eb4;
+	border-color: rgba(180,14,180,.3);
 }
 
 a:link {
-    color: #004aff;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(0,137,255,.3);
-    transition: color .3s ease,border-color .3s ease;
+	color: #004aff;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0,137,255,.3);
+	transition: color .3s ease,border-color .3s ease;
 }
 
 .text-cell {
@@ -159,12 +159,61 @@ a:link {
 	margin: 2em 0em 0em 0em;
 }
 
-
 // https://ru.nuxtjs.org/guide/routes-transitions
 .page-enter-active, .page-leave-active {
   transition: opacity .5s;
 }
 .page-enter, .page-leave-active {
   opacity: 0;
+}
+
+.cards {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding: 0;
+
+	.card {
+		padding: 20px 20px;
+		box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.3);
+		max-width: 30%;
+		min-width: 200px;
+		list-style: none;
+		margin: 20px 20px 20px 0;
+		border-radius: 10px;
+		transition: box-shadow .3s ease, color .3s ease;
+		background-position: cover;
+		text-shadow: 0 0 1px rgba(0,0,0,0.3);
+		// filter: grayscale(90%);
+		// filter: blur(5px);
+
+		.title {
+			border: none;
+		}
+
+		&:link:hover, a:visited:hover {
+			color: #fff;
+			border-color: rgba(244,18,36,.3);
+		}
+
+		&:visited {
+			color: #fff;
+			border-color: rgba(180,14,180,.3);
+		}
+
+		&:link {
+			color: #fff;
+			text-decoration: none;
+			border-bottom: none;
+		}
+
+		&:hover {
+			box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.5);
+			filter: grayscale(0%);
+			filter: blur(0px);
+
+		}
+	}
 }
 

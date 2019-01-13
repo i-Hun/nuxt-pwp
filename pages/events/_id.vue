@@ -127,7 +127,7 @@
 				days: []
 			}
 		},
-		layout: 'calendar',
+		layout: 'wide',
 		async asyncData (context) {
 			function compareDates(a, b) {
 				var start = moment(a.start.dateTime || a.start.date);

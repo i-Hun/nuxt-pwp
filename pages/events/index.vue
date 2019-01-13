@@ -1,12 +1,6 @@
 <template>
 <div class="events">
-	<ul>
-		<li v-for="event in events">
-			<nuxt-link :to="event.id">
-				{{event.titleRu}}
-			</nuxt-link>
-		</li>
-	</ul>
+	<Cards :cards="events"></Cards>
 </div>
 </template>
 
@@ -17,16 +11,19 @@
 
 <script>
 	import events from '@/data/events.js';
+	import Cards from "@/components/Cards.vue";
 
 
 	export default {
-		name: 'events-index',
+		components: {
+			Cards
+		},
+		layout: 'wide',
 		data() {
 			return {
-				img: "/img/main.jpg",
 				events: events
 			}
-		}
+		},
 	}
 </script>
 

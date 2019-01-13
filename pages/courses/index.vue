@@ -1,15 +1,6 @@
 <template>
 <div class="courses">
-	<ul>
-		<li class="post" v-for="course in courses">
-			<nuxt-link :to="'/courses/' + course.id">
-				{{course.title}}
-			</nuxt-link>
-			<span class="description" v-if="course.description">
-				{{course.description}}
-			</span>
-		</li>
-	</ul>
+	<Cards :cards="courses"></Cards>
 </div>
 </template>
 
@@ -20,10 +11,13 @@
 
 <script>
 	import courses from '@/data/courses.js';
+	import Cards from "@/components/Cards.vue";
 
 
 	export default {
-		name: 'courses',
+		components: {
+			Cards
+		},
 		data() {
 			return {
 				courses: courses

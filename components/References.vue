@@ -1,5 +1,5 @@
 <template name="references">
-	<div class="references">
+	<div v-if="references && references.length" class="references">
 		<h2 id="references">References</h2>
 		<ol>
 			<li class="reference" v-html="reference.data" v-for='reference in references' :id="'ref-'+reference.order"></li>

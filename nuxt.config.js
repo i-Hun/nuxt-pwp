@@ -6,12 +6,12 @@ import axios from 'axios';
 const coursesUrls = courses.map((course) => {
 	return course.lessons.map(lesson => {
 		return `/courses/${course.id}/${lesson.id}`;
-	})
-})
+	}).concat(`/courses/${course.id}`)
+}).concat('/courses')
 
 const eventsUrls = events.map((event) => {
 	return "/events/" + event.id;
-})
+}).concat('/events')
 
 // return axios.get(`https://api.tumblr.com/v2/blog/ihun.tumblr.com/posts?api_key=5YiGBDAB7Jr3YnOMEdOjxr8f8MIguZXJVFFw8ktEAvamvd3srf`)
 // .then((res) => {
@@ -35,7 +35,7 @@ module.exports = {
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{ hid: 'description', name: 'description', content: "Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE." },
-			{ name: 'author', content: 'Oleg Nagornyy'},
+			{ hid: 'author', name: 'author', content: 'Oleg Nagornyy'},
 			{ name: 'yandex-verification', content: '471b8643d6aebb45'},
 			{ name: 'google-site-verification', content: 'xH5va-Q3lKPKE-R_6Eum-flGjhXIO4yISWWaqFiOXzI'},
 			{ name: 'theme-color', content: '#ffffff'},

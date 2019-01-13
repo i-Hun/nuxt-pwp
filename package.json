@@ -28,7 +28,8 @@
     "netlify-cli": "^2.6.1",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.2.1",
-    "prismjs": "^1.15.0"
+    "prismjs": "^1.15.0",
+    "randomcolor": "^0.5.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

@@ -5,15 +5,17 @@ const events = [
 		titleRu: "Летняя школа в Дубне 2018 г.",
 		lang: "ru",
 		img: "/img/dubna.jpg",
-		description: ""
+		description: "",
+		// color: ['#afe', '#9ae', '#faf']
 	},
 	{
 		id: "d97rg6bf60332qahmh9la0ar30@group.calendar.google.com",
-		title: "Databases",
+		title: "InLiberty summer school in Georgia",
 		titleRu: "Лeтняя школа InLiberty",
 		lang: "ru",
 		img: "/img/inliberty.jpg",
-		description: ""
+		description: "",
+		// color: ['#afe', '#9ae', '#faf']
 	},
 	{
 		id: "2pu36mt6v6mt092pcuqnm1dm9s@group.calendar.google.com",
@@ -21,7 +23,8 @@ const events = [
 		titleRu: "Прикладной анализ данных в Python",
 		lang: "en",
 		img: "/img/data-analysis-with-python.jpg",
-		description: ""
+		description: "",
+		// color: ['#afe', '#9ae', '#faf']
 	},
 	{
 		id: "m884ehsb1ha2qechg17ls6e16c@group.calendar.google.com",
@@ -29,7 +32,8 @@ const events = [
 		titleRu: "Практическое программирование и анализ данных в специализированных средах",
 		lang: "en",
 		img: "/img/data-analysis-with-python.jpg",
-		description: ""
+		description: "",
+		// color: ['#afe', '#9ae', '#faf']
 	},
 ]
 
