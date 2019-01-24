@@ -5,12 +5,30 @@
 			<div v-if="cell.cell_type === 'code'" class="code-cell">
 				<pre><code class="language-python" v-html="cell.source.join('')"></code></pre>
 			</div>
+
 			<div v-if="cell.hasOwnProperty('outputs') && cell.outputs.length" class="code-outputs">
 				<div v-for="output in cell.outputs" class="output">
 					<div v-if="output.hasOwnProperty('data') && output.data.hasOwnProperty('image/svg+xml')"
 						v-html="output.data['image/svg+xml'].join('')" class="output-svg"></div>
+
 					<div v-if="output.hasOwnProperty('data') && output.data.hasOwnProperty('text/html')"
 						v-html="output.data['text/html'].join('')" class="output-text-html"></div>
+
+					<div v-if="output.hasOwnProperty('data') &&
+						output.data.hasOwnProperty('text/plain') &&
+						!output.data.hasOwnProperty('text/html') &&
+						!output.data.hasOwnProperty('image/svg+xml')"
+						v-html="output.data['text/plain'].join('<br>')" class="output-text-plain"></div>
+
+					<div v-if="output.hasOwnProperty('text')"
+						v-html="output['text'].join('<br>')" class="output-text"></div>
+
+					<div v-if="output.output_type === 'error'" class="output-error">
+						<div class="traceback">
+							<div class="error-body">{{output.ename}}: {{output.evalue}}</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<div class='text-cell' v-if="(cell.cell_type === 'markdown')" v-html="markdowned(cell.source)">
@@ -43,7 +61,7 @@ export default {
 			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, async: true },
 			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },
 			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js', ssr: false, defer: true },
-			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/copy-tex.min.js', ssr: false, defer: true },
+			// { src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/copy-tex.min.js', ssr: false, defer: true },
 		]
 	},
 	mounted(){
@@ -82,6 +100,11 @@ export default {
 		margin: 10px;
 	}
 
+	.text-cell {
+		background-color: #fff;
+		margin: 2em 0em 0em 0em;
+	}
+
 	@media screen and (min-width: 1280px) {
 		.note {
 			font-size: .8em;
@@ -92,6 +115,13 @@ export default {
 			line-height: normal;
 			font-style: italic;
 			font-weight: 100;
+
+			figure {
+				margin: 0;
+				img {
+					margin: 0;
+				}
+			}
 		}
 	}
 
@@ -160,5 +190,79 @@ export default {
 				opacity: 1;
 			}
 	}
+
+	.task {
+		border-color: #3273dc;
+		border-radius: 4px;
+		border-style: solid;
+		border-width: 0 0 0 4px;
+		color: #22509a;
+		padding: 1.25em 1.5em;
+		background-color: #f6f9fe;
+		box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.18)
+
+
+	}
+
+	.task::before {
+		content: "Exercise";
+		font-size: 0.7rem;
+		float: right;
+		text-shadow: 0 0 2px #fff;
+		font-weight: 700;
+		position: relative;
+		top: -20px;
+		margin-bottom: -30px;
+		right: -20px;
+		color: #b0bfd8;
+	}
+
+.output-text-plain, .output-text {
+	border: 1px dashed #aaa;
+	padding: 10px;
+	margin-top: -.5em;
+	font-family: monospace;
+	background-color: #fff;
+	border-top: none;
+	max-height: 400px;
+	overflow-y: scroll;
+}
+
+.output-text-plain::before, .output-text::before {
+	content: "Code output";
+	font-size: 0.7rem;
+	float: right;
+	text-shadow: 0 0 2px #fff;
+	font-weight: 700;
+	position: relative;
+	top: -9px;
+	margin-bottom: -30px;
+	right: -5px;
+	color: #aaa;
+}
+
+.output-error {
+	padding: 10px;
+	margin-top: -.5em;
+	background-color: #faa;
+	color: #600;
+}
+
+.output-error::before {
+	content: "Error";
+	font-size: 0.7rem;
+	float: right;
+	text-shadow: 0 0 1px #fff;
+	font-weight: 700;
+	position: relative;
+	top: -9px;
+	margin-bottom: -30px;
+	right: -5px;
+	color: #a66;
+}
+
+.output-text-html {
+	overflow-x: scroll;
+}
 
 </style>

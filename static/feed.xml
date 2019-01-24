@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Oleg Nagornyy</title>
+        <link>https://nagornyy.me/feed.xml</link>
+        <description>Feed!</description>
+        <lastBuildDate>Thu, 24 Jan 2019 13:02:45 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>https://github.com/nuxt-community/feed-module</generator>
+        <category>Course by Oleg Nagornyy</category>
+        <item>
+            <title><![CDATA[Python review]]></title>
+            <link>https://nagornyy.me/courses/intro2python/python-review</link>
+            <guid>https://nagornyy.me/courses/intro2python/python-review</guid>
+            <description><![CDATA[Python has become first-choice language for data-analysist and researchers. Why did this happened?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[First program in Python: installation and basic syntax]]></title>
+            <link>https://nagornyy.me/courses/intro2python/installation-and-basic-syntax</link>
+            <guid>https://nagornyy.me/courses/intro2python/installation-and-basic-syntax</guid>
+            <description><![CDATA[In this lesson we will start to write simple scripts in Python. To do that we need to install the interpreter, than investigate the ways how to run Python code and, finally, learn basic datatypes and expressions.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Good Enough Practices for Scientific Computing]]></title>
+            <link>https://nagornyy.me/courses/data-science/good-enough-practices</link>
+            <guid>https://nagornyy.me/courses/data-science/good-enough-practices</guid>
+        </item>
+        <item>
+            <title><![CDATA[Feature Engineering]]></title>
+            <link>https://nagornyy.me/courses/data-science/feature_engineering</link>
+            <guid>https://nagornyy.me/courses/data-science/feature_engineering</guid>
+        </item>
+        <item>
+            <title><![CDATA[Fair Models]]></title>
+            <link>https://nagornyy.me/courses/data-science/fair_models</link>
+            <guid>https://nagornyy.me/courses/data-science/fair_models</guid>
+        </item>
+        <item>
+            <title><![CDATA[Ensemble Learning]]></title>
+            <link>https://nagornyy.me/courses/data-science/ensemble_learning</link>
+            <guid>https://nagornyy.me/courses/data-science/ensemble_learning</guid>
+        </item>
+        <item>
+            <title><![CDATA[Happy Data Year: competitive geoanalysis from Rosbank]]></title>
+            <link>https://nagornyy.me/courses/data-science/geoanalysis-rosbank</link>
+            <guid>https://nagornyy.me/courses/data-science/geoanalysis-rosbank</guid>
+        </item>
+        <item>
+            <title><![CDATA[Time series analysis. Does Russian economy really depends on oli price?]]></title>
+            <link>https://nagornyy.me/courses/data-science/time-series</link>
+            <guid>https://nagornyy.me/courses/data-science/time-series</guid>
+        </item>
+        <item>
+            <title><![CDATA[Use cases of Artificial Neural Networks]]></title>
+            <link>https://nagornyy.me/courses/ann/use-cases-of-ann</link>
+            <guid>https://nagornyy.me/courses/ann/use-cases-of-ann</guid>
+            <description><![CDATA[Neural networks are very mighty and very fun instrument of data scientists. Here I will show you why.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Early History of Artificial Neural Networks]]></title>
+            <link>https://nagornyy.me/courses/ann/history-of-ann</link>
+            <guid>https://nagornyy.me/courses/ann/history-of-ann</guid>
+            <description><![CDATA[In this lesson we review the history of Neural Networks and code a simple perceptron in Python.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How Artificial Neural Networks Learns]]></title>
+            <link>https://nagornyy.me/courses/ann/how-ann-learn</link>
+            <guid>https://nagornyy.me/courses/ann/how-ann-learn</guid>
+            <description><![CDATA[Lets talk about what makes ANN really clever — ability to learn — and investigate Gradient Descent in Backpropogation Algorithms]]></description>
+        </item>
+    </channel>
+</rss>

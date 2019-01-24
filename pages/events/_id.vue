@@ -1,8 +1,8 @@
 <template>
-	<section class="section">
+	
 	<div class="calendar">
+		<h1>{{thisEvent.title}}</h1>
 		<div class="schedule">
-
 			<div class="schedule-blocks">
 				<ul class="days">
 					<li class="day" v-for="day in days">
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</div>
-	</section>
+	</h1>
 </template>
 
 
@@ -54,7 +54,7 @@
 	}
 
 	.day-wrapper {
-		padding: 0 20px;
+		padding-right: 50px;
 	}
 
 	.event {
@@ -117,14 +117,17 @@
 
 
 <script>
+	import evts from '@/data/events.js';
 	import axios from 'axios';
 	import moment from 'moment';
 	import * as _ from 'lodash';
 
+
 	export default {
 		data() {
 			return {
-				days: []
+				days: [],
+				thisEvent: {}
 			}
 		},
 		layout: 'wide',
@@ -135,47 +138,59 @@
 				return start - end;
 			}
 
-			console.log('context.params.id', context.params.id)
 			let response = await axios.get(`https://clients6.google.com/calendar/v3/calendars/${context.params.id}/events?timeZone=Europe%2FMoscow&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=2017-06-25T00%3A00%3A00%2B03%3A00&timeMax=2019-06-25T00%3A00%3A00%2B03%3A00&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs&supportsAttachments=true`);
 
-			// создаём объект вида {"день или промежуток": [список событий]}
-			var resultDaysObj = [];
-			// и наполняем его
-			for (const event of response.data.items) {
-				const startSameDay = moment(event.start.dateTime || event.start.date).format("D") ===
-									 moment(event.end.dateTime   || event.end.date).format("D");
 
-				if (startSameDay) {
-					var day = moment(event.start.dateTime || event.start.date).format("MMMM D");
+			if (response.status === 200) {
+
+				// создаём объект вида {"день или промежуток": [список событий]}
+				var resultDaysObj = [];
+				// и наполняем его
+				for (const event of response.data.items) {
+					const startSameDay = moment(event.start.dateTime || event.start.date).format("D") ===
+										 moment(event.end.dateTime   || event.end.date).format("D");
+
+					if (startSameDay) {
+						var day = moment(event.start.dateTime || event.start.date).format("MMMM D");
+					}
+					else {
+						var day = `${moment(event.start.dateTime || event.start.date).format("MMMM D")} -
+								   ${moment(event.end.dateTime || event.end.date).format("MMMM D")}`
+					}
+
+					if (day in resultDaysObj) {
+						resultDaysObj[day].push(event);
+					} else {
+						resultDaysObj[day] = []
+						resultDaysObj[day].push(event);
+					}
 				}
-				else {
-					var day = `${moment(event.start.dateTime || event.start.date).format("MMMM D")} -
-							   ${moment(event.end.dateTime || event.end.date).format("MMMM D")}`
+
+				// переделываем объект в список объектов, чтобы можно было отсортировать. 
+				var resultDaysArray = [];
+
+				for (const [day, events] of Object.entries(resultDaysObj)) {
+
+					const evt = events.sort(compareDates)
+					const dayObj = {
+						events: evt,
+						dayTitle: day
+					}
+					resultDaysArray.push(dayObj);
 				}
 
-				if (day in resultDaysObj) {
-					resultDaysObj[day].push(event);
-				} else {
-					resultDaysObj[day] = []
-					resultDaysObj[day].push(event);
+				const thisEvent = evts.filter(event => {
+					return event.id === context.params.id;
+				})[0];
+
+
+
+				return {
+					thisEvent: thisEvent,
+					days: _.sortBy(resultDaysArray, day => moment(day.events[0].start.dateTime || day.events[0].start.date))
 				}
-			}
-
-			// переделываем объект в список объектов, чтобы можно было отсортировать. 
-			var resultDaysArray = [];
-
-			for (const [day, events] of Object.entries(resultDaysObj)) {
-
-				const evt = events.sort(compareDates)
-				const dayObj = {
-					events: evt,
-					dayTitle: day
-				}
-				resultDaysArray.push(dayObj);
-			}
-
-			return {
-				days: _.sortBy(resultDaysArray, day => moment(day.events[0].start.dateTime || day.events[0].start.date))
+			} else {
+				console.error("Error at the file events/_id.vue", response.status, response.statusText);
 			}
 		},
 		methods: {

@@ -1,9 +1,11 @@
 <template>
 	<section class="ipynb-post content">
-		<h1 id="lesson-title">{{lesson.title}}</h1>
-		<div class="meta">
-			Part of the course "<a :href="'/courses/' + course.id">{{course.title}}</a>". Author {{lesson.author}}<span v-if='references && references.length'> and <a href="#references">many others</a></span>.
-		</div>
+		<Card :card="lesson"></Card>
+		<ul class="breadcrumb">
+			<li><a href="/courses/">Courses</a></li>
+			<li><a :href="'/courses/' + course.id">{{course.title}}</a></li>
+			<li>{{lesson.title}}</li>
+		</ul>
 		<IpynbCells :cells="cells"></IpynbCells>
 		<References :references="references"></References>
 		<Comments :pagePath="$nuxt.$route.path"></Comments>
@@ -14,6 +16,7 @@
 import IpynbCells from "@/components/IpynbCells.vue";
 import References from "@/components/References.vue";
 import Comments from "@/components/Comments.vue";
+import Card from "@/components/Card.vue";
 import axios from 'axios';
 const cheerio = require('cheerio');
 
@@ -24,11 +27,12 @@ export default {
 	components: {
 		IpynbCells,
 		Comments,
-		References
+		References,
+		Card
 	},
 	head () {
-		const title = `${this.lesson.title} from the course "${this.course.title}" by ${this.lesson.author}`;
-		const description = this.lesson.description ? this.lesson.description : `${this.lesson.title} from the сourse "${this.course.title}" by ${this.lesson.author}`
+		const title = `Lesson ${this.lesson.title} by ${this.lesson.author}`;
+		const description = this.lesson.description ? this.lesson.description : `Lesson “${this.lesson.title}” from the сourse “${this.course.title}” by ${this.lesson.author}.`
 		return {
 			title: title,
 			meta: [
@@ -113,7 +117,7 @@ export default {
 		for (let course of courses) {
 			if (course.id === params.courseId) {
 				thisCourse = course;
-				for (let lesson of course.lessons) {
+				for (let lesson of course.elements) {
 					if (lesson.id === params.lessonId) {
 						thisLesson = lesson;
 					}
@@ -129,6 +133,31 @@ export default {
 		}
 
 	},
+	mounted() {
+		if (Trianglify) {
+			function addTriangleTo(target) {
+				var dimensions = target.getClientRects()[0];
+				var color = target.dataset.color;
+				var pattern = Trianglify({
+					width: dimensions.width + 2, 
+					height: dimensions.height + 2,
+					x_colors: color ? color.split(',') : ['#333', '#333', '#333'],
+				});
+
+				var m = new XMLSerializer().serializeToString(pattern.svg());
+
+				// Perform the base64 encoding of the String
+				var k = window.btoa(m);
+				target.style['background'] = 'url("data:image/svg+xml;base64,' + k + '")';
+			}
+
+			for (let card of document.getElementsByClassName("card")) {
+				addTriangleTo(card)
+			}
+		} else {
+			console.error("Trianglify did not load")
+		}
+	}
 }
 </script>
 

@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/feed": "^1.1.0",
+    "@statnett/vue-plotly": "^0.2.0",
     "ascii2mathml": "^0.6.0",
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.2.0",
@@ -28,6 +30,7 @@
     "netlify-cli": "^2.6.1",
     "nuxt": "^2.0.0",
     "nuxt-buefy": "^0.2.1",
+    "plotly.js": "^1.44.0",
     "prismjs": "^1.15.0",
     "randomcolor": "^0.5.3"
   },

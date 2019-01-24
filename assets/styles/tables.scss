@@ -1,0 +1,32 @@
+
+table {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	background-color: transparent;
+	box-sizing: border-box;
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: grey;
+}
+
+th {
+	text-align: inherit;
+}
+
+thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
+}
+
+table td, table th {
+	padding: .25rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+}

@@ -1,5 +1,6 @@
 <template>
 <div class="events">
+	<h1>Events</h1>
 	<Cards :cards="events"></Cards>
 </div>
 </template>

@@ -6,7 +6,7 @@
 	</div>
 
 	<ul class="contacts block">
-		<li><a href="/files/nagornyy_cv.pdf">Download CV</a></li>
+		<li>Want to hire me? <a href="/cv.pdf">Download CV</a></li>
 		<li>Email: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
 		<li>VK: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
 		<li>Telegram: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
@@ -16,6 +16,11 @@
 		<li>ResearcherID: <a href="http://www.researcherid.com/rid/N-8410-2015" target="_blank">N-8410-2015</a></li>
 		<li><a href="https://scholar.google.ru/citations?user=fz9W8oMAAAAJ&hl=en&oi=sra" target="_blank">Google Scholar</a></li>
 	</ul>
+
+	<div class="courses">
+		<h2>My courses <span>At the begining of the 2019 I decided to publish some materials from my lectures and seminars on the website. This section is not complete and messy now, but I will update it frequently.</span></h2>
+		<Cards :cards="courses" :prefix="'courses/'" inRow="2"></Cards>
+	</div>
 
 	<div class="education block">
 		<h2>Education</h2>
@@ -133,16 +138,36 @@ ul.contacts {
 	}
 }
 
+.courses {
+	h2 {
+		& > span {
+			font-weight: 300;
+			font-size: 0.8rem;
+		}
+		line-height: 1.1rem;
+	}
+}
+
+
+
 </style>
 
 <script>
 	import conferences from "@/data/conferences.js";
 	import moment from 'moment';
+	import courses from '@/data/courses.js';
+	import Cards from "@/components/Cards.vue";
+
+
 
 	export default {
 		name: 'Main',
+		components: {
+			Cards
+		},
 		data () {
 			return {
+				courses: courses,
 				conferences: conferences,
 			}
 		},

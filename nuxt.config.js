@@ -4,7 +4,7 @@ import events from './data/events.js';
 import axios from 'axios';
 
 const coursesUrls = courses.map((course) => {
-	return course.lessons.map(lesson => {
+	return course.elements.map(lesson => {
 		return `/courses/${course.id}/${lesson.id}`;
 	}).concat(`/courses/${course.id}`)
 }).concat('/courses')
@@ -49,9 +49,13 @@ module.exports = {
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
 			{ rel: 'apple-touch-icon', href: '/favicons/apple-touch-icon.png', sizes: '180x180'},
+			{ rel: 'alternate', href: '/feed.xml', title: "RSS Feed for nagornyy.me", type: "application/rss+xml" },
 			{ rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'},
-
+		],
+		script: [
+			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js', ssr: true, async: true },
 		]
+
 	},
 
 	/*
@@ -83,6 +87,7 @@ module.exports = {
 		'@nuxtjs/axios',
 		'@nuxtjs/markdownit',
 		'@nuxtjs/sitemap',
+		'@nuxtjs/feed',
 		['@nuxtjs/yandex-metrika',
 			{
 				id: '51885752',
@@ -103,13 +108,46 @@ module.exports = {
 	axios: {
 		// See https://github.com/nuxt-community/axios-module#options
 	},
-
 	generate: {
 		routes: function () {
 			return allRoutes;
 		}
 	},
+	feed: [
+		{
+			path: '/feed.xml', // The route to your feed.
+			async create (feed){
+				feed.options = {
+					title: 'Oleg Nagornyy',
+					link: 'https://nagornyy.me/feed.xml',
+					description: 'Feed!',
+				}
 
+				courses.forEach(course => {
+					course.elements.forEach(lesson => {
+						feed.addItem({
+							title: lesson.title,
+							id: lesson.url,
+							link: "https://nagornyy.me" + lesson.path,
+							description: lesson.description,
+							category: course.title
+						})	
+					})
+
+				})
+
+				feed.addCategory('Course by Oleg Nagornyy');
+
+				feed.addContributor({
+					name: 'Oleg Nagornyy',
+					email: 'nagornyy.o@gmail.com',
+					link: 'https://nagornyy.me/'
+				})
+			},
+			cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+			type: 'rss2', // Can be: rss2, atom1, json1
+		}
+	],
 	/*
 	** Build configuration
 	*/
