@@ -44,21 +44,20 @@ let dataSciencePosts = [
 			luminosity: 'dark'
 		})
 	},
-	// {
-	// 	id: "clustering_and_topic_modelling",
-	// 	title: "Unsupervised learning",
-	// 	titleRu: "Методы обучения без учителя",
-	// 	lang: "ru",
-	// 	img: "/data-science/img/clustering_and_topic_modelling.png",
-	// 	description: "",
-	// 	author: "Oleg Nagornyy",
-	// 	color: randomColor({
-	// 		count: 3,
-	// 		hue: 'orange',
-	// 		// seed: 12
-	// 		luminosity: 'dark'
-	// 	})
-	// },
+	{
+		id: "clustering_and_topic_modelling",
+		title: "Unsupervised learning",
+		titleRu: "Методы обучения без учителя",
+		lang: "ru",
+		img: "/data-science/img/clustering_and_topic_modelling.png",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
 	{
 		id: "fair_models",
 		title: "Fair Models",

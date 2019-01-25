@@ -4,7 +4,16 @@
 		<ul class="breadcrumb">
 			<li><a href="/courses/">Courses</a></li>
 			<li><a :href="'/courses/' + course.id">{{course.title}}</a></li>
-			<li>{{lesson.title}}</li>
+			<li class="dropdown is-hoverable">
+				<span class="dropdown-trigger">{{lesson.title}}</span>
+				<div class="dropdown-menu">
+					<div class="dropdown-content">
+						<a class="dropdown-item" v-for="lesson in course.elements" :href="lesson.path">
+							{{lesson.title}}
+						</a>
+					</div>
+				</div>
+			</li>
 		</ul>
 		<IpynbCells :cells="cells"></IpynbCells>
 		<References :references="references"></References>

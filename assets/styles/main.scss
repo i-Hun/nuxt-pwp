@@ -1,7 +1,7 @@
 // @import 'utilities/_all.sass';
 // @import 'columns.sass';
 // @import 'image.sass';
-
+@import 'dropdown.sass';
 
 @import 'embed.scss';
 @import 'copy-tex.scss';
@@ -121,10 +121,10 @@ a:link {
 
 // https://ru.nuxtjs.org/guide/routes-transitions
 .page-enter-active, .page-leave-active {
-  transition: opacity .5s;
+	transition: opacity .5s;
 }
 .page-enter, .page-leave-active {
-  opacity: 0;
+	opacity: 0;
 }
 
 .cards {
@@ -148,7 +148,7 @@ a:link {
 			box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.7);
 			filter: grayscale(0%);
 			filter: blur(0px);
-			filter: brightness(110%);
+			filter: brightness(120%);
 			transform: scale(1.02);
 			z-index: 2;
 		}
@@ -175,7 +175,6 @@ a:link {
 	background-position: cover;
 	text-shadow: 0 0 1px rgba(0,0,0,0.4);
 	background: #333;
-	filter: grayscale(10%);
 	color: #fff;
 
 
