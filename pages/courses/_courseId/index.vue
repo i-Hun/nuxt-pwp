@@ -1,6 +1,6 @@
 <template>
 	<div class="lessons">
-		<h1>Course “{{course.title}}”</h1>
+		<h1>{{$t("course")}} “{{course.title}}”</h1>
 		<Cards :cards="lessons" inRow="3"></Cards>
 	</div>
 </template>

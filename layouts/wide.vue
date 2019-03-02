@@ -2,6 +2,8 @@
 	<section class="wide-layout layout">
 		<div class="container is-fluid">
 			<Navbar/>
+		</div>
+		<div class="container is-fluid">
 			<div class="bd-lead">
 				<nuxt />
 			</div>

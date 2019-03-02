@@ -9,32 +9,32 @@
 		<div class="media-content">
 			<div class="content">
 				<h1 class="intro-text is-3 title">
-				Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.
+				{{$t("greeting")}}
 				</h1>
 			</div>
 		</div>
 	</article>
 	<ul class="contacts block content">
-		<li><a href="/cv.pdf">Download CV</a></li>
-		<li>Email: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
-		<li>VK: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
-		<li>Telegram: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
-		<li>Skype: <a href="skype:nagornyy_oleg?add" target="_blank">nagornyy_oleg</a></li>
-		<li>HSE: <a href="https://www.hse.ru/en/staff/oleg" target="_blank">hse.ru/en/staff/oleg</a></li>
+		<li><a href="/cv.pdf">{{$t("downloadCV")}}</a></li>
+		<li>{{$t("email")}}: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
+		<li>{{$t("vk")}}: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
+		<li>{{$t("telegram")}}: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
+		<li>{{$t("skype")}}: <a href="skype:nagornyy_oleg?add" target="_blank">nagornyy_oleg</a></li>
+		<li>{{$t("hse")}}: <a :href="'https://www.' + $t('hseURL')" target="_blank">{{$t("hseURL")}}</a></li>
 		<li>ORCID: <a href="http://orcid.org/0000-0002-0892-8212" target="_blank">0000-0002-0892-8212</a></li>
 		<li>ResearcherID: <a href="http://www.researcherid.com/rid/N-8410-2015" target="_blank">N-8410-2015</a></li>
-		<li><a href="https://scholar.google.ru/citations?user=fz9W8oMAAAAJ&hl=en&oi=sra" target="_blank">Google Scholar</a></li>
+		<li><a href="https://scholar.google.ru/citations?user=fz9W8oMAAAAJ&hl=en&oi=sra" target="_blank">{{$t("googleScholar")}}</a></li>
 	</ul>
 
 	<div class="courses">
 		<div class="content">
-			<h2>My courses <span>At the begining of the 2019 I decided to publish some materials from my lectures and seminars on the website. This section is not complete and messy now, but I will update it frequently.</span></h2>
+			<h2>{{$t("myCourses")}} <span>{{$t("coursesDisclaimer")}}</span></h2>
 		</div>
 		<Cards :cards="courses" :prefix="'courses/'" inRow="2"></Cards>
 	</div>
 
 	<div class="education block content">
-		<h2>Education</h2>
+		<h2>{{$t("education")}}</h2>
 		<ul>
 			<li>2017–2020 Full-time Advanced Doctoral Programme in Social Sciences.</li>
 			<li>2015–2017 Master in Sociology Higher School of Economics.</li>
@@ -42,7 +42,7 @@
 		</ul>
 	</div>
 	<div class="block content">
-		<h2>Additional Education</h2>
+		<h2>{{$t("additionalEducation")}}</h2>
 		<ul>
 			<li>
 				<nuxt-link to="/events/d97rg6bf60332qahmh9la0ar30@group.calendar.google.com" active-class="is-active">InLibery Summer School in Georgia</nuxt-link>
@@ -57,8 +57,8 @@
 			<li>A. Casilli's workshop “Digital Methods: How to Study Online Social Interactions”, 9–10 December 2015, St. Petersburg, Russia.</li>
 		</ul>
 	</div>
-	<div class="publication block content">
-		<h2>Publications</h2>
+	<div class="publications block content">
+		<h2>{{$t("publications")}}</h2>
 		<ol>
 			<li class="csl-entry">Koltsova, O., Nikolenko, S., Alexeeva, S., Nagornyy, O., &amp; Koltcov, S. (2017). Detecting Interethnic Relations with the Data from Social Media. In <i>Digital Transformation and Global Society</i> (pp. 16–30). Springer, Cham. <a href="https://doi.org/10.1007/978-3-319-69784-0_2">https://doi.org/10.1007/978-3-319-69784-0_2</a></li>
 			<li class="csl-entry">Nagornyy, O. (2018). Topics of Ethnic Discussions in Russian Social Media. In D. A. Alexandrov, A. V. Boukhanovsky, A. V. Chugunov, Y. Kabanov, &amp; O. Koltsova (Eds.), <i>Digital Transformation and Global Society</i> (Vol. 859, pp. 83–94). Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-02846-6_7">https://doi.org/10.1007/978-3-030-02846-6_7</a></li>
@@ -74,7 +74,7 @@
 		</ol>
 	</div>
 	<div class="conferences block content">
-		<h2>Conferences</h2>
+		<h2>{{$t("conferences")}}</h2>
 		<ul>
 			<li v-for='conference in conferences'>
 				{{conference.title}}. {{conference.place.country}} {{conference.place.flag}}, {{conference.place.city}}. {{formatConfDate(conference.date.start, conference.date.end)}}.
@@ -84,7 +84,7 @@
 	</div>
 
 	<div class="awards block content">
-		<h2>Awards</h2>
+		<h2>{{$t("awards")}}</h2>
 
 		<ul>
 			<li>Oxford Russian Fund scholarship for MA students (2015–2016, 2016–2017).</li>
