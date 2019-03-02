@@ -1,7 +1,11 @@
 <template>
 	<section class="wide-layout layout">
-		<Navbar/>
-		<nuxt />
+		<div class="container is-fluid">
+			<Navbar/>
+			<div class="bd-lead">
+				<nuxt />
+			</div>
+		</div>
 	</section>
 </template>
 

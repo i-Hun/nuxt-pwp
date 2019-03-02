@@ -1,12 +1,21 @@
 <template>
-<div class="main">
-	<div class="intro block">
-		<img class="intro-avatar" src="/img/avatar.jpg">
-		<h1 class='intro-text'>Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.</h1>
-	</div>
-
-	<ul class="contacts block">
-		<li>Want to hire me? <a href="/cv.pdf">Download CV</a></li>
+<div class="main ">
+	<article class="media intro content block">
+		<figure class="media-left is-hidden-touch">
+			<p class="image is-128x128">
+				<img class="is-rounded" src="/img/avatar.jpg">
+			</p>
+		</figure>
+		<div class="media-content">
+			<div class="content">
+				<h1 class="intro-text is-3 title">
+				Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.
+				</h1>
+			</div>
+		</div>
+	</article>
+	<ul class="contacts block content">
+		<li><a href="/cv.pdf">Download CV</a></li>
 		<li>Email: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
 		<li>VK: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
 		<li>Telegram: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
@@ -18,11 +27,13 @@
 	</ul>
 
 	<div class="courses">
-		<h2>My courses <span>At the begining of the 2019 I decided to publish some materials from my lectures and seminars on the website. This section is not complete and messy now, but I will update it frequently.</span></h2>
+		<div class="content">
+			<h2>My courses <span>At the begining of the 2019 I decided to publish some materials from my lectures and seminars on the website. This section is not complete and messy now, but I will update it frequently.</span></h2>
+		</div>
 		<Cards :cards="courses" :prefix="'courses/'" inRow="2"></Cards>
 	</div>
 
-	<div class="education block">
+	<div class="education block content">
 		<h2>Education</h2>
 		<ul>
 			<li>2017–2020 Full-time Advanced Doctoral Programme in Social Sciences.</li>
@@ -30,7 +41,7 @@
 			<li>2010–2015 Diploma in Sociology Omsk State University.</li>
 		</ul>
 	</div>
-	<div class="block">
+	<div class="block content">
 		<h2>Additional Education</h2>
 		<ul>
 			<li>
@@ -46,7 +57,7 @@
 			<li>A. Casilli's workshop “Digital Methods: How to Study Online Social Interactions”, 9–10 December 2015, St. Petersburg, Russia.</li>
 		</ul>
 	</div>
-	<div class="publication block">
+	<div class="publication block content">
 		<h2>Publications</h2>
 		<ol>
 			<li class="csl-entry">Koltsova, O., Nikolenko, S., Alexeeva, S., Nagornyy, O., &amp; Koltcov, S. (2017). Detecting Interethnic Relations with the Data from Social Media. In <i>Digital Transformation and Global Society</i> (pp. 16–30). Springer, Cham. <a href="https://doi.org/10.1007/978-3-319-69784-0_2">https://doi.org/10.1007/978-3-319-69784-0_2</a></li>
@@ -62,7 +73,7 @@
 			<li class="csl-entry">Рыков, Ю. Г., &amp; Нагорный, О. С. (2017). Область Интернет-исследований в социальных науках. <i>Социологическое Обозрение</i>, <i>16</i>(3), 366–394. Retrieved from <a href="https://sociologica.hse.ru/2017-16-3/210184656.html">https://sociologica.hse.ru/2017-16-3/210184656.html</a></li>
 		</ol>
 	</div>
-	<div class="conferences block">
+	<div class="conferences block content">
 		<h2>Conferences</h2>
 		<ul>
 			<li v-for='conference in conferences'>
@@ -72,7 +83,7 @@
 		</ul>
 	</div>
 
-	<div class="awards">
+	<div class="awards block content">
 		<h2>Awards</h2>
 
 		<ul>
@@ -92,33 +103,14 @@
 		margin: 2rem 0 2rem 0;
 	}
 
-	.intro {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
 
 	.intro-text {
 		font-weight: 300;
-		margin: 0;
-		width: 80%;
 	}
 
-	@media only screen and (max-width: 120px) {
-		.intro-text {
-			font-weight: 300;
-			margin: 0;
-			width: 100%;
-		}
-	}
-
-	.intro-avatar {
-		border-radius: 100%;
-		weight: 128px;
-		height: 128px;
-		margin-right: 1rem;
-	}
-
+.intro figure {
+	margin-left: 0;
+}
 
 ul.contacts {
 		columns: 2;
@@ -148,6 +140,9 @@ ul.contacts {
 	}
 }
 
+.cards {
+	margin-top: 30px;
+}
 
 
 </style>

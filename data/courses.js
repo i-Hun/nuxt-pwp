@@ -6,7 +6,77 @@ let dataSciencePosts = [
 		title: "Good Enough Practices for Scientific Computing",
 		titleRu: "Полезные практики для работы с данными",
 		lang: "en",
-		img: "/data-science/img/good-enough-practices.jpg",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "linear-algebra-with-numpy",
+		title: "Линейная алгебра с Numpy",
+		titleRu: "Линейная алгебра с Numpy",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "data-wrangling-pandas",
+		title: "Работа с данными в Pandas 🐼",
+		titleRu: "Работа с данными в Pandas 🐼",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "dates-and-time-in-python-and-pandas",
+		title: "Даты и время в Python и Pandas",
+		titleRu: "Даты и время в Python и Pandas",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "intro-to-matplotlib",
+		title: "Введение в визуализацию данных с Matplotlib",
+		titleRu: "Введение в визуализацию данных с Matplotlib",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "intro-to-seaborn",
+		title: "Введение в визуализацию данных с Seaborn",
+		titleRu: "Введение в визуализацию данных с Seaborn",
+		lang: "ru",
+		img: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -35,7 +105,7 @@ let dataSciencePosts = [
 		title: "Feature Engineering",
 		titleRu: "Работа с признаками",
 		lang: "ru",
-		img: "/data-science/img/feature_engineering.jpg",
+		img: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -49,7 +119,7 @@ let dataSciencePosts = [
 		title: "Unsupervised learning",
 		titleRu: "Методы обучения без учителя",
 		lang: "ru",
-		img: "/data-science/img/clustering_and_topic_modelling.png",
+		img: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -63,7 +133,7 @@ let dataSciencePosts = [
 		title: "Fair Models",
 		titleRu: "Честность при работе с моделями",
 		lang: "ru",
-		img: "/data-science/img/fair_models.png",
+		img: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -88,7 +158,7 @@ let dataSciencePosts = [
 		title: "Ensemble Learning",
 		titleRu: "Ансамблевые методы",
 		lang: "ru",
-		img: "/data-science/img/ensemble_learning2.jpg",
+		img: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -102,7 +172,7 @@ let dataSciencePosts = [
 		title: "Happy Data Year: competitive geoanalysis from Rosbank",
 		titleRu: "Happy Data Year: новогоднее соревнование от Росбанка",
 		lang: "en",
-		img: "/data-science/img/geoanalysis-rosbank.jpg",
+		img: "/img/content/geoanalysis-rosbank.png",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -113,10 +183,66 @@ let dataSciencePosts = [
 	},
 	{
 		id: "time-series",
-		title: "Time series analysis. Does Russian economy really depends on oli price?",
+		title: "Анализ временных рядов: действительно ли российская экономика зависит от цен на газ?",
 		titleRu: "Анализ временных рядов. Действительно ли российская экономика зависит от цен на газ?",
 		lang: "ru",
-		img: "/data-science/img/geoanalysis-rosbank.jpg",
+		img: "/img/content/time-series.svg",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "social-graphs",
+		title: "Анализ социальных графов",
+		titleRu: "Анализ графов",
+		lang: "ru",
+		img: "/img/content/social-graph.svg",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "multilevel-regressions",
+		title: "Многоуровневые регрессионные модели",
+		titleRu: "Многоуровневые регрессионные модели",
+		lang: "ru",
+		img: "/img/content/multilevel-regressions.svg",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "marketing-analysis",
+		title: "Анализ данных для маркетологов: расчёт ROI, CPI, LTV и проверка гипотез для мобильного приложения",
+		titleRu: "Анализ данных для маркетологов: расчёт ROI, CPI, LTV и проверка гипотез для мобильного приложения",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "bayes",
+		title: "Байесовская статистика и вероятностное программирование на Python",
+		titleRu: "Байесовская статистика и вероятностное программирование на Python",
+		lang: "ru",
+		img: "/img/content/bayes-thumbnail.png",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -148,6 +274,59 @@ let intro2pythonPosts = [
 		titleRu: "Начинаем программировать на Python",
 		description: "In this lesson we will start to write simple scripts in Python. To do that we need to install the interpreter, than investigate the ways how to run Python code and, finally, learn basic datatypes and expressions.",
 		lang: "en",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'green',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "web",
+		title: "Web-scrapping",
+		titleRu: "Web-scrapping",
+		description: "Умение собирать данных из любых источников кардинально расширяет возможности проведения интересных и исследований. Здесь рассматриваются некоторые примеры персинга web-страниц и API.",
+		lang: "ru",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'green',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "functional_programming",
+		title: "Функциональное программирование",
+		titleRu: "Функциональное программирование",
+		description: "Функциональное программирование доминирует в сфере научных вычислений, и я лично предпочитаю эту парадигму всем другим. В этом занятии мы рассматрим нюансы написания кода в функциональном стиле в Python.",
+		lang: "ru",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'green',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "oop",
+		title: "Объектно-ориентированное программирование",
+		titleRu: "Объектно-ориентированное программирование",
+		description: "Без ООП сложно представить мир современного программирования. Это мощная парадигма, которая старается моделировать объекты реального мира.",
+		lang: "ru",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'green',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "errors_handling",
+		title: "Обработка ошибок",
+		titleRu: "Обработка ошибок",
+		description: "Любая программа содержит ошибки. Дело лишь в том, как с ними обращаться.",
+		img: "/img/content/bos.png",
+		lang: "ru",
 		author: "Oleg Nagornyy",
 		color: randomColor({
 			count: 3,

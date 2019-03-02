@@ -1,15 +1,21 @@
 <template>
 	<div class="ipynb-cells">
-		<div class="js-toc"></div>
-		<div v-for="cell in cells" class="cell">
+		<aside class="menu js-toc"></aside>
+		<div v-for="cell in cells" class="cell content">
 			<div v-if="cell.cell_type === 'code'" class="code-cell">
-				<pre><code class="language-python" v-html="cell.source.join('')"></code></pre>
+				<pre><code :class="`language-${language}`" v-html="cell.source.join('')"></code></pre>
 			</div>
 
 			<div v-if="cell.hasOwnProperty('outputs') && cell.outputs.length" class="code-outputs">
 				<div v-for="output in cell.outputs" class="output">
 					<div v-if="output.hasOwnProperty('data') && output.data.hasOwnProperty('image/svg+xml')"
 						v-html="output.data['image/svg+xml'].join('')" class="output-svg"></div>
+
+					<div v-if="output.hasOwnProperty('data') && output.data.hasOwnProperty('image/png')"
+						class="output-png">
+						<img :src="`data:image/jpeg;base64,${output.data['image/png']}`"/>
+					</div>
+
 
 					<div v-if="output.hasOwnProperty('data') && output.data.hasOwnProperty('text/html')"
 						v-html="output.data['text/html'].join('')" class="output-text-html"></div>
@@ -50,7 +56,7 @@ var md = require('markdown-it')({
 
 export default {
 	name: 'ipynb-cells',
-	props: ["cells"],
+	props: ["cells", "language"],
 	head: {
 		link: [
 			{ rel: 'stylesheet', href: '/css/prism.css' },
@@ -77,9 +83,12 @@ export default {
 			// Where to render the table of contents.
 			tocSelector: '.js-toc',
 			// Where to grab the headings to build the table of contents.
-			contentSelector: '.content',
+			contentSelector: '.ipynb-cells',
 			// Which headings to grab inside of the contentSelector element.
 			headingSelector: 'h2, h3',
+			listClass: 'menu-list',
+			activeLinkClass: 'is-active',
+			orderedList: false,
 		});
 
 		Prism.highlightAll();
@@ -105,12 +114,22 @@ export default {
 		margin: 2em 0em 0em 0em;
 	}
 
+	.note {
+		blockquote {
+			margin: 0;
+		}
+		
+		p {
+			margin: 3px 0;
+		}
+	}
+
 	@media screen and (min-width: 1280px) {
 		.note {
 			font-size: .8em;
 			float: right;
-			margin: -6rem -15rem 0 0rem;
-			max-width: 40%;
+			margin: -6rem -14rem 0 0rem;
+			max-width: 400px;
 			width: 14rem;
 			line-height: normal;
 			font-style: italic;
@@ -152,7 +171,7 @@ export default {
 		position: fixed;
 		top: 10px;
 		right: 10px;
-		width: 300px;
+		width: 250px;
 		font-size: 0.8rem;
 		color: #bbb;
 		overflow-y: scroll;

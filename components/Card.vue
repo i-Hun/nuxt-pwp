@@ -1,22 +1,18 @@
 <template>
-	<div class='card' :data-color="card.color" :style="`background: ${card.color[0]}; background: linear-gradient(140deg, ${card.color[0]} 0%, ${card.color[1]} 35%, ${card.color[2]} 100%);`">
-		<h1 v-if="$nuxt.$route.path === card.path" class="title">{{card.title}}</h1>
-		<h2 v-else class="title">{{card.title}}</h2>
-		<div class="description" v-if='card.description'>
-			{{card.description}}
-		</div>
-		<div class="top-right">
-			<div v-if="card.elements" class="counter"><strong>{{card.elements.length}}</strong> items</div>
-			<div class="lang" v-if="card.lang === 'ru'">🇷🇺</div>
-			<div class="lang" v-if="card.lang === 'en'">🇬🇧</div>
-		</div>
+	<div class="tile is-parent">	
+		<a :href="card.path" class="card tile is-child notification" :data-color="card.color" :style="`background: ${card.color[0]}; background: linear-gradient(140deg, ${card.color[0]} 0%, ${card.color[1]} 50%, ${card.color[2]} 100%);`">
+			<h2 class="title">{{card.title}}</h2>
+			<div class="description" v-if='card.description'>
+				{{card.description}}
+			</div>
+			<div class="top-right">
+				<div v-if="card.elements" class="counter"><strong>{{card.elements.length}}</strong> items</div>
+				<div class="lang" v-if="card.lang === 'ru'">🇷🇺</div>
+				<div class="lang" v-if="card.lang === 'en'">🇬🇧</div>
+			</div>
+		</a>
 	</div>
 </template>
-
-<style scoped lang='scss'>
-
-
-</style>
 
 <script>
 	export default {
@@ -50,5 +46,9 @@
 .lang {
 	font-size: 1.5rem;
 	margin-top: -8px;
+}
+
+h1, h2 {
+	color: #fff;
 }
 </style>

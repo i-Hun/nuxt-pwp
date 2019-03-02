@@ -1,21 +1,31 @@
 <template>
-	<section class="ipynb-post content">
-		<Card :card="lesson"></Card>
-		<ul class="breadcrumb">
-			<li><a href="/courses/">Courses</a></li>
-			<li><a :href="'/courses/' + course.id">{{course.title}}</a></li>
-			<li class="dropdown is-hoverable">
-				<span class="dropdown-trigger">{{lesson.title}}</span>
-				<div class="dropdown-menu">
-					<div class="dropdown-content">
-						<a class="dropdown-item" v-for="lesson in course.elements" :href="lesson.path">
-							{{lesson.title}}
-						</a>
+	<section class="ipynb-post">
+		<h1 class="title">{{lesson.title}}</h1>
+		<nav class="breadcrumb" aria-label="breadcrumbs">
+			<ul>
+				<li><a href="/courses/">Courses</a></li>
+				<li><a :href="'/courses/' + course.id">{{course.title}}</a></li>
+				<li>
+					<div class="dropdown is-hoverable">
+						<div class="dropdown-trigger">
+							<div aria-haspopup="true" aria-controls="dropdown-menu4">
+								<a>
+									{{lesson.title}}
+								</a>
+							</div>
+						</div>
+						<div class="dropdown-menu" id="dropdown-menu4" role="menu">
+							<div class="dropdown-content">
+								<a class="dropdown-item" v-for="lesson in course.elements" :href="lesson.path">
+									{{lesson.title}}
+								</a>
+							</div>
+						</div>
 					</div>
-				</div>
-			</li>
-		</ul>
-		<IpynbCells :cells="cells"></IpynbCells>
+				</li>
+			</ul>
+		</nav>
+		<IpynbCells :cells="cells" :language="language"></IpynbCells>
 		<References :references="references"></References>
 		<Comments :pagePath="$nuxt.$route.path"></Comments>
 	</section>
@@ -40,7 +50,7 @@ export default {
 		Card
 	},
 	head () {
-		const title = `Lesson ${this.lesson.title} by ${this.lesson.author}`;
+		const title = `${this.lesson.title} by ${this.lesson.author}`;
 		const description = this.lesson.description ? this.lesson.description : `Lesson “${this.lesson.title}” from the сourse “${this.course.title}” by ${this.lesson.author}.`
 		return {
 			title: title,
@@ -56,6 +66,11 @@ export default {
 					content: title
 				},
 				{
+					hid: 'og:image',
+					property: 'og:image',
+					content: this.lesson.img ? this.lesson.img : '/img/cover.jpg'
+				},
+				{
 					hid: 'og:description',
 					property: 'og:description',
 					content: description
@@ -64,10 +79,24 @@ export default {
 			]
 		}
 	},
-	async asyncData ({params}) {		
-		let ipynb = require(`~/assets/notebooks/${params.courseId}/${params.lessonId}.ipynb`);
+	async asyncData (context) {
+		const notebookPath = `~/static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
+		let notebook = undefined;
 
-		let cells = JSON.parse(ipynb)["cells"]
+		if (process.browser) {
+			notebook = axios({
+				method: 'get',
+				timeout: 1000,
+				url: notebookPath
+			}).then(res => {
+				console.log("res.data", res.data)
+				return res.data
+			})
+			console.log("notebook", notebook)
+		} else {
+			notebook = JSON.parse(require('fs').readFileSync(`/Users/hun/pwp-v3/static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`, 'utf-8'))
+		}
+		let cells = notebook["cells"];
 
 		let references = {};
 
@@ -124,10 +153,10 @@ export default {
 		let thisCourse = null;
 
 		for (let course of courses) {
-			if (course.id === params.courseId) {
+			if (course.id === context.params.courseId) {
 				thisCourse = course;
 				for (let lesson of course.elements) {
-					if (lesson.id === params.lessonId) {
+					if (lesson.id === context.params.lessonId) {
 						thisLesson = lesson;
 					}
 				}
@@ -138,7 +167,8 @@ export default {
 			cells: cells,
 			references: refs.filter(el => {return el != null}),
 			lesson: thisLesson,
-			course: thisCourse
+			course: thisCourse,
+			language: notebook['metadata']['kernelspec']['language']
 		}
 
 	},
@@ -174,6 +204,9 @@ export default {
 .meta {
 	font-size: 0.75rem;
 	color: #666;
+}
+.breadcrumb {
+	margin-top: 30px;
 }
 
 </style>

@@ -1,15 +1,15 @@
 <template>
 	
-	<div class="calendar">
-		<h1>{{thisEvent.title}}</h1>
+	<div class="calendar content">
+		<h1 class="title is-1">{{thisEvent.title}}</h1>
 		<div class="schedule">
 			<div class="schedule-blocks">
 				<ul class="days">
 					<li class="day" v-for="day in days">
 						<div class="day-wrapper">
-							<h2 class="day-title">{{day.dayTitle}}</h2>
+							<h2 class="day-title title is-3">{{day.dayTitle}}</h2>
 							<div class="event" v-for="event in day.events">
-								<h3 class="event-title" target="_blank" :href="event.htmlLink">{{event.summary}}</h3>
+								<h3 class="event-title subtitle" target="_blank" :href="event.htmlLink">{{event.summary}}</h3>
 								<div class="event-dates">
 									<time>{{formatEventDate(event.start.dateTime, event.end.dateTime)}}</time>
 								</div>
@@ -43,6 +43,7 @@
 	ul.days {
 		list-style-type: none;
 		padding: 0;
+		margin: 0;
 	}
 
 	li.day {

@@ -1,8 +1,11 @@
 <template>
 	<section class="default-layout layout">
-		<div class="container">
+		<div class="container is-fluid">
+			
 			<Navbar/>
-			<nuxt />
+			<div class="bd-lead">
+				<nuxt />
+			</div>
 		</div>
 	</section>
 </template>

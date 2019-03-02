@@ -1,7 +1,7 @@
 <template>
 	<div class="lessons">
 		<h1>Course “{{course.title}}”</h1>
-		<Cards :cards="lessons"></Cards>
+		<Cards :cards="lessons" inRow="3"></Cards>
 	</div>
 </template>
 

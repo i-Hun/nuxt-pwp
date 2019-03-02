@@ -1,17 +1,16 @@
 <template>
-	<div class='cards'>
-		<a :href="card.path" v-for="card in cards" :style="`width:${100/inRow}%;`">
-			<Card :card="card"></Card>
-		</a>
+	<div class="cards">
+		<div class="tile is-ancestor">
+			<div class='tile is-vertical is-12'>
+				<div :class="`tile is-${12 * cardsTuple.length / inRow}`" v-for="cardsTuple in formatedCards">
+					<Card :card="card" :key="card.id" v-for="card in cardsTuple"></Card>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
 <style scoped lang='scss'>
-.cards {
-	& > a {
-		width: 33%;
-	}
-}
 
 </style>
 
@@ -29,6 +28,18 @@
 			inRow: {
 				default: "3",
 				type: String
+			}
+		},
+		computed: {
+			formatedCards: function () {
+				const inRow = parseInt(this.inRow);
+				return this.cards.reduce(function(result, value, index, array) {
+					if (index % inRow === 0) {
+						const slice = array.slice(index, index + inRow);
+						result.push(slice);
+					}
+					return result;
+				}, []);
 			}
 		},
 		mounted() {

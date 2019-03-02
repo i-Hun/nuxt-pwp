@@ -1,7 +1,9 @@
-// @import 'utilities/_all.sass';
-// @import 'columns.sass';
-// @import 'image.sass';
-@import 'dropdown.sass';
+@import "bulma/utilities/_all";
+@import "bulma/base/_all";
+@import "bulma/elements/_all";
+@import "bulma/components/_all";
+@import "bulma/grid/_all";
+@import "bulma/layout/_all";
 
 @import 'embed.scss';
 @import 'copy-tex.scss';
@@ -13,7 +15,7 @@
 
 
 html {
-	font-size: 18px;
+	font-size: 17px;
 	min-width: 300px;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -44,30 +46,6 @@ audio, img, video {
 li {
 	margin-bottom: .5rem
 }
-
-@media screen and (min-width: 970px) {
-	.layout {
-		margin-left: .75rem;
-	}
-}
-
-@media screen and (min-width: 1280px) {
-	.layout {
-		margin-left: 1.5rem;
-	}
-}
-
-.container {
-	position: relative;
-}
-
-@media screen and (min-width: 970px) {
-	.container {
-		width: 820px;
-		max-width: 60%;
-	}
-}
-
 
 
 blockquote {
@@ -102,22 +80,25 @@ abbr[title] {
 	text-decoration: underline dotted;
 }
 
-a:link:hover, a:visited:hover {
-	color: #f41224;
-	border-color: rgba(244,18,36,.3);
+.content {
+	a:link:hover, a:visited:hover {
+		color: #f41224;
+		border-color: rgba(244,18,36,.3);
+	}
+
+	a:visited {
+		color: #b40eb4;
+		border-color: rgba(180,14,180,.3);
+	}
+
+	a:link {
+		color: #004aff;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(0,137,255,.3);
+		transition: color .3s ease,border-color .3s ease;
+	}
 }
 
-a:visited {
-	color: #b40eb4;
-	border-color: rgba(180,14,180,.3);
-}
-
-a:link {
-	color: #004aff;
-	text-decoration: none;
-	border-bottom: 1px solid rgba(0,137,255,.3);
-	transition: color .3s ease,border-color .3s ease;
-}
 
 // https://ru.nuxtjs.org/guide/routes-transitions
 .page-enter-active, .page-leave-active {
@@ -128,30 +109,15 @@ a:link {
 }
 
 .cards {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	padding: 0;
-	
-	& > a {
-		min-width: 200px;
-		max-width: 500px;
-		display: flex;
-		border: none;
-	}
+	margin: 1.5rem 0;
 
 	a:link:hover, a:visited:hover {
 		color: #fff;
-
-		.card {
-			box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.7);
-			filter: grayscale(0%);
-			filter: blur(0px);
-			filter: brightness(120%);
-			transform: scale(1.02);
-			z-index: 2;
-		}
+		box-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.5);
+		filter: grayscale(0%);
+		filter: blur(0px);
+		filter: brightness(120%);
+		transform: scale(1.02);
 
 	}
 
@@ -164,48 +130,43 @@ a:link {
 	}
 }
 
+.default-layout .container {
+	max-width: 800px;
+}
+
 .card {
-	width: 100%;
-	padding: 20px 20px;
 	box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.4);
-	list-style: none;
-	margin: 20px 20px 20px 0;
-	border-radius: 10px;
+	border-radius: 4px;
 	transition: .3s ease, transform .2s ease-in-out;
 	background-position: cover;
 	text-shadow: 0 0 1px rgba(0,0,0,0.4);
 	background: #333;
 	color: #fff;
+}
 
 
-	.title {
-		border: none;
+a.dropdown-item, button.dropdown-item {
+    justify-content: left;
+}
+
+.breadcrumb > ul > li:last-child {
+	
+	.dropdown-trigger a {
+		color: #333;
+		border-bottom: 1px dashed rgba(0,137,255,.3);
 	}
-
 }
 
-.toc-list-item {
-	.toc-list {
-		padding-inline-start: 1rem;
-		margin-top: 10px;
-
+@media screen and (min-width: 1088px) {
+	.bd-lead {
+		margin-left: -3rem;
+		padding: 0 3rem;
 	}
 }
 
-ul.breadcrumb {
-	padding: 10px 0px;
-	list-style: none;
+@media screen and (max-width: 1087px) {
+	.bd-lead {
+		padding: 0 1.5rem;
+	}
 }
 
-/* Display list items side by side */
-ul.breadcrumb li {
-	display: inline;
-	font-size: 0.8rem;
-
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-ul.breadcrumb li+li:before {
-	padding: 2px;
-	content: "/\00a0";
-}

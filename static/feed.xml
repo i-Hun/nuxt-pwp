@@ -4,7 +4,7 @@
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
         <description>Feed!</description>
-        <lastBuildDate>Fri, 25 Jan 2019 15:23:38 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 02 Mar 2019 18:50:47 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>
@@ -21,9 +21,58 @@
             <description><![CDATA[In this lesson we will start to write simple scripts in Python. To do that we need to install the interpreter, than investigate the ways how to run Python code and, finally, learn basic datatypes and expressions.]]></description>
         </item>
         <item>
+            <title><![CDATA[Web-scrapping]]></title>
+            <link>https://nagornyy.me/courses/intro2python/web</link>
+            <guid>https://nagornyy.me/courses/intro2python/web</guid>
+            <description><![CDATA[Умение собирать данных из любых источников кардинально расширяет возможности проведения интересных и исследований. Здесь рассматриваются некоторые примеры персинга web-страниц и API.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Функциональное программирование]]></title>
+            <link>https://nagornyy.me/courses/intro2python/functional_programming</link>
+            <guid>https://nagornyy.me/courses/intro2python/functional_programming</guid>
+            <description><![CDATA[Функциональное программирование доминирует в сфере научных вычислений, и я лично предпочитаю эту парадигму всем другим. В этом занятии мы рассматрим нюансы написания кода в функциональном стиле в Python.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Объектно-ориентированное программирование]]></title>
+            <link>https://nagornyy.me/courses/intro2python/oop</link>
+            <guid>https://nagornyy.me/courses/intro2python/oop</guid>
+            <description><![CDATA[Без ООП сложно представить мир современного программирования. Это мощная парадигма, которая старается моделировать объекты реального мира.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Обработка ошибок]]></title>
+            <link>https://nagornyy.me/courses/intro2python/errors_handling</link>
+            <guid>https://nagornyy.me/courses/intro2python/errors_handling</guid>
+            <description><![CDATA[Любая программа содержит ошибки. Дело лишь в том, как с ними обращаться.]]></description>
+        </item>
+        <item>
             <title><![CDATA[Good Enough Practices for Scientific Computing]]></title>
             <link>https://nagornyy.me/courses/data-science/good-enough-practices</link>
             <guid>https://nagornyy.me/courses/data-science/good-enough-practices</guid>
+        </item>
+        <item>
+            <title><![CDATA[Линейная алгебра с Numpy]]></title>
+            <link>https://nagornyy.me/courses/data-science/linear-algebra-with-numpy</link>
+            <guid>https://nagornyy.me/courses/data-science/linear-algebra-with-numpy</guid>
+        </item>
+        <item>
+            <title><![CDATA[Работа с данными в Pandas 🐼]]></title>
+            <link>https://nagornyy.me/courses/data-science/data-wrangling-pandas</link>
+            <guid>https://nagornyy.me/courses/data-science/data-wrangling-pandas</guid>
+        </item>
+        <item>
+            <title><![CDATA[Даты и время в Python и Pandas]]></title>
+            <link>https://nagornyy.me/courses/data-science/dates-and-time-in-python-and-pandas</link>
+            <guid>https://nagornyy.me/courses/data-science/dates-and-time-in-python-and-pandas</guid>
+        </item>
+        <item>
+            <title><![CDATA[Введение в визуализацию данных с Matplotlib]]></title>
+            <link>https://nagornyy.me/courses/data-science/intro-to-matplotlib</link>
+            <guid>https://nagornyy.me/courses/data-science/intro-to-matplotlib</guid>
+        </item>
+        <item>
+            <title><![CDATA[Введение в визуализацию данных с Seaborn]]></title>
+            <link>https://nagornyy.me/courses/data-science/intro-to-seaborn</link>
+            <guid>https://nagornyy.me/courses/data-science/intro-to-seaborn</guid>
         </item>
         <item>
             <title><![CDATA[Feature Engineering]]></title>
@@ -51,9 +100,29 @@
             <guid>https://nagornyy.me/courses/data-science/geoanalysis-rosbank</guid>
         </item>
         <item>
-            <title><![CDATA[Time series analysis. Does Russian economy really depends on oli price?]]></title>
+            <title><![CDATA[Анализ временных рядов: действительно ли российская экономика зависит от цен на газ?]]></title>
             <link>https://nagornyy.me/courses/data-science/time-series</link>
             <guid>https://nagornyy.me/courses/data-science/time-series</guid>
+        </item>
+        <item>
+            <title><![CDATA[Анализ социальных графов]]></title>
+            <link>https://nagornyy.me/courses/data-science/social-graphs</link>
+            <guid>https://nagornyy.me/courses/data-science/social-graphs</guid>
+        </item>
+        <item>
+            <title><![CDATA[Многоуровневые регрессионные модели]]></title>
+            <link>https://nagornyy.me/courses/data-science/multilevel-regressions</link>
+            <guid>https://nagornyy.me/courses/data-science/multilevel-regressions</guid>
+        </item>
+        <item>
+            <title><![CDATA[Анализ данных для маркетологов: расчёт ROI, CPI, LTV и проверка гипотез для мобильного приложения]]></title>
+            <link>https://nagornyy.me/courses/data-science/marketing-analysis</link>
+            <guid>https://nagornyy.me/courses/data-science/marketing-analysis</guid>
+        </item>
+        <item>
+            <title><![CDATA[Байесовская статистика и вероятностное программирование на Python]]></title>
+            <link>https://nagornyy.me/courses/data-science/bayes</link>
+            <guid>https://nagornyy.me/courses/data-science/bayes</guid>
         </item>
         <item>
             <title><![CDATA[Use cases of Artificial Neural Networks]]></title>
