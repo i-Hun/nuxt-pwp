@@ -31,13 +31,13 @@ const eventsUrls = events.map((event) => {
 let allRoutes = coursesUrls.flat().concat(eventsUrls);
 
 if (!process.browser) {
-	var SQL = require('sql.js');
-	var fs = require('fs');
-	var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+	const SQL = require('sql.js');
+	const fs = require('fs');
+	const filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
 
 	// Load the db
-	var db = new SQL.Database(filebuffer);
-	var contents = db.exec(
+	const db = new SQL.Database(filebuffer);
+	const places_sql = db.exec(
 		`SELECT
 			places.id as place_id,
 			places.name_ru as place_title,
@@ -49,10 +49,22 @@ if (!process.browser) {
 		ORDER BY places.name_ru;`
 	);
 
-	const places = sql_to_object(contents);
+	const places = sql_to_object(places_sql);
 	const placesUrl = places.map(place => '/travel/places/' + place.place_id);
 
 	allRoutes = allRoutes.concat(placesUrl)
+
+
+	const posts_sql = db.exec(
+		`SELECT
+			*
+		FROM posts`
+	);
+
+	const posts = sql_to_object(posts_sql);
+	const postsUrl = posts.map(post => '/blog/' + post.id);
+	allRoutes = allRoutes.concat(postsUrl)
+
 }
 
 module.exports = {
