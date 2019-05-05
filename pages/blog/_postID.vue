@@ -1,0 +1,61 @@
+<template>
+	<div class="post content">
+		<h1 v-if="post.title">{{post.title}}</h1>
+		<time v-if="post.created_at">{{formatPostDate(post.created_at)}}</time>
+		<div v-if="post.place_name">Эта запись относится к поездке в <a :href="'/travel/places/' + post.place_id">{{post.place_name}}</a></div>
+		<div v-html="post.body"></div>
+	</div>
+</template>
+
+<style scoped lang='scss'>
+
+
+</style>
+
+<script>
+	import sql_to_object from "@/plugins/sql_to_object.js";
+	import moment from 'moment';
+ 
+
+	export default {
+		layout: 'wide',
+		async asyncData (context) {
+
+			let post = undefined;
+
+			if (!process.browser) {
+				var SQL = require('sql.js');
+				var fs = require('fs');
+				var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+
+				// Load the db
+				var db = new SQL.Database(filebuffer);
+				var contents = db.exec(
+`SELECT
+		posts.*,
+		places.name_ru AS place_name,
+		places.id AS place_id
+	FROM posts
+	LEFT JOIN posts_visits
+		ON posts.id = posts_visits.post_id
+	LEFT JOIN visits
+		ON visits.id = posts_visits.visit_id
+	LEFT JOIN places
+		ON visits.place = places.id
+WHERE '${context.params.postID}' = posts.id;`
+				);
+
+				post = sql_to_object(contents)[0];
+			}
+			return {
+				post
+			}
+		},
+		methods: {
+			formatPostDate(str) {
+				moment.locale(this.$i18n.locale);
+				return moment(str).format("LL")
+			}
+		}
+	}
+</script>

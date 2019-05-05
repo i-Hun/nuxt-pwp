@@ -49,6 +49,12 @@ export default {
 		References,
 		Card
 	},
+	// nuxtI18n: {
+	// 	paths: {
+	// 		ru: this.lesson.path,
+	// 		en: this.lesson.path
+	// 	}
+	// },
 	head () {
 		const title = `${this.lesson.title} by ${this.lesson.author}`;
 		const description = this.lesson.description ? this.lesson.description : `Lesson “${this.lesson.title}” from the сourse “${this.course.title}” by ${this.lesson.author}.`
@@ -83,19 +89,10 @@ export default {
 		const notebookPath = `~/static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
 		let notebook = undefined;
 
-		if (process.browser) {
-			notebook = axios({
-				method: 'get',
-				timeout: 1000,
-				url: notebookPath
-			}).then(res => {
-				console.log("res.data", res.data)
-				return res.data
-			})
-			console.log("notebook", notebook)
-		} else {
+		if (!process.browser) {
 			notebook = JSON.parse(require('fs').readFileSync(`/Users/hun/pwp-v3/static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`, 'utf-8'))
 		}
+		
 		let cells = notebook["cells"];
 
 		let references = {};
@@ -172,31 +169,6 @@ export default {
 		}
 
 	},
-	mounted() {
-		if (Trianglify) {
-			function addTriangleTo(target) {
-				var dimensions = target.getClientRects()[0];
-				var color = target.dataset.color;
-				var pattern = Trianglify({
-					width: dimensions.width + 2, 
-					height: dimensions.height + 2,
-					x_colors: color ? color.split(',') : ['#333', '#333', '#333'],
-				});
-
-				var m = new XMLSerializer().serializeToString(pattern.svg());
-
-				// Perform the base64 encoding of the String
-				var k = window.btoa(m);
-				target.style['background'] = 'url("data:image/svg+xml;base64,' + k + '")';
-			}
-
-			for (let card of document.getElementsByClassName("card")) {
-				addTriangleTo(card)
-			}
-		} else {
-			console.error("Trianglify did not load")
-		}
-	}
 }
 </script>
 

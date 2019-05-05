@@ -37,14 +37,13 @@
 
 				</div>
 			</div>
-			<div class='text-cell' v-if="(cell.cell_type === 'markdown')" v-html="markdowned(cell.source)">
+			<div class='text-cell' v-if="(cell.cell_type === 'markdown')" v-html="markdowned(cell.source)" :class="cell.metadata.task ? 'task' : ''">
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import axios from 'axios';
 const cheerio = require('cheerio');
 
 var md = require('markdown-it')({
@@ -169,13 +168,12 @@ export default {
 
 	.js-toc {
 		position: fixed;
-		top: 10px;
+		top: 3.25rem;
 		right: 10px;
 		width: 250px;
 		font-size: 0.8rem;
 		color: #bbb;
 		overflow-y: scroll;
-		top: 0;
 		bottom: 0;
 		a {
 			opacity: 0.2;

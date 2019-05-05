@@ -1,6 +1,6 @@
 <template name="references">
-	<div v-if="references && references.length" class="references">
-		<h2 id="references">References</h2>
+	<div v-if="references && references.length" class="references content">
+		<h2 id="references" >References</h2>
 		<ol>
 			<li class="reference" v-html="reference.data" v-for='reference in references' :id="'ref-'+reference.order"></li>
 		</ol>
@@ -8,9 +8,6 @@
 </template>
 
 <script>
-	import axios from 'axios';
-	import moment from 'moment';
-	import * as _ from 'lodash';
 	export default {
 		name: "references",
 		props: ["references"],
@@ -18,6 +15,8 @@
 </script>
 
 <style scoped>
-
+.references {
+	margin-top: 3rem;
+}
 
 </style>

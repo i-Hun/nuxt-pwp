@@ -85,6 +85,45 @@ let dataSciencePosts = [
 			luminosity: 'dark'
 		})
 	},
+	{
+		id: "regression",
+		title: "Простые регрессионные модели в Python",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "classification",
+		title: "Простые модели классификации в Python",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "exam-wine",
+		title: "Промежуточный экзамен",
+		lang: "ru",
+		img: "",
+		description: "",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'orange',
+			luminosity: 'dark'
+		})
+	},
 	// {
 	// 	id: "DBs",
 	// 	title: "Databases",

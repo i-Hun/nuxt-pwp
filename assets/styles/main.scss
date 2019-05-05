@@ -166,3 +166,60 @@ a.dropdown-item, button.dropdown-item {
 	}
 }
 
+
+.main {
+	.content figure:not(:last-child) {
+		margin-bottom: 0;
+	}
+	.intro {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 4.5rem;
+	}
+
+	.block {
+		margin: 2rem 0 2rem 0;
+	}
+
+
+	.intro-text {
+		font-weight: 300;
+	}
+
+	.intro figure {
+		margin-left: 0;
+	}
+
+	ul.contacts {
+			columns: 2;
+			margin-left: 0;
+			list-style: none;
+			padding: 0;
+	}
+
+	@media only screen and (min-width: 1215px) {
+		ul.contacts {
+			columns: 3;
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		ul.contacts {
+			columns: 1;
+		}
+	}
+
+	.courses {
+		&>h2 {
+			& > span {
+				font-weight: 300;
+				font-size: 0.8rem;
+			}
+			line-height: 1.1rem;
+		}
+	}
+
+	.cards {
+		margin-top: 30px;
+	}
+}

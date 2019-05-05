@@ -1,0 +1,59 @@
+{
+	"courses": "Courses",
+	"events": "Events",
+	"profile": {
+		"fullName": "Oleg Nagornyy",
+		"firstName": "Oleg",
+		"lastName": "Nagornyy"
+	},
+	"greeting": {
+		"2010-2015": "Hi! I am Oleg. I am studying sociology in OmSU, Omsk, Russia",
+		"2015-2019": "Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE",
+		"2019-now": "Data analyst from Moscow, Russia. I'm working at Qiwi as CRM Analyst"
+	},
+	"education": {
+		"title": "Education",
+		"omsu": "Degree in Sociology, Omsk State University (2010-2015)",
+		"hse": "Master's in Sociology, Higher School of Economics (2015-2017)",
+		"phd": "Full-time Advanced Doctoral Programme in Social Sciences, Higher School of Economics (2017–2020)"
+	},
+	"awards": {
+		"title": "Awards",
+		"school_olympiad": "Winner of the All-Russian Olympiad of schoolchildren on Social theory at regional stage, 2010.",
+		"omsu_scholarship": "Increased State Academic Scholarship, OmSU, 2013–2014.",
+		"hse_olympiad": "Winner of the International Olympiad Competitions for University Students and Graduates by HSE, programme “Complex Social Analysis”, 2015.",
+		"thesis_competition": "Best final thesis competition by Russian Public Opinion Research Center (1st prize in nomination \"Best MA thesis\").",
+		"oxford_scholarship": "Oxford Russian Fund scholarship for MA (2015–2016, 2016–2017) and PhD students (2017–2018)."
+	},
+	"additional_education": {
+		"title":"Additional education",
+		"summer_school_2017":"Educational project “The Summer School”, workshop “Data Analysis inSocial Sciences”, July 25–August 7, 2017, Dubna, Russia.",
+		"summer_school_2018":"Educational project “The Summer School”, “Deep Learning” workshop, July 24–August 6, 2018, Dubna, Russia.",
+		"wwsss17":"Web Science Summer School WWSSS'17, 1–8 July, 2017, Saint Petersburg, Russia. “Best Teamwork” award.",
+		"orf_school_2016":"Oxford Russian Fund’s Winter School “Archaeology of Text 5: The Evolution of Information Systems and Codes”, 31 January–6 February 2016, Sochi, Russia.",
+		"digital_traces":"Summer Laboratory “Digital Traces I: Meta-Morphologies of St. Petersburg”, 17–30 August 2016, Saint Petersburg, Russia.",
+		"casilli":"A. Casilli's workshop “Digital Methods: How to Study Online Social Interactions”, 9–10 December 2015, St. Petersburg, Russia.",
+		"inliberty":"InLiberty Summer School, August 20-26, 2018, Bazaleti, Georgia.",
+		"orf_school_2018":"Oxford Russian Fund’s Spring School “Archaeology of Text 6: Unexplored Tropes”, 18–24 March 2018, Sochi, Russia."
+	},
+	"blog": {
+		"title": "Blog"
+	},
+	"travel":"Travel",
+	"trips": "Trips",
+	"downloadCV": "Download CV",
+	"telegram": "Telegram",
+	"vk": "VK",
+	"email": "Email",
+	"skype": "Skype",
+	"hse": "HSE",
+	"hseURL": "hse.ru/en/staff/oleg",
+	"myCourses": "My Courses",
+	"course": "Course",
+	"coursesDisclaimer": "At the begining of the 2019 I decided to publish some materials from my lectures and seminars on the website. This section is not complete and messy now, but someday I will put it in order.",
+	"conferences": "Conferences",
+	"publications": "Publications",
+	"googleScholar": "Google Scholar",
+	"now": "now",
+	"milestones": "Milestones"
+}

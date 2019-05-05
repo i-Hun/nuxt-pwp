@@ -1,6 +1,4 @@
-# pwp-v4
-
-> Personal website by Oleg Nagornyy
+# Personal website by Oleg Nagornyy, version 3.1
 
 ## Build Setup
 
@@ -17,6 +15,7 @@ $ npm start
 
 # generate static project
 $ npm run generate
-```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+# generate static project and deploy
+$ npm run generate && netlify deploy --prod --dir dist
+```

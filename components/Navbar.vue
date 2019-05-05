@@ -1,8 +1,8 @@
 <template>
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
-		<nuxt-link class="navbar-item logo" :to="localePath('index')" active-class="is-active" v-if="$nuxt.$route.path !== '/'">{{$t("name")}}</nuxt-link>
-		<span class="navbar-item logo" v-else>{{$t("name")}}</span>
+		<nuxt-link class="navbar-item logo" :to="localePath('index')" active-class="is-active" v-if="$nuxt.$route.path !== '/'">{{$t("profile.fullName")}}</nuxt-link>
+		<span class="navbar-item logo" v-else>{{$t("profile.fullName")}}</span>
 
 		<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 			<span aria-hidden="true"></span>
@@ -15,6 +15,8 @@
 		<div class="navbar-start">
 			<nuxt-link class="navbar-item" :to="localePath('courses')" active-class="is-active">{{$t("courses")}}</nuxt-link>
 			<nuxt-link class="navbar-item" :to="localePath('events')" active-class="is-active">{{$t("events")}}</nuxt-link>
+			<a class="navbar-item" :href="localePath('travel')" active-class="is-active">{{$t("travel")}}</a>
+			<a class="navbar-item" :href="localePath('blog')" active-class="is-active">{{$t("blog.title")}}</a>
 		</div>
 		<div class="navbar-end">
 			<nuxt-link class="navbar-item language"

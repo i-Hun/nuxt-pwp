@@ -2,6 +2,9 @@ const pkg = require('./package')
 import courses from './data/courses.js';
 import events from './data/events.js';
 import axios from 'axios';
+import sql_to_object from "./plugins/sql_to_object.js";
+
+
 
 const coursesUrls = courses.map((course) => {
 	return course.elements.map(lesson => {
@@ -24,8 +27,33 @@ const eventsUrls = events.map((event) => {
 //	console.error(err);
 // });
 
-const allRoutes = coursesUrls.flat().concat(eventsUrls);
 
+let allRoutes = coursesUrls.flat().concat(eventsUrls);
+
+if (!process.browser) {
+	var SQL = require('sql.js');
+	var fs = require('fs');
+	var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+
+	// Load the db
+	var db = new SQL.Database(filebuffer);
+	var contents = db.exec(
+		`SELECT
+			places.id as place_id,
+			places.name_ru as place_title,
+			COUNT(*) as visits_num
+		FROM places
+		LEFT JOIN visits
+		ON visits.place = places.id
+		GROUP BY places.id
+		ORDER BY places.name_ru;`
+	);
+
+	const places = sql_to_object(contents);
+	const placesUrl = places.map(place => '/travel/places/' + place.place_id);
+
+	allRoutes = allRoutes.concat(placesUrl)
+}
 
 module.exports = {
 	mode: 'universal',
@@ -88,6 +116,7 @@ module.exports = {
 		'@nuxtjs/markdownit',
 		'@nuxtjs/sitemap',
 		'@nuxtjs/feed',
+		'nuxt-leaflet',
 		['@nuxtjs/yandex-metrika',
 			{
 				id: '51885752',
@@ -97,6 +126,7 @@ module.exports = {
 			}
 		],
 		['nuxt-i18n', {
+			baseUrl: 'https://nagornyy.me',
 			locales: [
 				{
 					code: 'en',
@@ -109,70 +139,33 @@ module.exports = {
 					iso: 'ru-RU'
 				},
 			],
+
 			defaultLocale: 'ru',
 			strategy: 'prefix_except_default',
 			baseUrl: 'https://nagornyy.me',
+			//parsePages: false,	 // Disable acorn parsing
+			// pages: {
+			// 	"courses/_courseId/_lessonId": {
+			// 		ru: '/courses/:courseId/:lessonId?',
+			// 		en: '/fdfd/courses/:courseId/:lessonId?', // -> accessible at /fr/a-propos
+			// 	}
+			// },
 			vueI18n: {
 				fallbackLocale: 'ru',
 				messages: {
-					en: {
-						courses: 'Courses',
-						events: "Events",
-						name: "Oleg Nagornyy",
-						greeting: "Hi! I am Oleg — Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE.",
-						downloadCV: "Download CV",
-						telegram: "Telegram",
-						vk: "VK",
-						email: "Email",
-						skype: "Skype",
-						hse: "HSE",
-						hseURL: "hse.ru/en/staff/oleg",
-						myCourses: "My Courses",
-						course: "Course",
-						coursesDisclaimer: "At the begining of the 2019 I decided to publish some materials from my lectures and seminars on the website. This section is not complete and messy now, but someday I will put it in order.",
-						education: "Education",
-						additionalEducation: "Additional education",
-						conferences: "Conferences",
-						awards: "Awards",
-						publications: "Publications",
-						googleScholar: "Google Scholar"
-					},
-					ru: {
-						courses: 'Курсы',
-						events: "События",
-						name: "Нагорный Олег",
-						greeting: "Привет! Меня зовут Нагорный Олег. Я живу в Питере, работаю в ВШЭ и занимаюсь анализом данных и преподаванием.",
-						downloadCV: "Скачать резюме",
-						telegram: "Телеграм",
-						vk: "ВК",
-						email: "Почта",
-						skype: "Скайп",
-						hse: "ВШЭ",
-						hseURL: "hse.ru/staff/oleg",
-						myCourses: "Мои курсы",
-						course: "Курс",
-						coursesDisclaimer: "В начале 2019 я решил публиковать на сайте материалы своих курсов. Сейчас они находятся в полном беспорядке, но я планирую исправить это.",
-						education: "Образование",
-						additionalEducation: "Дополнительное образование",
-						conferences: "Конференции",
-						awards: "Награды",
-						publications: "Публикации",
-						googleScholar: "Академия Google"
-					},
+					en: require('./data/locales/en.json'),
+					ru: require('./data/locales/ru.json'),
 				}
 			}
 		}]
 	],
 	sitemap: {
-	 path: '/sitemap.xml',
-	 hostname: 'https://nagornyy.me',
-	 cacheTime: 1000 * 60 * 15,
-	 gzip: true,
-	 generate: true, // Enable me when using nuxt generate
-	 routes: allRoutes
-	},
-	axios: {
-
+		path: '/sitemap.xml',
+		hostname: 'https://nagornyy.me',
+		cacheTime: 1000 * 60 * 15,
+		gzip: true,
+		generate: true, // Enable me when using nuxt generate
+		routes: allRoutes
 	},
 	generate: {
 		routes: function () {
@@ -230,13 +223,6 @@ module.exports = {
 		//		 })
 		//	 }
 		// },
-	 extend(config, ctx) {
-		 config.module.rules.push({
-			 test: /\.ipynb$/,
-			 exclude: /node_modules/,
-			 loader: 'raw-loader'
-		 })
-	 }
 	},
 }
 
