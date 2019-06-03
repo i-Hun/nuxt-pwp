@@ -14,7 +14,6 @@
 	import events from '@/data/events.js';
 	import Cards from "@/components/Cards.vue";
 
-
 	export default {
 		components: {
 			Cards

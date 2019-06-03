@@ -1,23 +1,19 @@
 <template>
 	<div class="blog">
-		<ul>
-			<li v-for="post in posts">
-				<a :href="'/blog/' + post.id">{{post.title}}</a>
-			</li>
-		</ul>
+		<h1>{{$t("blog.title")}}</h1>
+		<Cards :cards="posts" size="2"></Cards>
 	</div>
 </template>
 
-<style scoped lang='scss'>
-
-
-</style>
-
 <script>
 	import sql_to_object from "@/plugins/sql_to_object.js";
+	import Cards from "@/components/Cards.vue";
 
 	export default {
 		layout: 'wide',
+		components: {
+			Cards
+		},
 		async asyncData (context) {
 			let posts = undefined;
 
@@ -34,6 +30,10 @@
 				);
 
 				posts = sql_to_object(contents);
+
+				posts.map(post => {
+					post.path = '/blog/' + post.id
+				})
 			}
 			return {
 				posts

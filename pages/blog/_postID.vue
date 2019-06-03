@@ -1,14 +1,16 @@
 <template>
 	<div class="post content">
 		<h1 v-if="post.title">{{post.title}}</h1>
-		<time v-if="post.created_at">{{formatPostDate(post.created_at)}}</time>
-		<div v-if="post.place_name">Эта запись относится к поездке в <a :href="'/travel/places/' + post.place_id">{{post.place_name}}</a></div>
-		<div v-html="post.body"></div>
+		<time class='post-created' v-if="post.created_at">{{formatPostDate(post.created_at)}}</time>
+		<div class='post-visit' v-if="post.place_name">Эта запись относится к поездке в <a :href="'/travel/places/' + post.place_id">{{post.place_name}}</a></div>
+		<div class='post-body' v-html="post.body"></div>
 	</div>
 </template>
 
 <style scoped lang='scss'>
-
+.post-body {
+	margin: 2rem 0;
+}
 
 </style>
 

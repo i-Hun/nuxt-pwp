@@ -3,7 +3,7 @@
 		<div class="tile is-ancestor">
 			<div class='tile is-vertical is-12'>
 				<div :class="`tile is-${12 * cardsTuple.length / inRow}`" v-for="cardsTuple in formatedCards">
-					<Card :card="card" :key="card.id" v-for="card in cardsTuple"></Card>
+					<Card :card="card" :key="card.id" v-for="card in cardsTuple" :size="size"></Card>
 				</div>
 			</div>
 		</div>
@@ -28,6 +28,10 @@
 			inRow: {
 				default: "3",
 				type: String
+			},
+			size: {
+				default: "1",
+				type: String
 			}
 		},
 		computed: {
@@ -43,29 +47,29 @@
 			}
 		},
 		mounted() {
-			if (Trianglify) {
-				function addTriangleTo(target) {
-					var dimensions = target.getClientRects()[0];
-					var color = target.dataset.color;
-					var pattern = Trianglify({
-						width: dimensions.width + 2, 
-						height: dimensions.height + 2,
-						x_colors: color ? color.split(',') : ['#333', '#333', '#333'],
-					});
+			// if (Trianglify) {
+			// 	function addTriangleTo(target) {
+			// 		var dimensions = target.getClientRects()[0];
+			// 		var color = target.dataset.color;
+			// 		var pattern = Trianglify({
+			// 			width: dimensions.width + 2, 
+			// 			height: dimensions.height + 2,
+			// 			x_colors: color ? color.split(',') : ['#333', '#333', '#333'],
+			// 		});
 
-					var m = new XMLSerializer().serializeToString(pattern.svg());
+			// 		var m = new XMLSerializer().serializeToString(pattern.svg());
 
-					// Perform the base64 encoding of the String
-					var k = window.btoa(m);
-					target.style['background'] = 'url("data:image/svg+xml;base64,' + k + '")';
-				}
+			// 		// Perform the base64 encoding of the String
+			// 		var k = window.btoa(m);
+			// 		target.style['background'] = 'url("data:image/svg+xml;base64,' + k + '")';
+			// 	}
 
-				for (let card of document.getElementsByClassName("card")) {
-					addTriangleTo(card)
-				}
-			} else {
-				console.error("Trianglify did not load")
-			}
+			// 	for (let card of document.getElementsByClassName("card")) {
+			// 		addTriangleTo(card)
+			// 	}
+			// } else {
+			// 	console.error("Trianglify did not load")
+			// }
 		}
 	}
 </script>

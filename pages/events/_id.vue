@@ -1,5 +1,4 @@
 <template>
-	
 	<div class="calendar content">
 		<h1 class="title is-1">{{thisEvent.title}}</h1>
 		<div class="schedule">
