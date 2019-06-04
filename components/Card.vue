@@ -47,7 +47,7 @@
 
 			height: function () {
 				if (this.size === "2") {
-					return "height: 300px;"
+					return "min-height: 300px;"
 				}
 			}
 		},
