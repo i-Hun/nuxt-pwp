@@ -80,6 +80,10 @@ abbr[title] {
 	text-decoration: underline dotted;
 }
 
+.content figure {
+	margin:0;
+}
+
 .content {
 	a:link:hover, a:visited:hover {
 		color: #f41224;

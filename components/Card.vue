@@ -79,7 +79,8 @@ h1, h2 {
 
 .has-thumbnail .description {
 	background-color: rgba(0,0,0,0.3);
-	display: inline-block;
+	display: inline;
+	padding: 3px;
 }
 
 .has-thumbnail .description, .has-thumbnail h2 {
