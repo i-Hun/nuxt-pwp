@@ -1,5 +1,5 @@
 <template>
-	<div class="trips">
+	<div class="tours">
 		<div v-for="place in places">
 			<h2>{{place.title}}</h2>
 		</div>
@@ -39,8 +39,8 @@
 						visits.end
 					FROM visits
 					LEFT JOIN places
-					ON visits.city = places.id
-					WHERE '${context.params.trip}' = visits.trip;`
+					ON visits.place = places.id
+					WHERE '${context.params.tour}' = visits.tour;`
 				);
 
 				places = sql_to_object(contents);

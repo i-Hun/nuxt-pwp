@@ -37,40 +37,41 @@ Object.defineProperty(Array.prototype, 'flat', {
 
 let allRoutes = coursesUrls.flat().concat(eventsUrls);
 
-if (!process.browser) {
-	const SQL = require('sql.js');
+if (process.server) {
+	var initSqlJs = require('sql.js');
 	const fs = require('fs');
 	const filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
 
 	// Load the db
-	const db = new SQL.Database(filebuffer);
-	const places_sql = db.exec(
-		`SELECT
-			places.id as place_id,
-			places.name_ru as place_title,
-			COUNT(*) as visits_num
-		FROM places
-		LEFT JOIN visits
-		ON visits.place = places.id
-		GROUP BY places.id
-		ORDER BY places.name_ru;`
-	);
+	initSqlJs().then(function(SQL){
+		const db = new SQL.Database(filebuffer);
+		const places_sql = db.exec(
+			`SELECT
+				places.id as place_id,
+				places.name_ru as place_title,
+				COUNT(*) as visits_num
+			FROM places
+			LEFT JOIN visits
+			ON visits.place = places.id
+			GROUP BY places.id
+			ORDER BY places.name_ru;`
+		);
 
-	const places = sql_to_object(places_sql);
-	const placesUrl = places.map(place => '/travel/places/' + place.place_id);
+		const places = sql_to_object(places_sql);
+		const placesUrl = places.map(place => '/travel/places/' + place.place_id);
 
-	allRoutes = allRoutes.concat(placesUrl)
+		allRoutes = allRoutes.concat(placesUrl)
 
 
-	const posts_sql = db.exec(
-		`SELECT
-			*
-		FROM posts`
-	);
-
-	const posts = sql_to_object(posts_sql);
-	const postsUrl = posts.map(post => '/blog/' + post.id);
-	allRoutes = allRoutes.concat(postsUrl)
+		const posts_sql = db.exec(
+			`SELECT
+				*
+			FROM posts`
+		);
+		const posts = sql_to_object(posts_sql);
+		const postsUrl = posts.map(post => '/blog/' + post.id);
+		allRoutes = allRoutes.concat(postsUrl)
+	})
 
 }
 
@@ -101,6 +102,7 @@ module.exports = {
 		],
 		script: [
 			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js', ssr: true, async: true },
+			{ src: 'https://use.fontawesome.com/releases/v5.3.1/js/all.js', ssr: true, async: true },
 		]
 
 	},
@@ -136,6 +138,7 @@ module.exports = {
 		'@nuxtjs/sitemap',
 		'@nuxtjs/feed',
 		'nuxt-leaflet',
+		'nuxt-fontawesome',
 		['@nuxtjs/yandex-metrika',
 			{
 				id: '51885752',
@@ -228,20 +231,23 @@ module.exports = {
 	],
 	build: {
 		// analyze: true,
-		// extend(config, ctx) {
-		//	 // Run ESLint on save
-		//	 if (ctx.isDev && ctx.isClient) {
-		//		 config.module.rules.push({
-		//			 enforce: 'pre',
-		//			 test: /\.(js|vue)$/,
-		//			 loader: 'eslint-loader',
-		//			 exclude: /(node_modules)/,
-		//			 options: {
-		//				fix: true
-		//			 }
-		//		 })
-		//	 }
-		// },
+		extend(config, ctx) {
+			config.node = {
+				fs: 'empty'
+			}
+			 // Run ESLint on save
+			// if (ctx.isDev && ctx.isClient) {
+			// 	 config.module.rules.push({
+			// 		enforce: 'pre',
+			// 		test: /\.(js|vue)$/,
+			// 		loader: 'eslint-loader',
+			// 		exclude: /(node_modules)/,
+			// 		options: {
+			// 			fix: true
+			// 		}
+			// 	})
+			// }
+		},
 	},
 }
 

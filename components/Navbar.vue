@@ -14,8 +14,8 @@
 	<div id="navbarBasicExample" class="navbar-menu">
 		<div class="navbar-start">
 			<nuxt-link class="navbar-item" :to="localePath('courses')" active-class="is-active">{{$t("courses")}}</nuxt-link>
-			<nuxt-link class="navbar-item" :to="localePath('events')" active-class="is-active">{{$t("events")}}</nuxt-link>
 			<a class="navbar-item" :href="localePath('travel')" active-class="is-active">{{$t("travel")}}</a>
+			<nuxt-link class="navbar-item" :to="localePath('events')" active-class="is-active">{{$t("events")}}</nuxt-link>
 			<a class="navbar-item" :href="localePath('blog')" active-class="is-active">{{$t("blog.title")}}</a>
 		</div>
 		<div class="navbar-end">
