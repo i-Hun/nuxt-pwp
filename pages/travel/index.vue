@@ -15,36 +15,36 @@
 							{{tour[0].tour_description}}
 						</div>
 						
-						<div class="visits">
-							<span v-for="(visit, index) in tour" class="visit">
-								<div class="visit-from" v-if="index === 0">
-									<span class="visit-from-place tag is-link">
-										{{visits_place_map[visit.visit_from]["place_name"]}}
+						<div class="routes">
+							<span v-for="(route, index) in tour" class="route">
+								<span class="route-from" v-if="index === 0">
+									<span class="route-from-place tag is-link">
+										{{visits_place_map[route.visit_from]["place_name"]}}
 									</span>
-									<span class="visit-from-date">
-										{{visit.ends}}
-									</span>
-								</div>
-								<span class="transport icon is-medium" v-if="visit.transport === 'plane'">
+<!-- 									<div class="route-from-date">
+										{{route.ends}}
+									</div> -->
+								</span>
+								<span class="transport icon is-medium" v-if="route.transport === 'plane'">
 									<img src="/img/icons/aeroplane-3.svg">
 								</span>
-								<span class="transport icon is-medium" v-if="visit.transport === 'train'">
+								<span class="transport icon is-medium" v-if="route.transport === 'train'">
 									<img src="/img/icons/train.svg">
 								</span>
-								<span class="transport icon is-medium" v-if="visit.transport === 'car'">
+								<span class="transport icon is-medium" v-if="route.transport === 'car'">
 									<img src="/img/icons/car.svg">
 								</span>
-								<span class="transport icon is-medium" v-if="visit.transport === 'bus'">
+								<span class="transport icon is-medium" v-if="route.transport === 'bus'">
 									<img src="/img/icons/bus-3.svg">
 								</span>
-								<div class="visit-to">
-									<span class="visit-to-place tag is-link" >
-										{{visits_place_map[visit.visit_to]["place_name"]}}
+								<span class="route-to">
+									<span class="route-to-place tag is-link" >
+										{{visits_place_map[route.visit_to]["place_name"]}}
 									</span>
-									<span class="visit-to-date">
-										{{visit.ends}}
-									</span>
-								</div>
+<!-- 									<div class="route-to-date">
+										{{route.ends}}
+									</div> -->
+								</span>
 							</span>
 						</div>
 					</div>
