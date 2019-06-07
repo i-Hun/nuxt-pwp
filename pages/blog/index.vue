@@ -15,28 +15,33 @@
 			Cards
 		},
 		async asyncData (context) {
-			let posts = undefined;
-
-			if (!process.browser) {
-				var SQL = require('sql.js');
+			var posts = null;
+			if (process.server) {
+				var initSqlJs = require('sql.js');
 				var fs = require('fs');
 				var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
 
-				var db = new SQL.Database(filebuffer);
-				var contents = db.exec(
-					`SELECT
-						*
-					FROM posts;`
-				);
+				var result = await initSqlJs().then(function(SQL){
+					var db = new SQL.Database(filebuffer);
+					var contents = db.exec(
+						`SELECT
+							*
+						FROM posts;`
+					);
 
-				posts = sql_to_object(contents);
+					posts = sql_to_object(contents);
 
-				posts.map(post => {
-					post.path = '/blog/' + post.id
-				})
-			}
-			return {
-				posts
+					posts.map(post => {
+						post.path = '/blog/' + post.id
+					})
+					return {
+						posts: posts
+					}
+				}).catch(function(err){
+					console.error(err.message);
+				});
+
+				return result
 			}
 		},
 	}

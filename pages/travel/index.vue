@@ -7,7 +7,7 @@
 		<div class="column">
 			<div class="sidebar">
 				<div class="tours">
-					<div v-for="tour in tours" class="tour">
+					<div v-for="tour in tours" class="tour" @mouseover="hightlightTour(tour)" @mouseout="hightlightTourOff()">
 						<h2 class="title">
 							{{tour[0].tour_name}}
 						</h2>
@@ -17,7 +17,14 @@
 						
 						<div class="visits">
 							<span v-for="(visit, index) in tour" class="visit">
-								<span class="visit-from tag is-link" v-if="index === 0">{{visits_place_map[visit.visit_from]["place_name"]}}</span>
+								<div class="visit-from" v-if="index === 0">
+									<span class="visit-from-place tag is-link">
+										{{visits_place_map[visit.visit_from]["place_name"]}}
+									</span>
+									<span class="visit-from-date">
+										{{visit.ends}}
+									</span>
+								</div>
 								<span class="transport icon is-medium" v-if="visit.transport === 'plane'">
 									<img src="/img/icons/aeroplane-3.svg">
 								</span>
@@ -28,9 +35,16 @@
 									<img src="/img/icons/car.svg">
 								</span>
 								<span class="transport icon is-medium" v-if="visit.transport === 'bus'">
-									<img src="/img/icons/bus.svg">
+									<img src="/img/icons/bus-3.svg">
 								</span>
-								<span class="visit-to tag is-link" >{{visits_place_map[visit.visit_to]["place_name"]}}</span>
+								<div class="visit-to">
+									<span class="visit-to-place tag is-link" >
+										{{visits_place_map[visit.visit_to]["place_name"]}}
+									</span>
+									<span class="visit-to-date">
+										{{visit.ends}}
+									</span>
+								</div>
 							</span>
 						</div>
 					</div>
@@ -53,7 +67,6 @@
     overflow-y: scroll;
     top: 0;
     bottom: 0;
-    padding: 10px;
 }
 
 .tour{
@@ -72,8 +85,13 @@
 	    position: relative;
 	}
 
-	margin-top: 25px;
-	margin-bottom: 35px;
+	padding: 20px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #eee;
+	}
+
 }
 
 
@@ -85,6 +103,7 @@
 	import {groupBy} from 'lodash';
 	import sql_to_object from "@/plugins/sql_to_object.js";
 	import arc from 'arc';
+	import * as _ from 'lodash';
 
 
 	export default {
@@ -119,7 +138,7 @@
 		mounted () {
 			moment.locale(this.$i18n.locale);
 
-			var map = L.map('mapid', {
+			this.map = L.map('mapid', {
 				center: [52, 40],
 				zoom: 4,
 				zoomControl: false,
@@ -132,11 +151,10 @@
 			    maxZoom: 18,
 			    id: 'mapbox.light',
 			    accessToken: 'pk.eyJ1IjoiaWh1biIsImEiOiJJeUdIWU9VIn0.sRZZ43GwB15Eo2BLj4rJ3A'
-			}).addTo(map);
+			}).addTo(this.map);
 			console.log(this.tours)
 			for (let tour of Object.keys(this.tours)) {
 				for (let route of this.tours[tour]) {
-					console.log("route", route, this.visits_place_map, this.visits_place_map[route.visit_from], this.visits_place_map[route.visit_to])
 					const place_from = this.visits_place_map[route.visit_from]
 					const place_to = this.visits_place_map[route.visit_to]
 
@@ -146,13 +164,17 @@
 
 					var line = generator.Arc(100,{offset:10});
 					console.log(line.geometries[0].coords)
-					var polyline = L.polyline(line.geometries[0].coords, {color: 'rgba(255, 150, 0, 0.5)'}).addTo(map);
+					var polyline = L.polyline(line.geometries[0].coords, {color: 'rgba(255, 150, 0, 0.25)'}).addTo(this.map);
 
-					// var polyline = L.polyline([
-					// 	[place_from.lat, place_from.long],
-					// 	[place_to.lat, place_to.long]
-					// ], {color: 'red'}).addTo(map);
+					let marker = L.circle([place_from.lat, place_from.long], {
+						color: '#04f',
+						fillColor: '#04f',
+						opacity: 0.25,
+						radius: 50000
+					}).addTo(this.map);
 				}
+
+				_.uniqBy(this.tours[tour], route => route.e)
 			}
 				// for (let place of Object.keys(this.points)) {
 				// let first_visit = this.points[place][0];
@@ -309,6 +331,31 @@
 					"bus": "fas fa-bus",
 				}
 				return transport_map[transport]
+			},
+			hightlightTour: function (tour) {
+				this.active_layers = []
+				for (var route of tour) {
+					const place_from = this.visits_place_map[route.visit_from]
+					const place_to = this.visits_place_map[route.visit_to]
+
+					var start = { x: place_from.lat, y: place_from.long };
+					var end = { x: place_to.lat, y: place_to.long };
+					var generator = new arc.GreatCircle(start, end);
+
+					var line = generator.Arc(100,{offset:10});
+					console.log(line.geometries[0].coords)
+
+					var layer = L.polyline(line.geometries[0].coords, {color: 'rgba(255, 150, 0, 1)'});
+					this.active_layers.push(layer)
+				}
+				for (let layer of this.active_layers) {
+					layer.addTo(this.map)
+				}
+			},
+			hightlightTourOff: function () {
+				for (let layer of this.active_layers) {
+					layer.remove()
+				}
 			}
 		}
 	}
