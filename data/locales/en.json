@@ -39,6 +39,12 @@
 	"blog": {
 		"title": "Blog"
 	},
+	"likes": {
+		"title": "Likes",
+		"drinks": "Drink",
+		"places": "Places",
+		"tech": "Tech"
+	},
 	"travel":"Travel",
 	"trips": "Trips",
 	"downloadCV": "Download CV",

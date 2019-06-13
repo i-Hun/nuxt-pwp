@@ -17,6 +17,7 @@
 			<a class="navbar-item" :href="localePath('travel')" active-class="is-active">{{$t("travel")}}</a>
 			<nuxt-link class="navbar-item" :to="localePath('events')" active-class="is-active">{{$t("events")}}</nuxt-link>
 			<a class="navbar-item" :href="localePath('blog')" active-class="is-active">{{$t("blog.title")}}</a>
+			<a class="navbar-item" :href="localePath('likes')" active-class="is-active">{{$t("likes.title")}}</a>			
 		</div>
 		<div class="navbar-end">
 			<nuxt-link class="navbar-item language"

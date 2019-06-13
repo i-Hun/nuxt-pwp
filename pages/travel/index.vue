@@ -173,40 +173,7 @@
 						radius: 50000
 					}).addTo(this.map);
 				}
-
-				_.uniqBy(this.tours[tour], route => route.e)
 			}
-				// for (let place of Object.keys(this.points)) {
-				// let first_visit = this.points[place][0];
-				// let marker = L.circle([first_visit.lat, first_visit.long], {
-				// 	color: '#04f',
-				// 	fillColor: '#04f',
-				// 	fillOpacity: 0.5,
-				// 	radius: 50000
-				// }).addTo(mymap);
-
-				// const popup_head = `<strong>${first_visit.place}</strong>, ${first_visit.country}`;
-				// let popupTexts = [popup_head];
-				// for (let visit of this.points[place]) {
-				// 	const text = `${visit.datetime ? '</br>Приехал ' + moment(visit.datetime).format("LL") : "" }${visit.post_id ? '</br><a target="_blank" href="/blog/' + visit.post_id + '">' + visit.post_title + '</a>' : "" }`
-
-				// 	popupTexts.push(text)
-				// }
-				// marker.bindPopup(popupTexts.join("<br>"), {
-				// 	// autoClose: false,
-				// 	closeButton: false
-				// })//.openPopup()
-				// marker.on('mouseover', function (e) {
-				// 	this.openPopup();
-				// });
-				// // marker.on('mouseout', function (e) {
-				// // 	this.closePopup();
-				// // });
-				// marker.on('click', function (e) {
-				// 	window.location.href = '/travel/places/' + first_visit.place_id;
-				// });
-
-
 		},
 		async asyncData (context) {
 
