@@ -165,7 +165,7 @@ module.exports = {
 			defaultLocale: 'ru',
 			strategy: 'prefix_except_default',
 			baseUrl: 'https://nagornyy.me',
-			//parsePages: false,	 // Disable acorn parsing
+			parsePages: false,	 // Disable acorn parsing
 			// pages: {
 			// 	"courses/_courseId/_lessonId": {
 			// 		ru: '/courses/:courseId/:lessonId?',

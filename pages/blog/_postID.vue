@@ -56,7 +56,8 @@
 					console.error(err.message);
 				});
 
-			return result
+				return result
+			}
 		},
 		methods: {
 			formatPostDate(str) {
