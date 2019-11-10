@@ -11,7 +11,7 @@ const coursesUrls = courses.map((course) => {
 		return `/courses/${course.id}/${lesson.id}`;
 	}).concat(`/courses/${course.id}`)
 }).concat('/courses')
-
+// const eventsUrls = []
 const eventsUrls = events.map((event) => {
 	return "/events/" + event.id;
 }).concat('/events')
@@ -35,15 +35,40 @@ Object.defineProperty(Array.prototype, 'flat', {
     }
 });
 
-let allRoutes = coursesUrls.flat().concat(eventsUrls);
+let allRoutes = coursesUrls.flat().concat(eventsUrls).concat(['/travel/places/athens',
+'/travel/places/baku',
+'/travel/places/veliky-novgorod',
+'/travel/places/gumri',
+'/travel/places/dubna',
+'/travel/places/yerevan',
+'/travel/places/zyryanovsk',
+'/travel/places/kazan',
+'/travel/places/london',
+'/travel/places/msk',
+'/travel/places/omsk',
+'/travel/places/perm',
+'/travel/places/petergof',
+'/travel/places/prague',
+'/travel/places/riga',
+'/travel/places/rome',
+'/travel/places/spb',
+'/travel/places/sochi',
+'/travel/places/istanbul',
+'/travel/places/tbilisi',
+'/travel/places/helsinki',
+'/blog/london-2017',
+'/blog/georgia-2018',
+'/blog/helsinki-2019',
+'/blog/kazan-bral',
+'/blog/caucasus-tour']);
 
 if (process.server) {
+
 	var initSqlJs = require('sql.js');
 	const fs = require('fs');
 	const filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
 
-	// Load the db
-	initSqlJs().then(function(SQL){
+	var postsPlaces = initSqlJs().then(function(SQL){
 		const db = new SQL.Database(filebuffer);
 		const places_sql = db.exec(
 			`SELECT
@@ -52,16 +77,13 @@ if (process.server) {
 				COUNT(*) as visits_num
 			FROM places
 			LEFT JOIN visits
-			ON visits.place = places.id
+				ON visits.place = places.id
 			GROUP BY places.id
 			ORDER BY places.name_ru;`
 		);
 
 		const places = sql_to_object(places_sql);
 		const placesUrl = places.map(place => '/travel/places/' + place.place_id);
-
-		allRoutes = allRoutes.concat(placesUrl)
-
 
 		const posts_sql = db.exec(
 			`SELECT
@@ -70,8 +92,12 @@ if (process.server) {
 		);
 		const posts = sql_to_object(posts_sql);
 		const postsUrl = posts.map(post => '/blog/' + post.id);
-		allRoutes = allRoutes.concat(postsUrl)
-	})
+		return placesUrl.flat().concat(postsUrl);
+	}).catch(function(err){
+		console.error(err.message);
+	});
+	console.log("postsPlaces", postsPlaces)
+	allRoutes = allRoutes.concat(postsPlaces)
 
 }
 
@@ -106,10 +132,10 @@ module.exports = {
 		]
 
 	},
-
-	/*
-	** Customize the progress-bar color
-	*/
+	api: {
+		baseURL: 'https://nagornyy.me',
+		browserBaseURL: 'https://nagornyy.me'
+	},
 	loading: {
 		color: 'blue',
 		height: '2px'
@@ -164,7 +190,6 @@ module.exports = {
 
 			defaultLocale: 'ru',
 			strategy: 'prefix_except_default',
-			baseUrl: 'https://nagornyy.me',
 			parsePages: false,	 // Disable acorn parsing
 			// pages: {
 			// 	"courses/_courseId/_lessonId": {

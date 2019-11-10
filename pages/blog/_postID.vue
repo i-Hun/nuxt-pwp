@@ -20,7 +20,7 @@
  
 
 	export default {
-		layout: 'wide',
+		layout: 'default',
 		async asyncData (context) {
 
 			let post = undefined;

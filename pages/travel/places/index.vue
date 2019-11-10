@@ -35,8 +35,6 @@
 				var fs = require('fs');
 				var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
 
-				let places = undefined;
-
 				var result = await initSqlJs().then(function(SQL){
 					var db = new SQL.Database(filebuffer);
 					var contents = db.exec(
@@ -51,7 +49,7 @@
 						ORDER BY places.name_ru;`
 					);
 
-					places = sql_to_object(contents);
+					const places = sql_to_object(contents);
 					return {
 						places: places	
 					}
