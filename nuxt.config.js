@@ -11,10 +11,10 @@ const coursesUrls = courses.map((course) => {
 		return `/courses/${course.id}/${lesson.id}`;
 	}).concat(`/courses/${course.id}`)
 }).concat('/courses')
-// const eventsUrls = []
-const eventsUrls = events.map((event) => {
-	return "/events/" + event.id;
-}).concat('/events')
+const eventsUrls = []
+// const eventsUrls = events.map((event) => {
+// 	return "/events/" + event.id;
+// }).concat('/events')
 
 // return axios.get(`https://api.tumblr.com/v2/blog/ihun.tumblr.com/posts?api_key=5YiGBDAB7Jr3YnOMEdOjxr8f8MIguZXJVFFw8ktEAvamvd3srf`)
 // .then((res) => {
