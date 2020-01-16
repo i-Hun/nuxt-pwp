@@ -416,6 +416,21 @@ let ann = [
 			luminosity: 'dark'
 		})
 	},
+	{
+		id: "focal-loss-for-imbalanced-datasets",
+		title: "Focal loss for imbalanced datasets",
+		titleRu: "Focal loss как функция потерь для предсказания несбалансированных классов",
+		lang: "ru",
+		img: "/img/basics-of-neural-networks.gif",
+		description: "Simple yet effective function which down-weights easy examples",
+		descriptionRu: "Простая функция потерь, которая штрафует за слишком уверенные ответы алгоритма",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'purple',
+			luminosity: 'dark'
+		})
+	},
 ]
 
 let courses = [

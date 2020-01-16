@@ -138,59 +138,65 @@
 				return start - end;
 			}
 
-			let response = await axios.get(`https://clients6.google.com/calendar/v3/calendars/${context.params.id}/events?timeZone=Europe%2FMoscow&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=2017-06-25T00%3A00%3A00%2B03%3A00&timeMax=2019-06-25T00%3A00%3A00%2B03%3A00&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs&supportsAttachments=true`);
+			const calendar_url = `https://clients6.google.com/calendar/v3/calendars/${context.params.id}/events?timeZone=Europe%2FMoscow&maxAttendees=1&maxResults=250&sanitizeHtml=true&timeMin=2017-06-25T00%3A00%3A00%2B03%3A00&timeMax=2019-06-25T00%3A00%3A00%2B03%3A00&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs&supportsAttachments=true`
+			console.log("calendar_url", calendar_url)
 
+			try {
+				let response = await axios.get(calendar_url);
 
-			if (response.status === 200) {
+				console.log("calendar_url", calendar_url)
 
-				// создаём объект вида {"день или промежуток": [список событий]}
-				var resultDaysObj = [];
-				// и наполняем его
-				for (const event of response.data.items) {
-					const startSameDay = moment(event.start.dateTime || event.start.date).format("D") ===
-										 moment(event.end.dateTime   || event.end.date).format("D");
+				if (response.status === 200) {
 
-					if (startSameDay) {
-						var day = moment(event.start.dateTime || event.start.date).format("MMMM D");
+					// создаём объект вида {"день или промежуток": [список событий]}
+					var resultDaysObj = [];
+					// и наполняем его
+					for (const event of response.data.items) {
+						const startSameDay = moment(event.start.dateTime || event.start.date).format("D") ===
+											 moment(event.end.dateTime   || event.end.date).format("D");
+
+						if (startSameDay) {
+							var day = moment(event.start.dateTime || event.start.date).format("MMMM D");
+						}
+						else {
+							var day = `${moment(event.start.dateTime || event.start.date).format("MMMM D")} -
+									   ${moment(event.end.dateTime || event.end.date).format("MMMM D")}`
+						}
+
+						if (day in resultDaysObj) {
+							resultDaysObj[day].push(event);
+						} else {
+							resultDaysObj[day] = []
+							resultDaysObj[day].push(event);
+						}
 					}
-					else {
-						var day = `${moment(event.start.dateTime || event.start.date).format("MMMM D")} -
-								   ${moment(event.end.dateTime || event.end.date).format("MMMM D")}`
+
+					// переделываем объект в список объектов, чтобы можно было отсортировать. 
+					var resultDaysArray = [];
+
+					for (const [day, events] of Object.entries(resultDaysObj)) {
+
+						const evt = events.sort(compareDates)
+						const dayObj = {
+							events: evt,
+							dayTitle: day
+						}
+						resultDaysArray.push(dayObj);
 					}
 
-					if (day in resultDaysObj) {
-						resultDaysObj[day].push(event);
-					} else {
-						resultDaysObj[day] = []
-						resultDaysObj[day].push(event);
+					const thisEvent = evts.filter(event => {
+						return event.id === context.params.id;
+					})[0];
+
+					return {
+						thisEvent: thisEvent,
+						days: _.sortBy(resultDaysArray, day => moment(day.events[0].start.dateTime || day.events[0].start.date))
 					}
+				} else {
+					console.error("Error at the file events/_id.vue", response.status, response.statusText);
 				}
-
-				// переделываем объект в список объектов, чтобы можно было отсортировать. 
-				var resultDaysArray = [];
-
-				for (const [day, events] of Object.entries(resultDaysObj)) {
-
-					const evt = events.sort(compareDates)
-					const dayObj = {
-						events: evt,
-						dayTitle: day
-					}
-					resultDaysArray.push(dayObj);
-				}
-
-				const thisEvent = evts.filter(event => {
-					return event.id === context.params.id;
-				})[0];
-
-
-
-				return {
-					thisEvent: thisEvent,
-					days: _.sortBy(resultDaysArray, day => moment(day.events[0].start.dateTime || day.events[0].start.date))
-				}
-			} else {
-				console.error("Error at the file events/_id.vue", response.status, response.statusText);
+			} catch (error) {
+				console.error(error);
 			}
 		},
 		methods: {

@@ -132,7 +132,7 @@ export default {
 			width: 14rem;
 			line-height: normal;
 			font-style: italic;
-			font-weight: 100;
+			font-weight: 400;
 
 			figure {
 				margin: 0;

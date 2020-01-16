@@ -4,7 +4,7 @@
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
         <description>Feed!</description>
-        <lastBuildDate>Wed, 20 Nov 2019 05:01:40 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 12 Jan 2020 02:08:58 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>
@@ -156,6 +156,12 @@
             <link>https://nagornyy.me/courses/ann/how-ann-learn</link>
             <guid>https://nagornyy.me/courses/ann/how-ann-learn</guid>
             <description><![CDATA[Lets talk about what makes ANN really clever — ability to learn — and investigate Gradient Descent in Backpropogation Algorithms]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Focal loss for imbalanced datasets]]></title>
+            <link>https://nagornyy.me/courses/ann/focal-loss-for-imbalanced-datasets</link>
+            <guid>https://nagornyy.me/courses/ann/focal-loss-for-imbalanced-datasets</guid>
+            <description><![CDATA[Simple yet effective function which down-weights easy examples]]></description>
         </item>
     </channel>
 </rss>

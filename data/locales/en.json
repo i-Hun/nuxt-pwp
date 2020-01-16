@@ -7,9 +7,22 @@
 		"lastName": "Nagornyy"
 	},
 	"greeting": {
-		"2010-2015": "Hi! I am Oleg. I am studying sociology in OmSU, Omsk, Russia",
-		"2015-2019": "Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE",
-		"2019-now": "Data analyst from Moscow, Russia. I'm working at Qiwi Bank as CRM Analyst"
+		"2010_2015": {
+			"title": "Hi! I am Oleg. I am studying sociology in OmSU, Omsk, Russia",
+			"dates": "2010-2015"
+		},
+		"2015_2019": {
+			"title":"Social researcher, Data analyst and Web-developer from Saint Petersburg, Russia. I'm working as Research assistant and Lecturer at HSE",
+			"dates":"2015-2019"
+		},
+		"april_2019_october_2019": {
+			"title":"Data analyst from Moscow, Russia. I'm working at Qiwi Bank as CRM Analyst",
+			"dates":"April 2019 - October 2019"
+		},
+		"october_2019_present": {
+			"title":"Data scientist at M.video, Moscow, Russia",
+			"dates":"from october 2019"
+		}
 	},
 	"education": {
 		"title": "Education",

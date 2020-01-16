@@ -4,18 +4,18 @@
 
 ``` bash
 # install dependencies
-$ npm install
+$ yarn
 
 # serve with hot reload at localhost:3000
-$ npm run dev
+$ yarn run dev
 
 # build for production and launch server
-$ npm run build
-$ npm start
+$ yarn run build
+$ yarn start
 
 # generate static project
-$ npm run generate
+$ yarn run generate
 
 # generate static project and deploy
-$ npm run generate && netlify deploy --prod --dir dist
+$ yarn run generate && netlify deploy --prod --dir dist
 ```

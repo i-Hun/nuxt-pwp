@@ -11,7 +11,7 @@
 				<div class="media-content">
 					<div class="content">
 						<h1 class="intro-text is-3 title">
-						{{$t("greeting.2015-2019")}}
+						{{$t("greeting.2015_2019.title")}}
 						</h1>
 					</div>
 				</div>
@@ -125,7 +125,7 @@
 					{
 						hid: 'description',
 						name: 'description',
-						content: this.$t('greeting.2015-2019')
+						content: this.$t('greeting.2015_2019.title')
 					},
 					{
 						hid: 'og:title',
@@ -140,7 +140,7 @@
 					{
 						hid: 'og:description',
 						property: 'og:description',
-						content: this.$t('greeting.2015-2019')
+						content: this.$t('greeting.2015_2019.title')
 					},
 					{ hid: 'author', name: 'author', content: this.$t('profile.fullName')},
 					{ hid: 'profile::first_name', property: 'profile::first_name', content: this.$t('profile.firstName')},

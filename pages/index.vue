@@ -4,14 +4,14 @@
 		<div class="column is-two-thirds">
 			<article class="media intro content block">
 				<figure class="media-left is-hidden-touch">
-					<p class="image is-128x128">
+					<p class="image is-128x128 avatar">
 						<img class="is-rounded" src="/img/avatar-2019.jpeg">
 					</p>
 				</figure>
 				<div class="media-content">
 					<div class="content">
 						<h1 class="intro-text is-3 title">
-						{{$t("greeting.2019-now")}}
+						{{$t("greeting.october_2019_present.title")}}
 						</h1>
 					</div>
 				</div>
@@ -121,7 +121,7 @@
 					{
 						hid: 'description',
 						name: 'description',
-						content: this.$t('greeting.2019-now')
+						content: this.$t('greeting.october_2019_present.title')
 					},
 					{
 						hid: 'og:title',
@@ -136,7 +136,7 @@
 					{
 						hid: 'og:description',
 						property: 'og:description',
-						content: this.$t('greeting.2019-now')
+						content: this.$t('greeting.october_2019_present.title')
 					},
 					{ hid: 'author', name: 'author', content: this.$t('profile.fullName')},
 					{ hid: 'profile::first_name', property: 'profile::first_name', content: this.$t('profile.firstName')},
