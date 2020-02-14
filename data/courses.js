@@ -1,5 +1,22 @@
 var randomColor = require('randomcolor');
 
+// let dataNotes = [
+// 	{
+// 		id: "banking-rounding-in-python",
+// 		title: "Банковское округление в Python",
+// 		lang: "ru",
+// 		img: "",
+// 		date: "2020-02-08",
+// 		description: "Шок! Гвидо скрывает правду о...",
+// 		author: "Oleg Nagornyy",
+// 		color: randomColor({
+// 			count: 3,
+// 			hue: 'pink',
+// 			luminosity: 'dark'
+// 		})
+// 	},
+// ]
+
 let dataSciencePosts = [
 	{
 		id: "good-enough-practices",
@@ -373,6 +390,20 @@ let intro2pythonPosts = [
 			luminosity: 'dark'
 		})
 	},
+	{
+		id: "banking-rounding-in-python",
+		title: "Банковское округление в Python",
+		lang: "ru",
+		img: "",
+		date: "2020-02-08",
+		description: "Шок! Гвидо скрывает правду о...",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'green',
+			luminosity: 'dark'
+		})
+	},
 ]
 
 let ann = [
@@ -469,6 +500,17 @@ let courses = [
 		}),
 		description: "Detailed course on Artificial Neural Networks from the very begining to advanced topics.",
 	},
+	// {
+	// 	title: "Записки",
+	// 	id: 'data-notes',
+	// 	elements: dataNotes,
+	// 	color: randomColor({
+	// 		count: 3,
+	// 		hue: 'pink',
+	// 		luminosity: 'dark'
+	// 	}),
+	// 	description: "Разрозненные записи без общей темы",
+	// }
 ]
 
 courses.map(course => {

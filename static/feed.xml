@@ -4,7 +4,7 @@
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
         <description>Feed!</description>
-        <lastBuildDate>Sun, 12 Jan 2020 02:08:58 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Feb 2020 20:31:24 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>
@@ -43,6 +43,12 @@
             <link>https://nagornyy.me/courses/intro2python/errors_handling</link>
             <guid>https://nagornyy.me/courses/intro2python/errors_handling</guid>
             <description><![CDATA[Любая программа содержит ошибки. Дело лишь в том, как с ними обращаться.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Банковское округление в Python]]></title>
+            <link>https://nagornyy.me/courses/intro2python/banking-rounding-in-python</link>
+            <guid>https://nagornyy.me/courses/intro2python/banking-rounding-in-python</guid>
+            <description><![CDATA[Шок! Гвидо скрывает правду о...]]></description>
         </item>
         <item>
             <title><![CDATA[Good Enough Practices for Scientific Computing]]></title>
