@@ -86,11 +86,11 @@ export default {
 		}
 	},
 	async asyncData (context) {
-		const notebookPath = `~/static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
+		const notebookPath = `static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
 		let notebook = undefined;
 
 		if (!process.browser) {
-			notebook = JSON.parse(require('fs').readFileSync(`/Users/hun/pwp-v3/static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`, 'utf-8'))
+			notebook = JSON.parse(require('fs').readFileSync(notebookPath, 'utf-8'))
 		}
 		
 		let cells = notebook["cells"];

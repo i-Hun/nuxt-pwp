@@ -180,7 +180,7 @@
 			if (process.server) {
 				var initSqlJs = require('sql.js');
 				var fs = require('fs');
-				var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+				var filebuffer = fs.readFileSync('data/nagornyy.db');
 
 				var result = await initSqlJs().then(function(SQL){
 					var db = new SQL.Database(filebuffer);
@@ -191,38 +191,12 @@
 							places.lat,
 							places.long,
 							visits.datetime,
-							countries.name_ru AS country,
-							posts.id AS post_id,
-							posts.title AS post_title
+							countries.name_ru AS country
 						FROM visits
-						LEFT JOIN posts_visits
-							ON visits.id = posts_visits.visit_id
 						LEFT JOIN places
 							ON places.id = visits.place
-						LEFT JOIN posts
-							ON posts.id = posts_visits.post_id
 						LEFT JOIN countries
-							ON countries.id = places.country
-						UNION ALL
-						SELECT
-							places.name_ru AS place,
-							places.id AS place_id,
-							places.lat,
-							places.long,
-							visits.datetime,
-							countries.name_ru AS country,
-							posts.id AS post_id,
-							posts.title AS post_title
-						FROM posts_visits
-						LEFT JOIN visits
-							ON visits.id = posts_visits.visit_id
-						LEFT JOIN places
-							ON places.id = visits.place
-						LEFT JOIN posts
-							ON posts.id = posts_visits.post_id
-						LEFT JOIN countries
-							ON countries.id = places.country
-						WHERE  visits.id IS NULL;`
+							ON countries.id = places.country;`
 					);
 					let points = sql_to_object(contents);
 

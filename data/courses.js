@@ -1,21 +1,49 @@
 var randomColor = require('randomcolor');
 
-// let dataNotes = [
-// 	{
-// 		id: "banking-rounding-in-python",
-// 		title: "Банковское округление в Python",
-// 		lang: "ru",
-// 		img: "",
-// 		date: "2020-02-08",
-// 		description: "Шок! Гвидо скрывает правду о...",
-// 		author: "Oleg Nagornyy",
-// 		color: randomColor({
-// 			count: 3,
-// 			hue: 'pink',
-// 			luminosity: 'dark'
-// 		})
-// 	},
-// ]
+let recommendationSystems = [
+	{
+		id: "introduction-to-recommendation-systems",
+		title: "Постановка задачи и виды рекоммендательных систем",
+		lang: "ru",
+		img: "",
+		date: "2020-02-08",
+		description: "А какие они вообще бывают и для чего нужны?",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'pink',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "linear-regression-pytorch",
+		title: "Простая линейная регрессия в PyTorch",
+		lang: "ru",
+		img: "",
+		date: "2020-02-27",
+		description: "Простая для понимания, мощная в применении. Именно с регрессионной модели начнётся построение нашей рекоммендательной системы.",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'pink',
+			luminosity: 'dark'
+		})
+	},
+	// {
+	// 	id: "logistic-regression-pytorch",
+	// 	title: "Классификация при помощи логистической регрессии в PyTorch",
+	// 	lang: "ru",
+	// 	img: "",
+	// 	date: "2020-02-28",
+	// 	description: "Легким движением руки регрессия превращается в классификатор.",
+	// 	author: "Oleg Nagornyy",
+	// 	color: randomColor({
+	// 		count: 3,
+	// 		hue: 'pink',
+	// 		luminosity: 'dark'
+	// 	})
+	// },
+]
 
 let dataSciencePosts = [
 	{
@@ -500,17 +528,17 @@ let courses = [
 		}),
 		description: "Detailed course on Artificial Neural Networks from the very begining to advanced topics.",
 	},
-	// {
-	// 	title: "Записки",
-	// 	id: 'data-notes',
-	// 	elements: dataNotes,
-	// 	color: randomColor({
-	// 		count: 3,
-	// 		hue: 'pink',
-	// 		luminosity: 'dark'
-	// 	}),
-	// 	description: "Разрозненные записи без общей темы",
-	// }
+	{
+		title: "Рекоммендательные системы",
+		id: 'recommendation-systems',
+		elements: recommendationSystems,
+		color: randomColor({
+			count: 3,
+			hue: 'pink',
+			luminosity: 'dark'
+		}),
+		description: "Построение рекоммендательной системы от линейной регрессии до современных нейросетевых моделей",
+	}
 ]
 
 courses.map(course => {

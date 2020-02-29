@@ -74,7 +74,7 @@
 			if (process.server) {
 				var initSqlJs = require('sql.js');
 				var fs = require('fs');
-				var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+				var filebuffer = fs.readFileSync('data/nagornyy.db');
 
 				var result = await initSqlJs().then(function(SQL){
 					var db = new SQL.Database(filebuffer);

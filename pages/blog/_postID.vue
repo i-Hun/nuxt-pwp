@@ -2,7 +2,8 @@
 	<div class="post content">
 		<h1 v-if="post.title">{{post.title}}</h1>
 		<time class='post-created' v-if="post.created_at">{{formatPostDate(post.created_at)}}</time>
-		<div class='post-visit' v-if="post.place_name">Эта запись относится к поездке в <a :href="'/travel/places/' + post.place_id">{{post.place_name}}</a></div>
+		<!-- :href="'/travel/tours/' + post.tour_id">{{post.tour_name}}" -->
+		<div class='post-visit' v-if="post.tour_name">Эта запись относится к туру "<a href="/travel/">{{post.tour_name}}"</a></div>
 		<div class='post-body' v-html="post.body"></div>
 	</div>
 </template>
@@ -27,7 +28,7 @@
 
 			if (process.server) {
 				var fs = require('fs');
-				var filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+				var filebuffer = fs.readFileSync('data/nagornyy.db');
 				var initSqlJs = require('sql.js');
 
 				var result = await initSqlJs().then(function(SQL){
@@ -35,15 +36,13 @@
 					var contents = db.exec(
 					`SELECT
 							posts.*,
-							places.name_ru AS place_name,
-							places.id AS place_id
+							tours.name_ru AS tour_name,
+							tours.id AS tour_id
 						FROM posts
-						LEFT JOIN posts_visits
-							ON posts.id = posts_visits.post_id
-						LEFT JOIN visits
-							ON visits.id = posts_visits.visit_id
-						LEFT JOIN places
-							ON visits.place = places.id
+						LEFT JOIN posts_tours
+							ON posts.id = posts_tours.post_id
+						LEFT JOIN tours
+							ON tours.id = posts_tours.tour_id
 					WHERE '${context.params.postID}' = posts.id;`
 					);
 

@@ -66,7 +66,7 @@ if (process.server) {
 
 	var initSqlJs = require('sql.js');
 	const fs = require('fs');
-	const filebuffer = fs.readFileSync('/Users/hun/pwp-v3/data/nagornyy.db');
+	const filebuffer = fs.readFileSync('data/nagornyy.db');
 
 	var postsPlaces = initSqlJs().then(function(SQL){
 		const db = new SQL.Database(filebuffer);

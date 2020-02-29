@@ -5,7 +5,7 @@
 			<article class="media intro content block">
 				<figure class="media-left is-hidden-touch">
 					<p class="image is-128x128 avatar">
-						<img class="is-rounded" src="/img/avatar-2019.jpeg">
+						<img class="is-rounded" src="/img/avatar-2019-2.jpeg">
 					</p>
 				</figure>
 				<div class="media-content">
@@ -57,17 +57,17 @@
 			<div class="publications block content">
 				<h2>{{$t("publications")}}</h2>
 				<ol>
-					<li class="csl-entry">Koltsova, O., Nikolenko, S., Alexeeva, S., Nagornyy, O., &amp; Koltcov, S. (2017). Detecting Interethnic Relations with the Data from Social Media. In <i>Digital Transformation and Global Society</i> (pp. 16–30). Springer, Cham. <a href="https://doi.org/10.1007/978-3-319-69784-0_2">https://doi.org/10.1007/978-3-319-69784-0_2</a></li>
+					<li class="csl-entry">Koltsova, O., & Nagornyy, O. (2019). Redefining Media Agendas: Topic Problematization in Online Reader Comments. Media and Communication, 7(3), 145–156. <a href="https://doi.org/10.17645/mac.v7i3.1894">https://doi.org/10.17645/mac.v7i3.1894</a></li>
+					<li class="csl-entry">Nagornyy, O. (2019). User Ethnicity and Gender as Predictors of Attitudes to Ethnic Groups in Social Media Texts. In S. S. Bodrunova, O. Koltsova, A. Følstad, H. Halpin, P. Kolozaridi, L. Yuldashev, A. Smoliarova, & H. Niedermayer (Eds.), Internet Science (pp. 33–41). Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-17705-8_3">https://doi.org/10.1007/978-3-030-17705-8_3</a></li>
 					<li class="csl-entry">Nagornyy, O. (2018). Topics of Ethnic Discussions in Russian Social Media. In D. A. Alexandrov, A. V. Boukhanovsky, A. V. Chugunov, Y. Kabanov, &amp; O. Koltsova (Eds.), <i>Digital Transformation and Global Society</i> (Vol. 859, pp. 83–94). Springer International Publishing. <a href="https://doi.org/10.1007/978-3-030-02846-6_7">https://doi.org/10.1007/978-3-030-02846-6_7</a></li>
-					<li class="csl-entry">Nagornyy, O. (2019). (in print) User ethnicity and gender as predictors of attitudes to ethnic groups in social media texts. In <i>Workshop proceedings of Internet Science conference 2018</i>. Saint Petersburg.</li>
+					<li class="csl-entry">Koltsova, O., Nikolenko, S., Alexeeva, S., Nagornyy, O., &amp; Koltcov, S. (2017). Detecting Interethnic Relations with the Data from Social Media. In <i>Digital Transformation and Global Society</i> (pp. 16–30). Springer, Cham. <a href="https://doi.org/10.1007/978-3-319-69784-0_2">https://doi.org/10.1007/978-3-319-69784-0_2</a></li>
 					<li class="csl-entry">Nagornyy, O., &amp; Koltsova, O. (2017). <i>Mining Media Topics Perceived as Social Problems by Online Audiences: Use of a Data Mining Approach in Sociology</i> (SSRN Scholarly Paper No. ID 2968359). Rochester, NY: Social Science Research Network. Retrieved from <a href="https://papers.ssrn.com/abstract=2968359">https://papers.ssrn.com/abstract=2968359</a></li>
-					<li class="csl-entry">Nagornyy, O., &amp; Koltsova, O. Y. (2019). (under review) Redefining media agendas: topic problematization in online reader comments. <i>Media and Communication</i>.</li>
 					<li class="csl-entry">Rykov, Y., Nagornyy, O., &amp; Koltsova, O. (2017). Digital Inequality in Russia Through the Use of a Social Network Site: A Cross-Regional Comparison. In D. A. Alexandrov, A. V. Boukhanovsky, A. V. Chugunov, Y. Kabanov, &amp; O. Koltsova (Eds.), <i>Digital Transformation and Global Society</i> (Vol. 745, pp. 70–83). Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-69784-0_6">https://doi.org/10.1007/978-3-319-69784-0_6</a></li>
-					<li class="csl-entry">Rykov Yuri, Nagornyy Oleg, Koltsova Olessia, Natta Herbert, Kremenets Alexander, Manovich Lev, … Crockett Damon. (2016). Semantic and Geospatial Mapping of Instagram Images in Saint-Petersburg. In <i>Proceedings of the Artificial Intelligence and Natural Language</i> (pp. 110–113). Saint-Petersburg. Retrieved from <a href="http://fruct.org/publications/abstract-AINL-FRUCT-2016/files/Ryk.pdf">http://fruct.org/publications/abstract-AINL-FRUCT-2016/files/Ryk.pdf</a></li>
-					<li class="csl-entry">Нагорный, О. С. (2014). Построение тематического профиля омских интернет-СМИ. <i>Вестник Омского Университета</i>, (1/2), 12–16.</li>
 					<li class="csl-entry">Нагорный, О. С. (2017). Репрезентация этничностей в русскоязычных социальных медиа. <i>Мониторинг Общественного Мнения: Экономические и&nbsp;Социальные Перемены</i>, (4), 165–184. <a href="https://doi.org/10.14515/monitoring.2017.4.11">https://doi.org/10.14515/monitoring.2017.4.11</a></li>
+					<li class="csl-entry">Рыков, Ю. Г., &amp; Нагорный, О. С. (2017). Область Интернет-исследований в социальных науках.<i>Социологическое Обозрение</i>, <i>16</i>(3), 366–394. Retrieved from <a href="https://sociologica.hse.ru/2017-16-3/210184656.html">https://sociologica.hse.ru/2017-16-3/210184656.html</a></li>
+					<li class="csl-entry">Rykov Yuri, Nagornyy Oleg, Koltsova Olessia, Natta Herbert, Kremenets Alexander, Manovich Lev, … Crockett Damon. (2016). Semantic and Geospatial Mapping of Instagram Images in Saint-Petersburg. In <i>Proceedings of the Artificial Intelligence and Natural Language</i> (pp. 110–113). Saint-Petersburg. Retrieved from <a href="http://fruct.org/publications/abstract-AINL-FRUCT-2016/files/Ryk.pdf">http://fruct.org/publications/abstract-AINL-FRUCT-2016/files/Ryk.pdf</a></li>
 					<li class="csl-entry">Нагорный, О. С., &amp; Мухетдинова, А. Т. (2016). Исследование дискурса о биопедагогике при помощи тематического моделирования и синтаксического анализа текстов. In <i>Математическое и компьютерное моделирование: материалы IV Международной научной конференции</i> (pp. 154–156). Омск: Издательство Омского государственного университета.</li>
-					<li class="csl-entry">Рыков, Ю. Г., &amp; Нагорный, О. С. (2017). Область Интернет-исследований в социальных науках. <i>Социологическое Обозрение</i>, <i>16</i>(3), 366–394. Retrieved from <a href="https://sociologica.hse.ru/2017-16-3/210184656.html">https://sociologica.hse.ru/2017-16-3/210184656.html</a></li>
+					<li class="csl-entry">Нагорный, О. С. (2014). Построение тематического профиля омских интернет-СМИ. <i>Вестник Омского Университета</i>, (1/2), 12–16.</li>
 				</ol>
 			</div>
 			<div class="conferences block content">

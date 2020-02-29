@@ -4,7 +4,7 @@
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
         <description>Feed!</description>
-        <lastBuildDate>Sat, 08 Feb 2020 20:31:24 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Feb 2020 07:05:42 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>
@@ -168,6 +168,18 @@
             <link>https://nagornyy.me/courses/ann/focal-loss-for-imbalanced-datasets</link>
             <guid>https://nagornyy.me/courses/ann/focal-loss-for-imbalanced-datasets</guid>
             <description><![CDATA[Simple yet effective function which down-weights easy examples]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Постановка задачи и виды рекоммендательных систем]]></title>
+            <link>https://nagornyy.me/courses/recommendation-systems/introduction-to-recommendation-systems</link>
+            <guid>https://nagornyy.me/courses/recommendation-systems/introduction-to-recommendation-systems</guid>
+            <description><![CDATA[А какие они вообще бывают и для чего нужны?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Простая линейная регрессия в PyTorch]]></title>
+            <link>https://nagornyy.me/courses/recommendation-systems/linear-regression-pytorch</link>
+            <guid>https://nagornyy.me/courses/recommendation-systems/linear-regression-pytorch</guid>
+            <description><![CDATA[Простая для понимания, мощная в применении. Именно с регрессионной модели начнётся построение нашей рекоммендательной системы.]]></description>
         </item>
     </channel>
 </rss>

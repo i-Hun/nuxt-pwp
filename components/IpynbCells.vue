@@ -23,7 +23,8 @@
 					<div v-if="output.hasOwnProperty('data') &&
 						output.data.hasOwnProperty('text/plain') &&
 						!output.data.hasOwnProperty('text/html') &&
-						!output.data.hasOwnProperty('image/svg+xml')"
+						!output.data.hasOwnProperty('image/svg+xml') &&
+						output.data['text/plain'].textContent"
 						v-html="output.data['text/plain'].join('<br>')" class="output-text-plain"></div>
 
 					<div v-if="output.hasOwnProperty('text')"
