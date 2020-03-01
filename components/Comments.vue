@@ -1,12 +1,12 @@
 <template name="comments">
 	<div class="comments content">
-		<h2 id="comments">Comments</h2>
+		<h2 id="comments">{{$t("comments.title", language)}}</h2>
 		<div class="comments-shown" v-if="isShowComments">
 			<div id="disqus_thread"></div>
 			<noscript>Please enable JavaScript to view the comments.</a></noscript>
 		</div>
 		<div class="comments-hiden" v-else>
-			<button class="button" v-on:click="showComments">Show Comments</button>
+			<button class="button" v-on:click="showComments">{{$t("comments.showComments", language)}}</button>
 		</div>
 	</div>
 </template>
@@ -14,7 +14,7 @@
 <script>
 	export default {
 		name: "comments",
-		props: ["pagePath"],
+		props: ["pagePath", "language"],
 		data() {
 			return {
 				isShowComments: false,

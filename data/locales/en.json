@@ -74,5 +74,10 @@
 	"publications": "Publications",
 	"googleScholar": "Google Scholar",
 	"now": "now",
-	"milestones": "Milestones"
+	"milestones": "Milestones",
+	"references": "References",
+	"comments": {
+		"title": "Comments",
+		"showComments": "Show comments"
+	}
 }

@@ -26,8 +26,8 @@
 			</ul>
 		</nav>
 		<IpynbCells :cells="cells" :language="language"></IpynbCells>
-		<References :references="references"></References>
-		<Comments :pagePath="$nuxt.$route.path"></Comments>
+		<References :references="references" :language="lesson.lang"></References>
+		<Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments>
 	</section>
 </template>
 

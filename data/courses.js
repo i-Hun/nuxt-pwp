@@ -29,20 +29,34 @@ let recommendationSystems = [
 			luminosity: 'dark'
 		})
 	},
-	// {
-	// 	id: "logistic-regression-pytorch",
-	// 	title: "Классификация при помощи логистической регрессии в PyTorch",
-	// 	lang: "ru",
-	// 	img: "",
-	// 	date: "2020-02-28",
-	// 	description: "Легким движением руки регрессия превращается в классификатор.",
-	// 	author: "Oleg Nagornyy",
-	// 	color: randomColor({
-	// 		count: 3,
-	// 		hue: 'pink',
-	// 		luminosity: 'dark'
-	// 	})
-	// },
+	{
+		id: "logistic-regression-pytorch",
+		title: "Классификация при помощи логистической регрессии в PyTorch",
+		lang: "ru",
+		img: "",
+		date: "2020-03-01",
+		description: "Легким движением руки линейная регрессия превращается в логистическую...",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'pink',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "factorization-machines-pytorch",
+		title: "Факторизационные машины в PyTorch",
+		lang: "ru",
+		img: "",
+		date: "2020-03-01",
+		description: "...а логистическая в факторизационные машины...",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'pink',
+			luminosity: 'dark'
+		})
+	},
 ]
 
 let dataSciencePosts = [

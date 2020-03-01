@@ -74,5 +74,10 @@
 	"publications": "Публикации",
 	"googleScholar": "Академия Google",
 	"now": "сейчас",
-	"milestones": "Вехи"
+	"milestones": "Вехи",
+	"references": "Литература",
+	"comments": {
+		"title": "Комментарии",
+		"showComments": "Показать комментарии"
+	}
 }

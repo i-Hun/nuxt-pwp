@@ -4,7 +4,7 @@
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
         <description>Feed!</description>
-        <lastBuildDate>Sat, 29 Feb 2020 07:05:42 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 01 Mar 2020 09:57:55 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>
@@ -180,6 +180,12 @@
             <link>https://nagornyy.me/courses/recommendation-systems/linear-regression-pytorch</link>
             <guid>https://nagornyy.me/courses/recommendation-systems/linear-regression-pytorch</guid>
             <description><![CDATA[Простая для понимания, мощная в применении. Именно с регрессионной модели начнётся построение нашей рекоммендательной системы.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Классификация при помощи логистической регрессии в PyTorch]]></title>
+            <link>https://nagornyy.me/courses/recommendation-systems/logistic-regression-pytorch</link>
+            <guid>https://nagornyy.me/courses/recommendation-systems/logistic-regression-pytorch</guid>
+            <description><![CDATA[Легким движением руки регрессия превращается в классификатор.]]></description>
         </item>
     </channel>
 </rss>
