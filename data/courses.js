@@ -49,7 +49,7 @@ let recommendationSystems = [
 		lang: "ru",
 		img: "",
 		date: "2020-03-01",
-		description: "...а логистическая в факторизационные машины...",
+		description: "...а затем в факторизационные машины...",
 		author: "Oleg Nagornyy",
 		color: randomColor({
 			count: 3,
@@ -57,6 +57,20 @@ let recommendationSystems = [
 			luminosity: 'dark'
 		})
 	},
+	// {
+	// 	id: "field-aware-factorization-machines-pytorch",
+	// 	title: "Field-aware факторизационные машины в PyTorch",
+	// 	lang: "ru",
+	// 	img: "",
+	// 	date: "2020-03-01",
+	// 	description: "...а затем в field-aware факторизационные машины...",
+	// 	author: "Oleg Nagornyy",
+	// 	color: randomColor({
+	// 		count: 3,
+	// 		hue: 'pink',
+	// 		luminosity: 'dark'
+	// 	})
+	// },
 ]
 
 let dataSciencePosts = [
@@ -543,7 +557,7 @@ let courses = [
 		description: "Detailed course on Artificial Neural Networks from the very begining to advanced topics.",
 	},
 	{
-		title: "Рекоммендательные системы",
+		title: "Рекомендательные системы",
 		id: 'recommendation-systems',
 		elements: recommendationSystems,
 		color: randomColor({
@@ -551,7 +565,7 @@ let courses = [
 			hue: 'pink',
 			luminosity: 'dark'
 		}),
-		description: "Построение рекоммендательной системы от линейной регрессии до современных нейросетевых моделей",
+		description: "Построение рекомендательной системы от линейной регрессии до современных нейросетевых моделей",
 	}
 ]
 
