@@ -35,7 +35,7 @@
 		computed: {
 			background: function () {
 				if (this.card.thumbnail) {
-					return `background-image: url(/img/blog/${this.card.thumbnail}.jpg); background-size:cover;`
+					return `background-image: url(/img/thumbnails/${this.card.thumbnail}); background-size:cover;`
 				} else {
 					if (this.card.color) {
 						return `background: linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%);`

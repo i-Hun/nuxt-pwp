@@ -4,7 +4,7 @@
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
         <description>Feed!</description>
-        <lastBuildDate>Tue, 17 Mar 2020 14:32:37 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 25 May 2020 23:34:06 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>
@@ -192,6 +192,12 @@
             <link>https://nagornyy.me/courses/recommendation-systems/factorization-machines-pytorch</link>
             <guid>https://nagornyy.me/courses/recommendation-systems/factorization-machines-pytorch</guid>
             <description><![CDATA[...а затем в факторизационные машины...]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Сегментация при помощи графов]]></title>
+            <link>https://nagornyy.me/courses/recommendation-systems/graphs-segmentation</link>
+            <guid>https://nagornyy.me/courses/recommendation-systems/graphs-segmentation</guid>
+            <description><![CDATA[Не рекомендательные системы, но очень близко.]]></description>
         </item>
     </channel>
 </rss>

@@ -5,7 +5,7 @@ let recommendationSystems = [
 		id: "introduction-to-recommendation-systems",
 		title: "Постановка задачи и виды рекоммендательных систем",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		date: "2020-02-08",
 		description: "А какие они вообще бывают и для чего нужны?",
 		author: "Oleg Nagornyy",
@@ -19,7 +19,7 @@ let recommendationSystems = [
 		id: "linear-regression-pytorch",
 		title: "Простая линейная регрессия в PyTorch",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		date: "2020-02-27",
 		description: "Простая для понимания, мощная в применении. Именно с регрессионной модели начнётся построение нашей рекоммендательной системы.",
 		author: "Oleg Nagornyy",
@@ -33,7 +33,7 @@ let recommendationSystems = [
 		id: "logistic-regression-pytorch",
 		title: "Классификация при помощи логистической регрессии в PyTorch",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		date: "2020-03-01",
 		description: "Легким движением руки линейная регрессия превращается в логистическую...",
 		author: "Oleg Nagornyy",
@@ -47,9 +47,23 @@ let recommendationSystems = [
 		id: "factorization-machines-pytorch",
 		title: "Факторизационные машины в PyTorch",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		date: "2020-03-01",
 		description: "...а затем в факторизационные машины...",
+		author: "Oleg Nagornyy",
+		color: randomColor({
+			count: 3,
+			hue: 'pink',
+			luminosity: 'dark'
+		})
+	},
+	{
+		id: "graphs-segmentation",
+		title: "Сегментация при помощи графов",
+		lang: "ru",
+		thumbnail: "graphs-segmentation.jpg",
+		date: "2020-05-26",
+		description: "Не рекомендательные системы, но очень близко.",
 		author: "Oleg Nagornyy",
 		color: randomColor({
 			count: 3,
@@ -61,7 +75,7 @@ let recommendationSystems = [
 	// 	id: "field-aware-factorization-machines-pytorch",
 	// 	title: "Field-aware факторизационные машины в PyTorch",
 	// 	lang: "ru",
-	// 	img: "",
+	// 	thumbnail: "",
 	// 	date: "2020-03-01",
 	// 	description: "...а затем в field-aware факторизационные машины...",
 	// 	author: "Oleg Nagornyy",
@@ -79,7 +93,7 @@ let dataSciencePosts = [
 		title: "Good Enough Practices for Scientific Computing",
 		titleRu: "Полезные практики для работы с данными",
 		lang: "en",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -93,7 +107,7 @@ let dataSciencePosts = [
 		title: "Линейная алгебра с Numpy",
 		titleRu: "Линейная алгебра с Numpy",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -107,7 +121,7 @@ let dataSciencePosts = [
 		title: "Работа с данными в Pandas 🐼",
 		titleRu: "Работа с данными в Pandas 🐼",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -121,7 +135,7 @@ let dataSciencePosts = [
 		title: "Даты и время в Python и Pandas",
 		titleRu: "Даты и время в Python и Pandas",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -135,7 +149,7 @@ let dataSciencePosts = [
 		title: "Введение в визуализацию данных с Matplotlib",
 		titleRu: "Введение в визуализацию данных с Matplotlib",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -149,7 +163,7 @@ let dataSciencePosts = [
 		title: "Введение в визуализацию данных с Seaborn",
 		titleRu: "Введение в визуализацию данных с Seaborn",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -162,7 +176,7 @@ let dataSciencePosts = [
 		id: "regression",
 		title: "Простые регрессионные модели в Python",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -175,7 +189,7 @@ let dataSciencePosts = [
 		id: "classification",
 		title: "Простые модели классификации в Python",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -188,7 +202,7 @@ let dataSciencePosts = [
 		id: "exam-wine",
 		title: "Промежуточный экзамен",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -202,7 +216,7 @@ let dataSciencePosts = [
 	// 	title: "Databases",
 	// 	titleRu: "Базы данных",
 	// 	lang: "ru",
-	// 	img: "/data-science/img/DBs.svg",
+	// 	thumbnail: "/data-science/img/DBs.svg",
 	// 	description: "",
 	// 	author: "Oleg Nagornyy",
 	// 	color: randomColor({
@@ -217,7 +231,7 @@ let dataSciencePosts = [
 		title: "Feature Engineering",
 		titleRu: "Работа с признаками",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -231,7 +245,7 @@ let dataSciencePosts = [
 		title: "Unsupervised learning",
 		titleRu: "Методы обучения без учителя",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -245,7 +259,7 @@ let dataSciencePosts = [
 		title: "Fair Models",
 		titleRu: "Честность при работе с моделями",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -260,7 +274,7 @@ let dataSciencePosts = [
 	// 	title: "Language Models",
 	// 	titleRu: "Языковые модели",
 	// 	lang: "ru",
-	// 	img: "/data-science/img/language_models.jpg",
+	// 	thumbnail: "/data-science/img/language_models.jpg",
 	// 	description: "",
 	// 	author: "Oleg Nagornyy",
 	// color: ['#afe', '#9ae', '#faf']
@@ -270,7 +284,7 @@ let dataSciencePosts = [
 		title: "Ensemble Learning",
 		titleRu: "Ансамблевые методы",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -284,7 +298,7 @@ let dataSciencePosts = [
 		title: "Happy Data Year: competitive geoanalysis from Rosbank",
 		titleRu: "Happy Data Year: новогоднее соревнование от Росбанка",
 		lang: "en",
-		img: "/img/content/geoanalysis-rosbank.png",
+		thumbnail: "/img/content/geoanalysis-rosbank.png",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -298,7 +312,7 @@ let dataSciencePosts = [
 		title: "Анализ временных рядов: действительно ли российская экономика зависит от цен на газ?",
 		titleRu: "Анализ временных рядов. Действительно ли российская экономика зависит от цен на газ?",
 		lang: "ru",
-		img: "/img/content/time-series.svg",
+		thumbnail: "/img/content/time-series.svg",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -312,7 +326,7 @@ let dataSciencePosts = [
 		title: "Анализ социальных графов",
 		titleRu: "Анализ графов",
 		lang: "ru",
-		img: "/img/content/social-graph.svg",
+		thumbnail: "/img/content/social-graph.svg",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -326,7 +340,7 @@ let dataSciencePosts = [
 		title: "Многоуровневые регрессионные модели",
 		titleRu: "Многоуровневые регрессионные модели",
 		lang: "ru",
-		img: "/img/content/multilevel-regressions.svg",
+		thumbnail: "/img/content/multilevel-regressions.svg",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -340,7 +354,7 @@ let dataSciencePosts = [
 		title: "Анализ данных для маркетологов: расчёт ROI, CPI, LTV и проверка гипотез для мобильного приложения",
 		titleRu: "Анализ данных для маркетологов: расчёт ROI, CPI, LTV и проверка гипотез для мобильного приложения",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -354,7 +368,7 @@ let dataSciencePosts = [
 		title: "Байесовская статистика и вероятностное программирование на Python",
 		titleRu: "Байесовская статистика и вероятностное программирование на Python",
 		lang: "ru",
-		img: "/img/content/bayes-thumbnail.png",
+		thumbnail: "/img/content/bayes-thumbnail.png",
 		description: "",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -437,7 +451,7 @@ let intro2pythonPosts = [
 		title: "Обработка ошибок",
 		titleRu: "Обработка ошибок",
 		description: "Любая программа содержит ошибки. Дело лишь в том, как с ними обращаться.",
-		img: "/img/content/bos.png",
+		thumbnail: "/img/content/bos.png",
 		lang: "ru",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -450,7 +464,7 @@ let intro2pythonPosts = [
 		id: "banking-rounding-in-python",
 		title: "Банковское округление в Python",
 		lang: "ru",
-		img: "",
+		thumbnail: "",
 		date: "2020-02-08",
 		description: "Шок! Гвидо скрывает правду о...",
 		author: "Oleg Nagornyy",
@@ -494,7 +508,7 @@ let ann = [
 		title: "How Artificial Neural Networks Learns",
 		titleRu: "Как обучаются нейронные сети",
 		lang: "ru",
-		img: "/img/basics-of-neural-networks.gif",
+		thumbnail: "/img/basics-of-neural-networks.gif",
 		description: "Lets talk about what makes ANN really clever — ability to learn — and investigate Gradient Descent in Backpropogation Algorithms",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -508,7 +522,7 @@ let ann = [
 		title: "Focal loss for imbalanced datasets",
 		titleRu: "Focal loss как функция потерь для предсказания несбалансированных классов",
 		lang: "ru",
-		img: "/img/basics-of-neural-networks.gif",
+		thumbnail: "/img/basics-of-neural-networks.gif",
 		description: "Simple yet effective function which down-weights easy examples",
 		descriptionRu: "Простая функция потерь, которая штрафует за слишком уверенные ответы алгоритма",
 		author: "Oleg Nagornyy",
