@@ -117,34 +117,35 @@ abbr[title] {
 .cards {
 	margin: 1.5rem 0;
 
-	a:link:hover, a:visited:hover {
+	a.card {
+		filter: brightness(90%);
+		box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.4);
+		border-radius: 4px;
+		transition: .3s ease, transform .2s ease-in-out;
+		background-size: cover;
+		background-position: center center;
+		text-shadow: 0 0 1px rgba(0,0,0,0.4);
+	}
+
+	a.card:link:hover, a.card:visited:hover {
 		color: #fff;
 		box-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.5);
 		filter: grayscale(0%);
-		filter: blur(0px);
+		filter: blur(10px);
 		filter: brightness(120%);
 		transform: scale(1.02);
 
 	}
 
-	a:visited {
+	a.card:visited {
 		color: #fff;
 	}
 
-	a:link {
+	a.card:link {
 		color: #fff;
 	}
 }
 
-.card {
-	box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.4);
-	border-radius: 4px;
-	transition: .3s ease, transform .2s ease-in-out;
-	background-position: cover;
-	text-shadow: 0 0 1px rgba(0,0,0,0.4);
-	// background: #333;
-	// color: #fff;
-}
 
 
 a.dropdown-item, button.dropdown-item {
@@ -229,3 +230,13 @@ a.dropdown-item, button.dropdown-item {
 		margin-top: 30px;
 	}
 }
+
+i[title] {
+    border-bottom: 1px dashed #333;
+    cursor: help;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+    font-size: 0.925em;
+}
+
