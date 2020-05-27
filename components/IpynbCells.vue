@@ -48,6 +48,8 @@
 
 <script>
 const cheerio = require('cheerio');
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
 
 var md = require('markdown-it')({
 	injected: true,
@@ -94,6 +96,16 @@ export default {
 		});
 
 		Prism.highlightAll();
+
+		tippy('i', {
+			arrow: false,
+			content(reference) {
+				const title = reference.getAttribute('title');
+				reference.removeAttribute('title');
+				return title;
+			},
+		});
+    	
 	},
 	methods: {
 		markdowned: function (text) {
@@ -106,9 +118,23 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scope lang="scss">
 	img {
 		margin: 10px;
+	}
+
+	i {
+		position: relative;
+		padding: 0 4px;
+		cursor: help;
+		white-space: pre-wrap;
+		border-radius: 4px;
+		background: #f8f8f8;
+		box-shadow: inset 1px 0 #b3b3b3, inset 0 1px #b3b3b3, inset -1px 0 #b3b3b3, inset 0 -1px #b3b3b3;
+	}
+
+	code[class*="language-"], pre[class*="language-"] {
+	    font-size: 0.925em;
 	}
 
 	.text-cell {

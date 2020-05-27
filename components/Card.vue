@@ -1,21 +1,24 @@
 <template>
 	<div class="tile is-parent">	
 		<a
-			:href="card.path" :class="`card tile is-child notification ${card.thumbnail ? 'has-thumbnail' : ''}`"
+			:href="card.path" :class="`card tile is-child ${card.thumbnail ? 'has-thumbnail' : ''}`"
 			:data-color="card.color || [100, 100, 100]"
-			:style="`${background}${height}`"
+			:style="`${height}`"
 		>
+			<div class="card-background" :style="`${background}filter: blur(2px) brightness(0.9);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;`">
+				
+			</div>
 			<div class="card-content">
 				<h2 class="title">{{card.title}}</h2>
 				<div class="description" v-if='card.description'>
 					{{card.description}}
 				</div>
 			</div>
-			<div class="top-right">
+<!-- 			<div class="top-right">
 				<div v-if="card.elements" class="counter"><strong>{{card.elements.length}}</strong> items</div>
 				<div class="lang" v-if="card.lang === 'ru'">🇷🇺</div>
 				<div class="lang" v-if="card.lang === 'en'">🇬🇧</div>
-			</div>
+			</div> -->
 		</a>
 	</div>
 </template>
@@ -55,7 +58,39 @@
 </script>
 
 
-<style scoped lang='scss'>
+<style scope lang='scss'>
+.card {
+	box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.4);
+	border-radius: 4px;
+	transition: .3s ease, transform .2s ease-in-out;
+	background-size: cover;
+	background-position: center center;
+	text-shadow: 0 0 1px rgba(0,0,0,0.4);
+}
+
+a.card:hover, a.card:hover {
+	color: #fff;
+	box-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.5);
+	transform: scale(1.02);
+}
+
+.card:visited {
+	color: #fff;
+}
+
+.card:link {
+	color: #fff;
+}
+
+.card-content {
+	position: relative;
+	top: -100%;
+	z-index: 2;
+	.title {
+		color: white;
+	}
+}
+
 .top-right {
 	position: absolute;
 	top: 10px;

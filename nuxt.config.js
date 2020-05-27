@@ -103,6 +103,9 @@ if (process.server) {
 
 module.exports = {
 	mode: 'universal',
+	router: {
+		base: '/nuxt-pwp-generated/'
+	},
 	head: {
 		title: "Oleg Nagornyy",
 		meta: [
@@ -164,7 +167,7 @@ module.exports = {
 		'@nuxtjs/sitemap',
 		'@nuxtjs/feed',
 		'nuxt-leaflet',
-		'nuxt-fontawesome',
+		// 'nuxt-fontawesome',
 		['@nuxtjs/yandex-metrika',
 			{
 				id: '51885752',
@@ -211,7 +214,6 @@ module.exports = {
 		hostname: 'https://nagornyy.me',
 		cacheTime: 1000 * 60 * 15,
 		gzip: true,
-		generate: true, // Enable me when using nuxt generate
 		routes: allRoutes
 	},
 	generate: {
@@ -226,7 +228,7 @@ module.exports = {
 			 feed.options = {
 				 title: 'Oleg Nagornyy',
 				 link: 'https://nagornyy.me/feed.xml',
-				 description: 'Feed!',
+				 description: 'RSS feed',
 			 }
 
 			 courses.forEach(course => {

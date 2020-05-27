@@ -3,8 +3,8 @@
     <channel>
         <title>Oleg Nagornyy</title>
         <link>https://nagornyy.me/feed.xml</link>
-        <description>Feed!</description>
-        <lastBuildDate>Tue, 26 May 2020 12:35:54 GMT</lastBuildDate>
+        <description>RSS feed</description>
+        <lastBuildDate>Wed, 27 May 2020 05:48:27 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/nuxt-community/feed-module</generator>
         <category>Course by Oleg Nagornyy</category>

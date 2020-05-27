@@ -579,6 +579,7 @@ let courses = [
 			hue: 'pink',
 			luminosity: 'dark'
 		}),
+		thumbnail: "Kulikov_Fair_1910.jpg",
 		description: "Построение рекомендательной системы от линейной регрессии до современных нейросетевых моделей",
 	}
 ]
