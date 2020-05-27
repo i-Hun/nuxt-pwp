@@ -5,7 +5,7 @@
 			<article class="media intro content block">
 				<figure class="media-left is-hidden-touch">
 					<p class="image is-128x128 avatar">
-						<img class="is-rounded" src="/img/avatar-2019-2.jpeg">
+						<img class="is-rounded" src="img/avatar-2019-2.jpeg">
 					</p>
 				</figure>
 				<div class="media-content">
@@ -17,7 +17,7 @@
 				</div>
 			</article>
 			<ul class="contacts block content">
-				<li><a href="/cv.pdf">{{$t("downloadCV")}}</a></li>
+				<li><a href="cv.pdf">{{$t("downloadCV")}}</a></li>
 				<li>{{$t("email")}}: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
 				<li>{{$t("vk")}}: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
 				<li>{{$t("telegram")}}: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
@@ -41,10 +41,10 @@
 				<h2>{{$t("additional_education.title")}}</h2>
 				<ul>
 					<li>
-						<nuxt-link to="/events/d97rg6bf60332qahmh9la0ar30@group.calendar.google.com" active-class="is-active">{{$t("additional_education.inliberty")}}</nuxt-link>
+						<nuxt-link to="events/d97rg6bf60332qahmh9la0ar30@group.calendar.google.com" active-class="is-active">{{$t("additional_education.inliberty")}}</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link to="/events/nkodf5abeqrpa4tm7k31b26n2k@group.calendar.google.com" active-class="is-active">{{$t("additional_education.summer_school_2018")}}</nuxt-link>
+						<nuxt-link to="events/nkodf5abeqrpa4tm7k31b26n2k@group.calendar.google.com" active-class="is-active">{{$t("additional_education.summer_school_2018")}}</nuxt-link>
 					</li>
 					<li>{{$t("additional_education.orf_school_2018")}}</li>
 					<li>{{$t("additional_education.wwsss17")}}</li>

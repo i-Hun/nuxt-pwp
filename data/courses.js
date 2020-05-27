@@ -451,7 +451,7 @@ let intro2pythonPosts = [
 		title: "Обработка ошибок",
 		titleRu: "Обработка ошибок",
 		description: "Любая программа содержит ошибки. Дело лишь в том, как с ними обращаться.",
-		thumbnail: "/img/content/bos.png",
+		// thumbnail: "/img/content/bos.png",
 		lang: "ru",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -508,7 +508,7 @@ let ann = [
 		title: "How Artificial Neural Networks Learns",
 		titleRu: "Как обучаются нейронные сети",
 		lang: "ru",
-		thumbnail: "/img/basics-of-neural-networks.gif",
+		// thumbnail: "/img/basics-of-neural-networks.gif",
 		description: "Lets talk about what makes ANN really clever — ability to learn — and investigate Gradient Descent in Backpropogation Algorithms",
 		author: "Oleg Nagornyy",
 		color: randomColor({
@@ -522,7 +522,7 @@ let ann = [
 		title: "Focal loss for imbalanced datasets",
 		titleRu: "Focal loss как функция потерь для предсказания несбалансированных классов",
 		lang: "ru",
-		thumbnail: "/img/basics-of-neural-networks.gif",
+		// thumbnail: "/img/basics-of-neural-networks.gif",
 		description: "Simple yet effective function which down-weights easy examples",
 		descriptionRu: "Простая функция потерь, которая штрафует за слишком уверенные ответы алгоритма",
 		author: "Oleg Nagornyy",
@@ -585,7 +585,7 @@ let courses = [
 ]
 
 courses.map(course => {
-	course.path = `/courses/${course.id}`
+	course.path = `courses/${course.id}`
 	return course.elements.map(lesson => {
 		lesson.path = `${course.path}/${lesson.id}`
 		return lesson

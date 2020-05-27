@@ -50,11 +50,15 @@
 		async asyncData ({params}) {
 			const course = courses.filter(course => {
 				return course.id === params.courseId
-			})
-
+			})[0]
+			// удаляем название курса т.к. пути относительные
+			// course.elements.forEach(function(el) {
+			// 	el.path = el.path.substring(el.path.indexOf('/') + 1)
+			// 	return el
+			// })
 			return {
-				lessons: course[0].elements,
-				course: course[0]
+				lessons: course.elements,
+				course: course
 			}
 		},
 	}

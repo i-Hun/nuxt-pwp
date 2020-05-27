@@ -5,7 +5,7 @@
 			:data-color="card.color || [100, 100, 100]"
 			:style="`${height}`"
 		>
-			<div class="card-background" :style="`${background}filter: blur(2px) brightness(0.9);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;`">
+			<div class="card-background" :style="`${background}filter: blur(2px) brightness(0.9) grayscale(0.1);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;`">
 				
 			</div>
 			<div class="card-content">

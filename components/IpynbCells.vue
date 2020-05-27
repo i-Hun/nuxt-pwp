@@ -50,6 +50,8 @@
 const cheerio = require('cheerio');
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
+import "~/assets/prism/prism.css";
+import "~/assets/prism/prism.js";
 
 var md = require('markdown-it')({
 	injected: true,
@@ -63,11 +65,9 @@ export default {
 	props: ["cells", "language"],
 	head: {
 		link: [
-			{ rel: 'stylesheet', href: '/css/prism.css' },
 			{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css' },
 		],
 		script: [
-			{ src: '/js/prism.js', ssr: false, async: true },
 			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, async: true },
 			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },
 			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js', ssr: false, defer: true },
@@ -118,7 +118,7 @@ export default {
 }
 </script>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 	img {
 		margin: 10px;
 	}

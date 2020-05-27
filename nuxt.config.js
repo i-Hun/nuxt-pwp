@@ -8,13 +8,13 @@ import sql_to_object from "./plugins/sql_to_object.js";
 
 const coursesUrls = courses.map((course) => {
 	return course.elements.map(lesson => {
-		return `/courses/${course.id}/${lesson.id}`;
-	}).concat(`/courses/${course.id}`)
-}).concat('/courses')
+		return `courses/${course.id}/${lesson.id}`;
+	}).concat(`courses/${course.id}`)
+}).concat('courses')
 // const eventsUrls = []
 const eventsUrls = events.map((event) => {
-	return "/events/" + event.id;
-}).concat('/events')
+	return "events/" + event.id;
+}).concat('events')
 
 // return axios.get(`https://api.tumblr.com/v2/blog/ihun.tumblr.com/posts?api_key=5YiGBDAB7Jr3YnOMEdOjxr8f8MIguZXJVFFw8ktEAvamvd3srf`)
 // .then((res) => {
@@ -35,32 +35,32 @@ Object.defineProperty(Array.prototype, 'flat', {
     }
 });
 
-let allRoutes = coursesUrls.flat().concat(eventsUrls).concat(['/travel/places/athens',
-'/travel/places/baku',
-'/travel/places/veliky-novgorod',
-'/travel/places/gumri',
-'/travel/places/dubna',
-'/travel/places/yerevan',
-'/travel/places/zyryanovsk',
-'/travel/places/kazan',
-'/travel/places/london',
-'/travel/places/msk',
-'/travel/places/omsk',
-'/travel/places/perm',
-'/travel/places/petergof',
-'/travel/places/prague',
-'/travel/places/riga',
-'/travel/places/rome',
-'/travel/places/spb',
-'/travel/places/sochi',
-'/travel/places/istanbul',
-'/travel/places/tbilisi',
-'/travel/places/helsinki',
-'/blog/london-2017',
-'/blog/georgia-2018',
-'/blog/helsinki-2019',
-'/blog/kazan-bral',
-'/blog/caucasus-tour']);
+let allRoutes = coursesUrls.flat().concat(eventsUrls).concat(['travel/places/athens',
+'travel/places/baku',
+'travel/places/veliky-novgorod',
+'travel/places/gumri',
+'travel/places/dubna',
+'travel/places/yerevan',
+'travel/places/zyryanovsk',
+'travel/places/kazan',
+'travel/places/london',
+'travel/places/msk',
+'travel/places/omsk',
+'travel/places/perm',
+'travel/places/petergof',
+'travel/places/prague',
+'travel/places/riga',
+'travel/places/rome',
+'travel/places/spb',
+'travel/places/sochi',
+'travel/places/istanbul',
+'travel/places/tbilisi',
+'travel/places/helsinki',
+'blog/london-2017',
+'blog/georgia-2018',
+'blog/helsinki-2019',
+'blog/kazan-bral',
+'blog/caucasus-tour']);
 
 if (process.server) {
 
@@ -83,7 +83,7 @@ if (process.server) {
 		);
 
 		const places = sql_to_object(places_sql);
-		const placesUrl = places.map(place => '/travel/places/' + place.place_id);
+		const placesUrl = places.map(place => 'travel/places/' + place.place_id);
 
 		const posts_sql = db.exec(
 			`SELECT
@@ -101,8 +101,11 @@ if (process.server) {
 
 }
 
-module.exports = {
+export default {
 	mode: 'universal',
+	router: {
+		base: '/'
+	},
 	head: {
 		title: "Oleg Nagornyy",
 		meta: [
@@ -123,7 +126,7 @@ module.exports = {
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
 			{ rel: 'apple-touch-icon', href: '/favicons/apple-touch-icon.png', sizes: '180x180'},
-			{ rel: 'alternate', href: '/feed.xml', title: "RSS Feed for nagornyy.me", type: "application/rss+xml" },
+			// { rel: 'alternate', href: '/feed.xml', title: "RSS Feed for nagornyy.me", type: "application/rss+xml" },
 			{ rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'},
 		],
 		script: [
@@ -152,7 +155,7 @@ module.exports = {
 	** Plugins to load before mounting the App
 	*/
 	plugins: [
-		{ src: '~plugins/ga.js', ssr: false },
+		{ src: '~/plugins/ga.js', ssr: false },
 	],
 
 	/*
@@ -162,7 +165,7 @@ module.exports = {
 		'@nuxtjs/axios',
 		'@nuxtjs/markdownit',
 		'@nuxtjs/sitemap',
-		'@nuxtjs/feed',
+		// '@nuxtjs/feed',
 		'nuxt-leaflet',
 		// 'nuxt-fontawesome',
 		['@nuxtjs/yandex-metrika',
@@ -218,41 +221,41 @@ module.exports = {
 			return allRoutes;
 		}
 	},
-	feed: [
-	 {
-		 path: '/feed.xml', // The route to your feed.
-		 async create (feed){
-			 feed.options = {
-				 title: 'Oleg Nagornyy',
-				 link: 'https://nagornyy.me/feed.xml',
-				 description: 'RSS feed',
-			 }
+	// feed: [
+	//  {
+	// 	 path: '/feed.xml', // The route to your feed.
+	// 	 async create (feed){
+	// 		 feed.options = {
+	// 			 title: 'Oleg Nagornyy',
+	// 			 link: 'https://nagornyy.me/feed.xml',
+	// 			 description: 'RSS feed',
+	// 		 }
 
-			 courses.forEach(course => {
-				 course.elements.forEach(lesson => {
-					 feed.addItem({
-						 title: lesson.title,
-						 id: lesson.url,
-						 link: "https://nagornyy.me" + lesson.path,
-						 description: lesson.description,
-						 category: course.title
-					 })	
-				 })
+	// 		 courses.forEach(course => {
+	// 			 course.elements.forEach(lesson => {
+	// 				 feed.addItem({
+	// 					 title: lesson.title,
+	// 					 id: lesson.url,
+	// 					 link: "https://nagornyy.me" + lesson.path,
+	// 					 description: lesson.description,
+	// 					 category: course.title
+	// 				 })	
+	// 			 })
 
-			 })
+	// 		 })
 
-			 feed.addCategory('Course by Oleg Nagornyy');
+	// 		 feed.addCategory('Course by Oleg Nagornyy');
 
-			 feed.addContributor({
-				 name: 'Oleg Nagornyy',
-				 email: 'nagornyy.o@gmail.com',
-				 link: 'https://nagornyy.me/'
-			 })
-		 },
-		 cacheTime: 1000 * 60 * 15, // How long should the feed be cached
-		 type: 'rss2', // Can be: rss2, atom1, json1
-	 }
-	],
+	// 		 feed.addContributor({
+	// 			 name: 'Oleg Nagornyy',
+	// 			 email: 'nagornyy.o@gmail.com',
+	// 			 link: 'https://nagornyy.me/'
+	// 		 })
+	// 	 },
+	// 	 cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+	// 	 type: 'rss2', // Can be: rss2, atom1, json1
+	//  }
+	// ],
 	build: {
 		// analyze: true,
 		extend(config, ctx) {

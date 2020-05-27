@@ -75,13 +75,11 @@
 			Array.from(cards).forEach(function(card) {
 				let bg = card.getElementsByClassName("card-background")[0]
 				card.addEventListener("mouseenter", function(event) {   
-					console.log(event);
 					bg.style.filter = "blur(0px) brightness(1)";
 				});
 
 				card.addEventListener("mouseleave", function(event) {   
-					console.log(event);
-					bg.style.filter = "blur(2px) brightness(0.9)";
+					bg.style.filter = "blur(2px) brightness(0.9) grayscale(0.1)";
 				});
 			});
 		}

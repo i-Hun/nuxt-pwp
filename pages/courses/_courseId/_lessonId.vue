@@ -1,5 +1,6 @@
 <template>
 	<section class="ipynb-post">
+		<br>
 		<h1 class="title">{{lesson.title}}</h1>
 		<nav class="breadcrumb" aria-label="breadcrumbs">
 			<ul>
@@ -56,8 +57,8 @@ export default {
 	// 	}
 	// },
 	head () {
-		const title = `${this.lesson.title} | ${this.lesson.author}`;
-		const description = this.lesson.description ? this.lesson.description : `${this.lesson.title} | ${this.course.title}” | ${this.lesson.author}.`
+		const title = `${this.lesson.title} by ${this.lesson.author}`;
+		const description = this.lesson.description ? this.lesson.description : `Lesson “${this.lesson.title}” from the сourse “${this.course.title}” by ${this.lesson.author}.`
 		return {
 			title: title,
 			meta: [
