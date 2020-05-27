@@ -3,22 +3,20 @@
 		<a
 			:href="card.path" :class="`card tile is-child ${card.thumbnail ? 'has-thumbnail' : ''}`"
 			:data-color="card.color || [100, 100, 100]"
-			:style="`${height}`"
+			:style="cssVars"
+			:id="card.id"
 		>
-			<div class="card-background" :style="`${background}filter: blur(2px) brightness(0.9) grayscale(0.1);height: 100%;background-position: center;background-repeat: no-repeat;background-size: cover;`">
-				
-			</div>
 			<div class="card-content">
 				<h2 class="title">{{card.title}}</h2>
 				<div class="description" v-if='card.description'>
 					{{card.description}}
 				</div>
-			</div>
 <!-- 			<div class="top-right">
 				<div v-if="card.elements" class="counter"><strong>{{card.elements.length}}</strong> items</div>
 				<div class="lang" v-if="card.lang === 'ru'">🇷🇺</div>
 				<div class="lang" v-if="card.lang === 'en'">🇬🇧</div>
 			</div> -->
+			</div>
 		</a>
 	</div>
 </template>
@@ -36,39 +34,78 @@
 			},
 		},
 		computed: {
-			background: function () {
-				if (this.card.thumbnail) {
-					return `background-image: url(/img/thumbnails/${this.card.thumbnail}); background-size:cover;`
-				} else {
-					if (this.card.color) {
-						return `background: linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%);`
-					} else {
-						return "background-color: #111;"
-					}
-				}
-			},
-
-			height: function () {
+			// background: function () {
+			// 	if (this.card.thumbnail) {
+			// 		return `background-image: url(/img/thumbnails/${this.card.thumbnail}); background-size:cover;`
+			// 	} else {
+			// 		if (this.card.color) {
+			// 			return `background: linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%);`
+			// 		} else {
+			// 			return "background-color: #111;"
+			// 		}
+			// 	}
+			// },
+			cssVars() {
+				let minheight = null;
 				if (this.size === "2") {
-					return "min-height: 300px;"
+					minheight = "300px"
+				} else{
+					minheight = "0px"
+				}
+				let bgcolor = null;
+				if (this.card.color && !this.card.thumbnail) {
+					bgcolor = `linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%)`
+				} else {
+					if (!this.card.thumbnail) {
+						bgcolor = "#222"
+					} else {
+						bgcolor = "#bbb"
+					}
+					
+				}
+
+				let bgimg = null;
+				if (this.card.thumbnail) {
+					bgimg = `url("/img/thumbnails/${this.card.thumbnail}")`
+				} else {
+					bgimg = "none"
+				}
+				return {
+					'--bgimg': bgimg,
+					'--minheight': minheight,
+					'--bgcolor': bgcolor
 				}
 			}
 		},
+		// mounted() {
+		// 	console.log(this.$el.getElementsByClassName("card")[0])
+		// 	let card = this.$el.getElementsByClassName("card")[0]
+		// 	card.pseudoStyle("before","background-image", `url('${this.card.thumbnail})`);
+		// 	// .style.backgroundImage = "url('URL')|none|initial|inherit"
+		// }
 	}
 </script>
 
 
-<style scope lang='scss'>
+<style scoped>
 .card {
 	box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.4);
 	border-radius: 4px;
 	transition: .3s ease, transform .2s ease-in-out;
-	background-size: cover;
-	background-position: center center;
+	position: relative;
 	text-shadow: 0 0 1px rgba(0,0,0,0.4);
+	background: var(--bgcolor);
+	
+}
+.card-content {
+	position: relative;
 }
 
-a.card:hover, a.card:hover {
+a.card:hover::before {
+	filter: grayscale(0%) blur(0px);
+}
+
+a.card:hover {
 	color: #fff;
 	box-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.5);
 	transform: scale(1.02);
@@ -82,13 +119,16 @@ a.card:hover, a.card:hover {
 	color: #fff;
 }
 
-.card-content {
-	position: relative;
-	top: -100%;
-	z-index: 2;
-	.title {
-		color: white;
-	}
+.card::before {
+	content: "";
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	filter: grayscale(10%) blur(2px);
+	min-height: var(--minheight);
+	background-image: var(--bgimg);
+	background-size: cover;
+	background-position: center center;
 }
 
 .top-right {

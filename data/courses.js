@@ -3,7 +3,7 @@ var randomColor = require('randomcolor');
 let recommendationSystems = [
 	{
 		id: "introduction-to-recommendation-systems",
-		title: "Постановка задачи и виды рекоммендательных систем",
+		title: "Постановка задачи и виды рекомендательных систем",
 		lang: "ru",
 		thumbnail: "Kulikov_Fair_1910.jpg",
 		date: "2020-02-08",
@@ -21,7 +21,7 @@ let recommendationSystems = [
 		lang: "ru",
 		thumbnail: "rodchenko-construction.jpg",
 		date: "2020-02-27",
-		description: "Простая для понимания, мощная в применении. Именно с регрессионной модели начнётся построение нашей рекоммендательной системы.",
+		description: "Простая для понимания, мощная в применении. Именно с регрессионной модели начнётся построение нашей рекомендательной системы.",
 		author: "Oleg Nagornyy",
 		color: randomColor({
 			count: 3,

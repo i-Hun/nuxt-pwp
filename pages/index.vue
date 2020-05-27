@@ -18,11 +18,11 @@
 			</article>
 			<ul class="contacts block content">
 				<li><a href="cv.pdf">{{$t("downloadCV")}}</a></li>
-				<li>{{$t("email")}}: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
+<!-- 				<li>{{$t("email")}}: <a href="mailto:nagornyy.o@gmail.com" target="_blank">nagornyy.o@gmail.com</a></li>
 				<li>{{$t("vk")}}: <a href="https://vk.com/n.oleg" target="_blank">vk.com/n.oleg</a></li>
 				<li>{{$t("telegram")}}: <a href="https://t.me/i_Hun" target="_blank">@i_Hun</a></li>
 				<li>{{$t("skype")}}: <a href="skype:nagornyy_oleg?add" target="_blank">nagornyy_oleg</a></li>
-			</ul>
+ -->			</ul>
 
 			<div class="courses">
 				<h2 class="title">{{$t("myCourses")}} <span>{{$t("coursesDisclaimer")}}</span></h2>
