@@ -1,7 +1,7 @@
 <template>
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
 	<div class="navbar-brand">
-		<nuxt-link class="navbar-item logo" :to="localePath('index')" active-class="is-active" v-if="$nuxt.$route.path !== '/'">{{$t("profile.fullName")}}</nuxt-link>
+		<a class="navbar-item logo" href="/" active-class="is-active" v-if="$nuxt.$route.path !== '/'">{{$t("profile.fullName")}}</a>
 		<span class="navbar-item logo" v-else>{{$t("profile.fullName")}}</span>
 
 		<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

@@ -95,6 +95,9 @@
 	position: relative;
 	text-shadow: 0 0 1px rgba(0,0,0,0.4);
 	background: var(--bgcolor);
+	background-image: var(--bgimg);
+	background-size: cover;
+	background-position: center center;
 	
 }
 .card-content {
@@ -124,7 +127,8 @@ a.card:hover {
 	position: absolute;
 	top: 0; left: 0;
 	width: 100%; height: 100%;
-	filter: grayscale(10%) blur(2px);
+	transition: filter .2s linear;
+	filter: grayscale(20%) blur(14px);
 	min-height: var(--minheight);
 	background-image: var(--bgimg);
 	background-size: cover;
