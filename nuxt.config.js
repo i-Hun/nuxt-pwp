@@ -103,9 +103,6 @@ if (process.server) {
 
 module.exports = {
 	mode: 'universal',
-	router: {
-		base: '/nuxt-pwp-generated/'
-	},
 	head: {
 		title: "Oleg Nagornyy",
 		meta: [
