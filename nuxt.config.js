@@ -130,10 +130,9 @@ export default {
 			{ rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'},
 		],
 		script: [
-			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js', ssr: true, async: true },
-			{ src: 'https://use.fontawesome.com/releases/v5.3.1/js/all.js', ssr: true, async: true },
+			// { src: 'https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js', ssr: true, async: true },
+			// { src: 'https://use.fontawesome.com/releases/v5.3.1/js/all.js', ssr: true, async: true },
 		]
-
 	},
 	api: {
 		baseURL: 'https://nagornyy.me',
