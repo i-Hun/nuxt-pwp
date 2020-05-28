@@ -3,7 +3,7 @@
 		<aside class="menu js-toc"></aside>
 		<div v-for="cell in cells" class="cell content">
 			<div v-if="cell.cell_type === 'code'" class="code-cell">
-				<pre><div :class="`language-${language}`" v-html="highlightCode(cell.source.join(''), language)"></div></pre>
+				<pre><div :class="`language-${cell.metadata.language ? cell.metadata.language : language}`" v-html="highlightCode(cell.source.join(''), cell.metadata.language ? cell.metadata.language : language)"></div></pre>
 			</div>
 
 			<div v-if="cell.hasOwnProperty('outputs') && cell.outputs.length" class="code-outputs">
@@ -19,7 +19,7 @@
 
 
 					<div v-if="output.hasOwnProperty('data') && output.data.hasOwnProperty('text/html')"
-						v-html="output.data['text/html'].join('')" class="output-text-html"></div>
+						v-html="renderOutput(output.data['text/html'].join(''))" class="output-text-html"></div>
 
 					<div v-if="output.hasOwnProperty('data')
 						&& output.data.hasOwnProperty('text/plain')
@@ -40,7 +40,7 @@
 
 				</div>
 			</div>
-			<div class='text-cell' v-if="(cell.cell_type === 'markdown')" v-html="render(cell.source)" :class="cell.metadata.task ? 'task' : ''">
+			<div class='text-cell' v-if="(cell.cell_type === 'markdown')" v-html="renderText(cell.source)" :class="cell.metadata.task ? 'task' : ''">
 			</div>
 		</div>
 	</div>
@@ -50,7 +50,7 @@
 const cheerio = require('cheerio');
 
 // import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
+// import 'tippy.js/dist/tippy.css';
 
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
@@ -58,7 +58,7 @@ import 'katex/dist/katex.min.css';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 const loadLanguages = require('prismjs/components/');
-loadLanguages(['python', "sql", "r", "julia"]);
+loadLanguages(['r', 'python', "sql", "julia"]);
 
 // import hljs from 'highlight.js';
 // import 'highlight.js/styles/github.css';
@@ -128,25 +128,30 @@ export default {
     	
 	// },
 	methods: {
-		render: function (text) {
+		renderText: function (text) {
+			text = text.replace(/border="1"/g, "");
 			text = text.replace(/\\\\/g, "\\\\\\\\");
 			let result = md.render(text);
 			result = result.replace(/img\//g, "/img/content/");
 
 			result = result.replace(/\$\$(.*?)\$\$/g, function(outer, inner) {
-			    return katex.renderToString(inner, { displayMode: true });
+			    return katex.renderToString(inner, { displayMode: true, throwOnError: false, strict: "ignore"});
 			})
 			result = result.replace(/\$(.*?)\$/g, function(outer, inner) {
-			    return katex.renderToString(inner, { displayMode: false });
+			    return katex.renderToString(inner, { displayMode: false, throwOnError: false, strict: "ignore"});
 			})
-
 			result = result.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/g, function(outer, inner) {
-			    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true });
+			    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true, throwOnError: false, strict: "ignore"});
 			})
 			return result
 		},
+		renderOutput: function (text) {
+			// TODO удалять только внутри тэга
+			text = text.replace(/border="1"/g, "");
+			return text
+		},
 		highlightCode: function(code, language) {
-			const html = Prism.highlight(code, Prism.languages[language], language);
+			const html = Prism.highlight(code, Prism.languages[language.toLowerCase()], language.toLowerCase());
 			// const html = hljs.highlightAuto(code, "python").value
 			// const html = hljs.highlight("python", code).value
 			return html
