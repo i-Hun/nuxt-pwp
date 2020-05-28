@@ -1,7 +1,7 @@
 <template>
 	<div class="blog">
 		<h1>{{$t("blog.title")}}</h1>
-		<Cards :cards="posts" size="2"></Cards>
+		<Cards :cards="posts" size="3"></Cards>
 	</div>
 </template>
 

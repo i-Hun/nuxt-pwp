@@ -87,6 +87,21 @@ export default {
 		}
 	},
 	async asyncData (context) {
+
+		let thisLesson = null;
+		let thisCourse = null;
+
+		for (let course of courses) {
+			if (course.id === context.params.courseId) {
+				thisCourse = course;
+				for (let lesson of course.elements) {
+					if (lesson.id === context.params.lessonId) {
+						thisLesson = lesson;
+					}
+				}
+			} 
+		}
+
 		const notebookPath = `static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
 		let notebook = undefined;
 
@@ -116,7 +131,11 @@ export default {
 
 				for (let reference of Object.keys(references)) {
 
-					cell_text = cell_text.replace(new RegExp(`\\(${reference}\\)`, 'gi'), `<a href='#ref-${references[reference]}' class='intext-ref'>[${references[reference]}]</a>`)
+					cell_text = cell_text.replace(
+						new RegExp(`\\(${reference}\\)`, 'gi'),
+						// `<a href='${thisLesson.path}#ref-${references[reference]}' class='intext-ref'>[${references[reference]}]</a>`
+						`<span class='intext-ref'>[${references[reference]}]</span>`
+						)
 				}
 
 				cell.source = cell_text
@@ -145,21 +164,6 @@ export default {
 
 
 		let refs = await Promise.all(promises);
-
-
-		let thisLesson = null;
-		let thisCourse = null;
-
-		for (let course of courses) {
-			if (course.id === context.params.courseId) {
-				thisCourse = course;
-				for (let lesson of course.elements) {
-					if (lesson.id === context.params.lessonId) {
-						thisLesson = lesson;
-					}
-				}
-			} 
-		}
 
 		return {
 			cells: cells,

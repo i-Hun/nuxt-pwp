@@ -52,6 +52,7 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import "~/assets/prism/prism.css";
 import "~/assets/prism/prism.js";
+const katex = require('katex');
 
 var md = require('markdown-it')({
 	injected: true,
@@ -65,24 +66,16 @@ export default {
 	props: ["cells", "language"],
 	head: {
 		link: [
-			{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css' },
+			// { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css' },
 		],
 		script: [
 			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, async: true },
-			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },
-			{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js', ssr: false, defer: true },
+			// { src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },
+			// { src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js', ssr: false, defer: true },
 			// { src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/copy-tex.min.js', ssr: false, defer: true },
 		]
 	},
 	mounted(){
-        renderMathInElement(document.body, {
-			delimiters:[
-				{left: "$$", right: "$$", display: true},
-				{left: "$", right: "$", display: false}
-			],
-			strict: "ignore"
-		});
-
 		tocbot.init({
 			// Where to render the table of contents.
 			tocSelector: '.js-toc',
@@ -110,20 +103,31 @@ export default {
 	methods: {
 		markdowned: function (text) {
 			text = text.replace(/\\\\/g, "\\\\\\\\");
-			var result = md.render(text);
+			let result = md.render(text);
 			result = result.replace(/img\//g, "/img/content/");
-			return result;
+
+			result = result.replace(/\$\$(.*?)\$\$/g, function(outer, inner) {
+			    return katex.renderToString(inner, { displayMode: true });
+			})
+			result = result.replace(/\$(.*?)\$/g, function(outer, inner) {
+			    return katex.renderToString(inner, { displayMode: false });
+			})
+
+			result = result.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/g, function(outer, inner) {
+			    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true });
+			})
+			return result
 		}
 	}
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 	img {
 		margin: 10px;
 	}
 
-	i {
+	.ipynb-cells i {
 		position: relative;
 		padding: 0 4px;
 		cursor: help;
@@ -133,135 +137,11 @@ export default {
 		box-shadow: inset 1px 0 #b3b3b3, inset 0 1px #b3b3b3, inset -1px 0 #b3b3b3, inset 0 -1px #b3b3b3;
 	}
 
-	code[class*="language-"], pre[class*="language-"] {
-	    font-size: 0.925em;
-	}
-
 	.text-cell {
 		background-color: #fff;
 		margin: 2em 0em 0em 0em;
 	}
 
-	.note {
-		blockquote {
-			margin: 0;
-		}
-		
-		p {
-			margin: 3px 0;
-		}
-	}
-
-	@media screen and (min-width: 1280px) {
-		.note {
-			font-size: .8em;
-			float: right;
-			margin: -6rem -14rem 0 0rem;
-			max-width: 400px;
-			width: 14rem;
-			line-height: normal;
-			font-style: italic;
-			font-weight: 400;
-
-			figure {
-				margin: 0;
-				img {
-					margin: 0;
-				}
-			}
-		}
-	}
-
-	@media screen and (max-width: 1280px) {
-		.note {
-			font-style: italic;
-		}
-	}
-
-
-	summary {
-		margin: -.5em -.5em 0;
-		padding: .5em;
-		cursor: pointer;
-		& > * {
-			border-bottom: 1px dashed #999;
-			display: inline;
-		}
-	}
-
-	details[open] {
-		border: 1px solid #aaa;
-		border-radius: 4px;
-		padding: .5em .5em 0;
-	}
-
-	.js-toc {
-		position: fixed;
-		top: 3.25rem;
-		right: 10px;
-		width: 250px;
-		font-size: 0.8rem;
-		color: #bbb;
-		overflow-y: scroll;
-		bottom: 0;
-		a {
-			opacity: 0.2;
-			text-decoration: none;
-			color: black;
-		}
-
-		&:hover {
-			opacity: 1;
-			a {
-				opacity: 1;
-			}
-		}
-	}
-
-	@media screen and (max-width: 1024px) {
-		.js-toc {
-			position: inherit;
-			top: 0;
-			right: 0px;
-			width: 100%;
-		}
-	}
-
-
-	.is-active-li {
-		font-weight: 900;
-		color: #000;
-
-			a {
-				opacity: 1;
-			}
-	}
-
-	.task {
-		border-color: #3273dc;
-		border-radius: 4px;
-		border-style: solid;
-		border-width: 0 0 0 4px;
-		color: #22509a;
-		padding: 1.25em 1.5em;
-		background-color: #f6f9fe;
-		box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.18)
-
-
-	}
-
-	.task::before {
-		content: "Exercise";
-		font-size: 0.7rem;
-		float: right;
-		text-shadow: 0 0 2px #fff;
-		font-weight: 700;
-		position: relative;
-		top: -20px;
-		margin-bottom: -30px;
-		right: -20px;
-		color: #b0bfd8;
-	}
 
 .output-text-plain, .output-text {
 	border: 1px dashed #aaa;

@@ -34,17 +34,6 @@
 			},
 		},
 		computed: {
-			// background: function () {
-			// 	if (this.card.thumbnail) {
-			// 		return `background-image: url(/img/thumbnails/${this.card.thumbnail}); background-size:cover;`
-			// 	} else {
-			// 		if (this.card.color) {
-			// 			return `background: linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%);`
-			// 		} else {
-			// 			return "background-color: #111;"
-			// 		}
-			// 	}
-			// },
 			cssVars() {
 				let minheight = null;
 				if (this.size === "2") {
@@ -52,37 +41,23 @@
 				} else{
 					minheight = "0px"
 				}
-				let bgcolor = null;
-				if (this.card.color && !this.card.thumbnail) {
-					bgcolor = `linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%)`
-				} else {
-					if (!this.card.thumbnail) {
-						bgcolor = "#222"
-					} else {
-						bgcolor = "#bbb"
-					}
-					
-				}
 
 				let bgimg = null;
 				if (this.card.thumbnail) {
 					bgimg = `url("/img/thumbnails/${this.card.thumbnail}")`
 				} else {
-					bgimg = "none"
+					if (this.card.color) {
+						bgimg = `linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%)`;
+					} else {
+						bgimg = "#222"
+					}
 				}
 				return {
 					'--bgimg': bgimg,
 					'--minheight': minheight,
-					'--bgcolor': bgcolor
 				}
 			}
 		},
-		// mounted() {
-		// 	console.log(this.$el.getElementsByClassName("card")[0])
-		// 	let card = this.$el.getElementsByClassName("card")[0]
-		// 	card.pseudoStyle("before","background-image", `url('${this.card.thumbnail})`);
-		// 	// .style.backgroundImage = "url('URL')|none|initial|inherit"
-		// }
 	}
 </script>
 
@@ -94,7 +69,6 @@
 	transition: .3s ease, transform .2s ease-in-out;
 	position: relative;
 	text-shadow: 0 0 1px rgba(0,0,0,0.4);
-	background: var(--bgcolor);
 	background-image: var(--bgimg);
 	background-size: cover;
 	background-position: center center;
