@@ -164,9 +164,9 @@ export default {
 		'@nuxtjs/axios',
 		'@nuxtjs/markdownit',
 		'@nuxtjs/sitemap',
-		// '@nuxtjs/feed',
+		"nuxt-compress",
+		'@nuxtjs/feed',
 		'nuxt-leaflet',
-		// 'nuxt-fontawesome',
 		['@nuxtjs/yandex-metrika',
 			{
 				id: '51885752',
@@ -206,7 +206,18 @@ export default {
 					ru: require('./data/locales/ru.json'),
 				}
 			}
-		}]
+		}],
+		[
+		"nuxt-compress",
+			{
+				gzip: {
+					cache: true
+				},
+				brotli: {
+					threshold: 10240
+				}
+			}
+		]
 	],
 	sitemap: {
 		path: '/sitemap.xml',
@@ -221,39 +232,39 @@ export default {
 		}
 	},
 	feed: [
-	 {
-		 path: '/feed.xml', // The route to your feed.
-		 async create (feed){
-			 feed.options = {
-				 title: 'Oleg Nagornyy',
-				 link: 'https://nagornyy.me/feed.xml',
-				 description: 'RSS feed',
-			 }
+		 {
+			 path: '/feed.xml', // The route to your feed.
+			 async create (feed){
+				 feed.options = {
+					 title: 'Oleg Nagornyy',
+					 link: 'https://nagornyy.me/feed.xml',
+					 description: 'RSS feed',
+				 }
 
-			 courses.forEach(course => {
-				 course.elements.forEach(lesson => {
-					 feed.addItem({
-						 title: lesson.title,
-						 id: lesson.url,
-						 link: "https://nagornyy.me" + lesson.path,
-						 description: lesson.description,
-						 category: course.title
-					 })	
+				 courses.forEach(course => {
+					 course.elements.forEach(lesson => {
+						 feed.addItem({
+							 title: lesson.title,
+							 id: lesson.url,
+							 link: "https://nagornyy.me" + lesson.path,
+							 description: lesson.description,
+							 category: course.title
+						 })	
+					 })
+
 				 })
 
-			 })
+				 feed.addCategory('Course by Oleg Nagornyy');
 
-			 feed.addCategory('Course by Oleg Nagornyy');
-
-			 feed.addContributor({
-				 name: 'Oleg Nagornyy',
-				 email: 'nagornyy.o@gmail.com',
-				 link: 'https://nagornyy.me/'
-			 })
-		 },
-		 cacheTime: 1000 * 60 * 15, // How long should the feed be cached
-		 type: 'rss2', // Can be: rss2, atom1, json1
-	 }
+				 feed.addContributor({
+					 name: 'Oleg Nagornyy',
+					 email: 'nagornyy.o@gmail.com',
+					 link: 'https://nagornyy.me/'
+				 })
+			 },
+			 cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+			 type: 'rss2', // Can be: rss2, atom1, json1
+		},
 	],
 	build: {
 		// analyze: true,

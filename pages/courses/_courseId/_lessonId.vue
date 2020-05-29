@@ -4,18 +4,15 @@
 		<h1 class="title">{{lesson.title}}</h1>
 		<nav class="breadcrumb" aria-label="breadcrumbs">
 			<ul>
-				<li><a href="/courses/">Courses</a></li>
-				<li><a :href="'/courses/' + course.id">{{course.title}}</a></li>
-				<li>
+				<li><a href="/courses/">{{$t("courses")}}</a></li>
+				<li class="breadcrumb-course">
 					<div class="dropdown is-hoverable">
 						<div class="dropdown-trigger">
-							<div aria-haspopup="true" aria-controls="dropdown-menu4">
-								<a>
-									{{lesson.title}}
-								</a>
+							<div aria-haspopup="true" aria-controls="dropdown-lessons">
+								<a :href="'/courses/' + course.id">{{course.title}}</a>
 							</div>
 						</div>
-						<div class="dropdown-menu" id="dropdown-menu4" role="menu">
+						<div class="dropdown-menu" id="dropdown-lessons" role="menu">
 							<div class="dropdown-content">
 								<a class="dropdown-item" v-for="lesson in course.elements" :href="lesson.path">
 									{{lesson.title}}
@@ -23,6 +20,9 @@
 							</div>
 						</div>
 					</div>
+				</li>
+				<li class="is-active">
+					<a href="#" aria-current="page">{{lesson.title}}</a>
 				</li>
 			</ul>
 		</nav>
@@ -130,10 +130,9 @@ export default {
 				}
 
 				for (let reference of Object.keys(references)) {
-
 					cell_text = cell_text.replace(
 						new RegExp(`\\(${reference}\\)`, 'gi'),
-						// `<a href='${thisLesson.path}#ref-${references[reference]}' class='intext-ref'>[${references[reference]}]</a>`
+						// `<a href='#ref-${references[reference]}' class='intext-ref'>[${references[reference]}]</a>`
 						`<span class='intext-ref'>[${references[reference]}]</span>`
 						)
 				}
@@ -184,6 +183,14 @@ export default {
 }
 .breadcrumb {
 	margin-top: 30px;
+}
+
+
+.breadcrumb-course {
+	.dropdown-trigger a {
+		color: #333;
+		border-bottom: 1px dashed rgba(0,137,255,.8);
+	}
 }
 
 </style>

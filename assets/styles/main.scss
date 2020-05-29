@@ -10,10 +10,7 @@
 @import 'tables.scss';
 @import 'balloon.scss';
 @import 'first-page.scss';
-//@import "/Users/hun/pwp-v3/node_modules/bulma-badge/dist/css/bulma-badge.sass";
-// @import 'firework.scss';
-
-// @import 'highlight.github.min.scss';
+@import "balloon.scss";
 
 
 html {
@@ -28,7 +25,7 @@ html {
 
 
 body, button, input, select, textarea {
-		font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 body {
@@ -62,7 +59,7 @@ blockquote {
 }
 
 i, cite, em, var, address, dfn {
-		font-style: italic;
+	font-style: italic;
 }
 
 
@@ -109,13 +106,6 @@ a.dropdown-item, button.dropdown-item {
     justify-content: left;
 }
 
-.breadcrumb > ul > li:last-child {
-
-	.dropdown-trigger a {
-		color: #333;
-		border-bottom: 1px dashed rgba(0,137,255,.3);
-	}
-}
 
 @media screen and (min-width: 1088px) {
 	.bd-lead {

@@ -11,6 +11,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@creativebulma/bulma-tooltip": "^1.2.0",
     "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/feed": "^2.0.0",
     "@nuxtjs/font-awesome": "^1.0.4",
@@ -19,6 +20,7 @@
     "@nuxtjs/sitemap": "^2.3.0",
     "@nuxtjs/yandex-metrika": "^1.0.3",
     "arc": "^0.1.1",
+    "balloon-css": "^1.0.4",
     "bulma-badge": "^3.0.1",
     "cheerio": "^1.0.0-rc.3",
     "child_process": "^1.0.2",
@@ -31,6 +33,7 @@
     "netlify-cli": "^2.52.0",
     "node-sass": "^4.14.1",
     "nuxt": "^2.12.2",
+    "nuxt-compress": "^2.0.0",
     "nuxt-i18n": "^6.12.0",
     "nuxt-leaflet": "0.0.21",
     "prismjs": "^1.20.0",

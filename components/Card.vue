@@ -62,11 +62,11 @@
 </script>
 
 
-<style scoped>
+<style scoped lang='scss'>
 .card {
-	box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.4);
+	box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.3);
 	border-radius: 4px;
-	transition: .3s ease, transform .2s ease-in-out;
+	transition: .3s ease-out, transform .2s ease-out;
 	position: relative;
 	text-shadow: 0 0 1px rgba(0,0,0,0.4);
 	background-image: var(--bgimg);
@@ -84,7 +84,7 @@ a.card:hover::before {
 
 a.card:hover {
 	color: #fff;
-	box-shadow: 0px 0px 1.5rem rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 1rem rgba(0,0,0,.8);
 	transform: scale(1.02);
 }
 
@@ -99,10 +99,12 @@ a.card:hover {
 .card::before {
 	content: "";
 	position: absolute;
-	top: 0; left: 0;
-	width: 100%; height: 100%;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	transition: filter .2s linear;
-	filter: grayscale(20%) blur(14px);
+	filter: grayscale(20%) blur(8px);
 	min-height: var(--minheight);
 	background-image: var(--bgimg);
 	background-size: cover;

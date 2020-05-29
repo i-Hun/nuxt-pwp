@@ -47,22 +47,16 @@
 </template>
 
 <script>
-const cheerio = require('cheerio');
-
-// import tippy from 'tippy.js';
-// import 'tippy.js/dist/tippy.css';
-
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
+
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
 
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 const loadLanguages = require('prismjs/components/');
 loadLanguages(['r', 'python', "sql", "julia"]);
-
-// import hljs from 'highlight.js';
-// import 'highlight.js/styles/github.css';
-
 
 var md = require('markdown-it')({
 	injected: true,
@@ -100,36 +94,34 @@ export default {
 	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/copy-tex.min.js', ssr: false, defer: true },
 	// 	]
 	// },
-	// mounted(){
-		
-	// 	loadJsFile("https://unpkg.com/@popperjs/core@2", "fdf");
-	// 	loadJsFile("https://unpkg.com/tippy.js@6", "fdf1");
+	mounted(){
 
-	// 	tocbot.init({
-	// 		// Where to render the table of contents.
-	// 		tocSelector: '.js-toc',
-	// 		// Where to grab the headings to build the table of contents.
-	// 		contentSelector: '.ipynb-cells',
-	// 		// Which headings to grab inside of the contentSelector element.
-	// 		headingSelector: 'h2, h3',
-	// 		listClass: 'menu-list',
-	// 		activeLinkClass: 'is-active',
-	// 		orderedList: false,
-	// 	});
+		// tocbot.init({
+		// 	// Where to render the table of contents.
+		// 	tocSelector: '.js-toc',
+		// 	// Where to grab the headings to build the table of contents.
+		// 	contentSelector: '.ipynb-cells',
+		// 	// Which headings to grab inside of the contentSelector element.
+		// 	headingSelector: 'h2, h3',
+		// 	listClass: 'menu-list',
+		// 	activeLinkClass: 'is-active',
+		// 	orderedList: false,
+		// });
 
-	// 	tippy('i', {
-	// 		arrow: false,
-	// 		content(reference) {
-	// 			const title = reference.getAttribute('title');
-	// 			reference.removeAttribute('title');
-	// 			return title;
-	// 		},
-	// 	});
+		console.log("mounted");
+
+		// tippy('i', {
+		// 	arrow: false,
+		// 	content(reference) {
+		// 		const title = reference.getAttribute('title');
+		// 		reference.removeAttribute('title');
+		// 		return title;
+		// 	},
+		// });
     	
-	// },
+	},
 	methods: {
 		renderText: function (text) {
-			text = text.replace(/border="1"/g, "");
 			text = text.replace(/\\\\/g, "\\\\\\\\");
 			let result = md.render(text);
 			result = result.replace(/img\//g, "/img/content/");
@@ -143,6 +135,15 @@ export default {
 			result = result.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/g, function(outer, inner) {
 			    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true, throwOnError: false, strict: "ignore"});
 			})
+
+			// const $ = cheerio.load(result);
+			// $('i[title]').each(function(){
+			// 	const title = $(this).attr('title');
+			// 	console.log(title)
+			// 	$(this).attr("data-tooltip", title);
+			// });
+			// result = $.html();
+
 			return result
 		},
 		renderOutput: function (text) {
@@ -152,8 +153,6 @@ export default {
 		},
 		highlightCode: function(code, language) {
 			const html = Prism.highlight(code, Prism.languages[language.toLowerCase()], language.toLowerCase());
-			// const html = hljs.highlightAuto(code, "python").value
-			// const html = hljs.highlight("python", code).value
 			return html
 		}
 	}
@@ -172,7 +171,8 @@ export default {
 		white-space: pre-wrap;
 		border-radius: 4px;
 		background: #f8f8f8;
-		box-shadow: inset 1px 0 #b3b3b3, inset 0 1px #b3b3b3, inset -1px 0 #b3b3b3, inset 0 -1px #b3b3b3;
+		font-style: normal;
+		box-shadow: inset 1px 0 #c3c3bc, inset 0 1px #c3c3c3, inset -1px 0 #c3c3c3, inset 0 -1px #c3c3c3;
 	}
 
 	.text-cell {
