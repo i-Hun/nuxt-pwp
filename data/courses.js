@@ -229,7 +229,7 @@ let dataSciencePosts = [
 	{
 		id: "feature_engineering",
 		title: "Feature Engineering",
-		titleRu: "Работа с признаками",
+		titleRu: "Подготовка признаков для моделей машинного обучения (Feature Engineering)",
 		lang: "ru",
 		thumbnail: "",
 		description: "",
