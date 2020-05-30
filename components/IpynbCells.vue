@@ -56,6 +56,7 @@ import 'tippy.js/dist/tippy.css';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 
+
 var md = require('markdown-it')({
 	injected: true,
 	html: true,
@@ -85,6 +86,8 @@ export default {
 	 head: {
 	 	script: [
 	 		{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, defer: true },
+	 		{ src: 'https://cdn.plot.ly/plotly-latest.min.js', ssr: false, defer: true },
+
 	// 		{ src: 'https://unpkg.com/@popperjs/core@2', ssr: false, defer: true},
 	// 		{ src: 'https://unpkg.com/tippy.js@6', ssr: false, defer: true}
 	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },

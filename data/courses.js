@@ -282,7 +282,7 @@ let dataSciencePosts = [
 	{
 		id: "ensemble_learning",
 		title: "Ensemble Learning",
-		titleRu: "Ансамблевые методы",
+		titleRu: "Ансамбли моделей",
 		lang: "ru",
 		thumbnail: "",
 		description: "",
@@ -517,26 +517,27 @@ let ann = [
 			luminosity: 'dark'
 		})
 	},
-	{
-		id: "focal-loss-for-imbalanced-datasets",
-		title: "Focal loss for imbalanced datasets",
-		titleRu: "Focal loss как функция потерь для предсказания несбалансированных классов",
-		lang: "ru",
-		// thumbnail: "/img/basics-of-neural-networks.gif",
-		description: "Simple yet effective function which down-weights easy examples",
-		descriptionRu: "Простая функция потерь, которая штрафует за слишком уверенные ответы алгоритма",
-		author: "Oleg Nagornyy",
-		color: randomColor({
-			count: 3,
-			hue: 'purple',
-			luminosity: 'dark'
-		})
-	},
+	// {
+	// 	id: "focal-loss-for-imbalanced-datasets",
+	// 	title: "Focal loss for imbalanced datasets",
+	// 	titleRu: "Focal loss как функция потерь для предсказания несбалансированных классов",
+	// 	lang: "ru",
+	// 	// thumbnail: "/img/basics-of-neural-networks.gif",
+	// 	description: "Simple yet effective function which down-weights easy examples",
+	// 	descriptionRu: "Простая функция потерь, которая штрафует за слишком уверенные ответы алгоритма",
+	// 	author: "Oleg Nagornyy",
+	// 	color: randomColor({
+	// 		count: 3,
+	// 		hue: 'purple',
+	// 		luminosity: 'dark'
+	// 	})
+	// },
 ]
 
 let courses = [
 	{
 		title: "Introduction to Python programming language",
+		titleRu: "Введение в программирование на Python",
 		id: 'intro2python',
 		elements: intro2pythonPosts,
 		color: randomColor({
@@ -544,11 +545,14 @@ let courses = [
 			hue: 'green',
 			luminosity: 'dark'
 		}),
-		lang: 'en',
-		description: "Introduction to Python for those who would like to build his own pipeline of data analysis."
+		lang: 'ru',
+		description: "Introduction to Python for those who would like to build his own pipeline of data analysis.",
+		descriptionRu: "Введение в Python до уровня, достаточного для использования прикладных библиотек для анализа данных и создания пайплайнов. обработки данных."
 	},
 	{
 		title: "Introduction to Data Science",
+		titleRu: "Введение в анализ данных",
+		lang: "ru",
 		id: 'data-science',
 		elements: dataSciencePosts,
 		color: randomColor({
@@ -557,22 +561,27 @@ let courses = [
 			luminosity: 'dark'
 		}),
 		// lang: 'ru',
+		descriptionRu: "Обзорный курс по основным темам анализа данных — сбор, работа с признаками, создание моделей машинного обучения.",
 		description: "This course shed the light on the main topics of data science — web-scrapping, data munging, feature engineering, supervised and unsupervised learning, validation and ensemble methods.",
 	},
 	{
 		title: "Artificial Neural Networks",
+		titleRu: "Введение в искуственные нейронные сети",
 		id: 'ann',
+		lang: "ru",
 		elements: ann,
 		color: randomColor({
 			count: 3,
 			hue: 'purple',
 			luminosity: 'dark'
 		}),
-		description: "Detailed course on Artificial Neural Networks from the very begining to advanced topics.",
+		description: "Незаконченный курс.",
 	},
 	{
-		title: "Рекомендательные системы",
+		title: "Recommendation systems",
+		titleRu: "Рекомендательные системы",
 		id: 'recommendation-systems',
+		lang: "ru",
 		elements: recommendationSystems,
 		color: randomColor({
 			count: 3,
@@ -591,5 +600,24 @@ courses.map(course => {
 		return lesson
 	})
 })
+
+courses.forEach(course => {
+	if ((course.lang === "ru") && (course.titleRu)) {
+		course.title = course.titleRu
+	}
+	if ((course.lang === "ru") && (course.descriptionRu)) {
+		course.description = course.descriptionRu
+	}
+	course.elements.forEach(lesson => {
+		if ((lesson.lang === "ru") && (lesson.titleRu)) {
+			lesson.title = lesson.titleRu
+		}
+		if ((lesson.lang === "ru") && (lesson.descriptionRu)) {
+			lesson.description = lesson.descriptionRu
+		}
+		return lesson
+	})
+	return course
+});
 
 export default courses;

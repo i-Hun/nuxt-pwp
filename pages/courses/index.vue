@@ -6,11 +6,6 @@
 </div>
 </template>
 
-<style scoped lang='scss'>
-
-
-</style>
-
 <script>
 	import courses from '@/data/courses.js';
 	import Cards from "@/components/Cards.vue";
