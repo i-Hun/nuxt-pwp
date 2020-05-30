@@ -6,7 +6,7 @@
 			<noscript>Please enable JavaScript to view the comments.</a></noscript>
 		</div>
 		<div class="comments-hiden" v-else>
-			<button class="button" v-on:click="showComments">{{$t("comments.showComments", language)}}</button>
+			<button class="button" v-on:click="showComments(pagePath)">{{$t("comments.showComments", language)}}</button>
 		</div>
 	</div>
 </template>
@@ -21,11 +21,12 @@
 			}
 		},
 		methods: {
-			showComments: function() {
+			showComments: function(url) {
+        console.log("url to comment", url)
 				this.isShowComments = true;
 
 				var disqus_config = function () {
-				  this.page.url = `https://nagornyy.me${this.pagePath}`;
+				  this.page.url = `https://nagornyy.me${url}`;
 				};
 
 				(function() { // DON'T EDIT BELOW THIS LINE

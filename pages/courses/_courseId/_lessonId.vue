@@ -26,9 +26,9 @@
 				</li>
 			</ul>
 		</nav>
-		<IpynbCells :cells="cells" :language="language"></IpynbCells>
-		<References :references="references" :language="lesson.lang"></References>
-		<Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments>
+    <IpynbCells :cells="cells" :language="language"></IpynbCells>
+    <References :references="references" :language="lesson.lang"></References>
+    <Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments>
 	</section>
 </template>
 
@@ -50,12 +50,6 @@ export default {
 		References,
 		Card
 	},
-	// nuxtI18n: {
-	// 	paths: {
-	// 		ru: this.lesson.path,
-	// 		en: this.lesson.path
-	// 	}
-	// },
 	head () {
 		const title = `${this.lesson.title} by ${this.lesson.author}`;
 		const description = this.lesson.description ? this.lesson.description : `Lesson “${this.lesson.title}” from the сourse “${this.course.title}” by ${this.lesson.author}.`

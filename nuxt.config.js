@@ -167,6 +167,7 @@ export default {
 		"nuxt-compress",
 		'@nuxtjs/feed',
 		'nuxt-leaflet',
+    'nuxt-babel',
 		['@nuxtjs/yandex-metrika',
 			{
 				id: '51885752',
