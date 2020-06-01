@@ -22,7 +22,7 @@
 					</div>
 				</li>
 				<li class="is-active">
-					<a href="#" aria-current="page">{{lesson.title}}</a>
+					<a href="#" aria-current="page">{{truncate(lesson.title, 40)}}</a>
 				</li>
 			</ul>
 		</nav>
@@ -38,6 +38,7 @@ import References from "@/components/References.vue";
 import Comments from "@/components/Comments.vue";
 import Card from "@/components/Card.vue";
 import axios from 'axios';
+import {truncate} from '~/plugins/utils';
 const cheerio = require('cheerio');
 
 import courses from '@/data/courses.js';
@@ -79,6 +80,11 @@ export default {
 				{ hid: 'author', name: 'author', content: this.lesson.author},
 			]
 		}
+	},
+	methods: {
+		truncate: function (text, n) {
+			return truncate(text, n)
+		},
 	},
 	async asyncData (context) {
 
