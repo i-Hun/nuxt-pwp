@@ -26,7 +26,8 @@
 					var contents = db.exec(
 						`SELECT
 							*
-						FROM posts;`
+						FROM posts
+						ORDER BY created_at DESC;`
 					);
 
 					posts = sql_to_object(contents);

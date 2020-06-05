@@ -28,7 +28,7 @@
 		</nav>
     <IpynbCells :cells="cells" :language="language"></IpynbCells>
     <References :references="references" :language="lesson.lang"></References>
-    <Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments>
+    <!-- <Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments> -->
 	</section>
 </template>
 
@@ -70,7 +70,7 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: this.lesson.img ? this.lesson.img : '/img/cover.jpg'
+					content: this.lesson.thumbnail ? `/img/thumbnails/${this.lesson.thumbnail}` : '/img/cover.jpg'
 				},
 				{
 					hid: 'og:description',

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+	var randomColor = require('randomcolor');
 	export default {
 		props: {
 			card: {
@@ -49,7 +50,12 @@
 					if (this.card.color) {
 						bgimg = `linear-gradient(140deg, ${this.card.color[0]} 0%, ${this.card.color[1]} 50%, ${this.card.color[2]} 100%)`;
 					} else {
-						bgimg = "#222"
+						const color = randomColor({
+							count: 3,
+							hue: 'monochrome',
+							luminosity: 'dark'
+						})
+						bgimg =`linear-gradient(140deg, ${color[0]} 0%, ${color[1]} 50%, ${color[2]} 100%)`
 					}
 				}
 				return {
