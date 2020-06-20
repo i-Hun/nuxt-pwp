@@ -14,60 +14,22 @@ const coursesUrls = courses.map((course) => {
 		return `courses/${course.id}/${lesson.id}`;
 	}).concat(`courses/${course.id}`)
 }).concat('courses')
-// const eventsUrls = []
+
 const eventsUrls = events.map((event) => {
 	return "events/" + event.id;
 }).concat('events')
 
 
-// return axios.get(`https://api.tumblr.com/v2/blog/ihun.tumblr.com/posts?api_key=5YiGBDAB7Jr3YnOMEdOjxr8f8MIguZXJVFFw8ktEAvamvd3srf`)
-// .then((res) => {
-//	const posts = res.data.response.posts.map(post => {
-//		return "/blog/" + post.id
-//	})
-//	return dataScienceUrls.concat(intro2pythonUrls).concat(eventsUrls).concat("/bookmarks/").concat("/blog/").concat(posts);
-// })
-// .catch(err => {
-//	console.error(err);
-// });
-
 Object.defineProperty(Array.prototype, 'flat', {
-    value: function(depth = 1) {
-      return this.reduce(function (flat, toFlatten) {
-        return flat.concat((Array.isArray(toFlatten) && (depth>1)) ? toFlatten.flat(depth-1) : toFlatten);
-      }, []);
-    }
+	value: function(depth = 1) {
+		return this.reduce(function (flat, toFlatten) {
+			return flat.concat((Array.isArray(toFlatten) && (depth>1)) ? toFlatten.flat(depth-1) : toFlatten);
+		}, []);
+	}
 });
 
-// let allRoutes = coursesUrls.flat().concat(eventsUrls).concat(['travel/places/athens',
-// 'travel/places/baku',
-// 'travel/places/veliky-novgorod',
-// 'travel/places/gumri',
-// 'travel/places/dubna',
-// 'travel/places/yerevan',
-// 'travel/places/zyryanovsk',
-// 'travel/places/kazan',
-// 'travel/places/london',
-// 'travel/places/msk',
-// 'travel/places/omsk',
-// 'travel/places/perm',
-// 'travel/places/petergof',
-// 'travel/places/prague',
-// 'travel/places/riga',
-// 'travel/places/rome',
-// 'travel/places/spb',
-// 'travel/places/sochi',
-// 'travel/places/istanbul',
-// 'travel/places/tbilisi',
-// 'travel/places/helsinki',
-// 'blog/london-2017',
-// 'blog/georgia-2018',
-// 'blog/helsinki-2019',
-// 'blog/kazan-bral',
-// 'blog/caucasus-tour']);
 
 let allRoutes = coursesUrls.flat().concat(eventsUrls)
-
 
 var postsPlaces = initSqlJs().then(function(SQL){
 	const db = new SQL.Database(filebuffer);
@@ -99,10 +61,8 @@ var postsPlaces = initSqlJs().then(function(SQL){
 });
 
 
-
 export default async () => {
 	const postsPlacesRes = await postsPlaces;
-	console.log("postsPlacesRes", postsPlacesRes);
 	allRoutes = allRoutes.concat(postsPlacesRes);
 	return {
 		mode: 'universal',
@@ -129,7 +89,7 @@ export default async () => {
 			link: [
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicons/favicon.ico' },
 				{ rel: 'apple-touch-icon', href: '/favicons/apple-touch-icon.png', sizes: '180x180'},
-				// { rel: 'alternate', href: '/feed.xml', title: "RSS Feed for nagornyy.me", type: "application/rss+xml" },
+				{ rel: 'alternate', href: '/feed.xml', title: "RSS Feed for nagornyy.me", type: "application/rss+xml" },
 				{ rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg', color: '#5bbad5'},
 			],
 			script: [
@@ -170,13 +130,13 @@ export default async () => {
 			"nuxt-compress",
 			'@nuxtjs/feed',
 			'nuxt-leaflet',
-	    'nuxt-babel',
+			'nuxt-babel',
 			['@nuxtjs/yandex-metrika',
 				{
 					id: '51885752',
-					clickmap: true,
+					clickmap: false,
 					trackLinks: true,
-					accurateTrackBounce: true
+					accurateTrackBounce: false
 				}
 			],
 			['nuxt-i18n', {
@@ -196,7 +156,7 @@ export default async () => {
 
 				defaultLocale: 'ru',
 				strategy: 'prefix_except_default',
-				parsePages: false,	 // Disable acorn parsing
+				parsePages: false,	// Disable acorn parsing
 				// pages: {
 				// 	"courses/_courseId/_lessonId": {
 				// 		ru: '/courses/:courseId/:lessonId?',
@@ -233,52 +193,57 @@ export default async () => {
 		generate: {
 			routes: function () {
 				return allRoutes;
-			}
+				// return ["/courses/recommendation-systems/graphs-segmentation"];
+			},
 		},
 		feed: [
-			 {
-				 path: '/feed.xml', // The route to your feed.
-				 async create (feed){
-					 feed.options = {
-						 title: 'Oleg Nagornyy',
-						 link: 'https://nagornyy.me/feed.xml',
-						 description: 'RSS feed',
-					 }
+			{
+				path: '/feed.xml', // The route to your feed.
+				async create (feed){
+					feed.options = {
+						title: 'Oleg Nagornyy',
+						link: 'https://nagornyy.me/feed.xml',
+						description: 'RSS feed',
+					}
 
-					 courses.forEach(course => {
-						 course.elements.forEach(lesson => {
-							 feed.addItem({
-								 title: lesson.title,
-								 id: lesson.url,
-								 link: "https://nagornyy.me" + lesson.path,
-								 description: lesson.description,
-								 category: course.title
-							 })	
-						 })
+					courses.forEach(course => {
+						course.elements.forEach(lesson => {
+							feed.addItem({
+								title: lesson.title,
+								id: lesson.url,
+								link: "https://nagornyy.me" + lesson.path,
+								description: lesson.description,
+								category: course.title
+							})	
+						})
 
-					 })
+					})
 
-					 feed.addCategory('Course by Oleg Nagornyy');
+					feed.addCategory('Course by Oleg Nagornyy');
 
-					 feed.addContributor({
-						 name: 'Oleg Nagornyy',
-						 email: 'nagornyy.o@gmail.com',
-						 link: 'https://nagornyy.me/'
-					 })
-				 },
-				 cacheTime: 1000 * 60 * 15, // How long should the feed be cached
-				 type: 'rss2', // Can be: rss2, atom1, json1
+					feed.addContributor({
+						name: 'Oleg Nagornyy',
+						email: 'nagornyy.o@gmail.com',
+						link: 'https://nagornyy.me/'
+					})
+				},
+				cacheTime: 1000 * 60 * 15, // How long should the feed be cached
+				type: 'rss2', // Can be: rss2, atom1, json1
 			},
 		],
 		build: {
-			// analyze: true,
+			build: {
+				html: {
+					minify: true
+				}
+			},
 			extend(config, ctx) {
 				config.node = {
 					fs: 'empty'
 				}
-				 // Run ESLint on save
+				// Run ESLint on save
 				// if (ctx.isDev && ctx.isClient) {
-				// 	 config.module.rules.push({
+				// 	config.module.rules.push({
 				// 		enforce: 'pre',
 				// 		test: /\.(js|vue)$/,
 				// 		loader: 'eslint-loader',

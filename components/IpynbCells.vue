@@ -47,14 +47,25 @@
 </template>
 
 <script>
-import katex from 'katex';
+
 import 'katex/dist/katex.min.css';
 
-import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-import Prism from 'prismjs';
+// import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
+
+import * as tocbot from 'tocbot';
+// import 'tocbot/src/scss/tocbot';
+
+let katex;
+let Prism;
+if (process.server) {
+	katex = require('katex');
+	Prism = require('prismjs');
+	const loadLanguages = require('prismjs/components/');
+	loadLanguages(['python', 'r', 'sql', 'julia']);
+}
 
 
 var md = require('markdown-it')({
@@ -65,59 +76,43 @@ var md = require('markdown-it')({
 }).use(require('markdown-it-named-headings'))
 
 
-function loadJsFile(url, id, onLoadedCallback, defer, async) {
-	let test = document.getElementById(id);
-	if (test) return onLoadedCallback();
-	else {
-		const script = document.createElement("script")
-		script.src = url
-		script.id = id
-		script.onload = onLoadedCallback
-		script.type = "text/javascript"
-		script.defer = defer == true || defer == undefined ? true : false
-		script.async = async == true || defer == undefined ? true : false
-		document.head.appendChild(script)
-	}
-}
-
 export default {
 	name: 'ipynb-cells',
 	props: ["cells", "language"],
-	 head: {
-	 	script: [
-	 		{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, defer: true },
-	 		{ src: 'https://cdn.plot.ly/plotly-latest.min.js', ssr: false, defer: true },
-
+	// head: {
+	// 	script: [
+	// 		{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, defer: true },
+	// 		{ src: 'https://cdn.plot.ly/plotly-latest.min.js', ssr: false, defer: true },
 	// 		{ src: 'https://unpkg.com/@popperjs/core@2', ssr: false, defer: true},
 	// 		{ src: 'https://unpkg.com/tippy.js@6', ssr: false, defer: true}
 	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },
 	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js', ssr: false, defer: true },
 	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/copy-tex.min.js', ssr: false, defer: true },
-	 	]
-	 },
+	// 	]
+	// },
 	mounted(){
+		console.log("mounted")
 
-     tocbot.init({
-      // Where to render the table of contents.
-      tocSelector: '.js-toc',
-      // Where to grab the headings to build the table of contents.
-      contentSelector: '.ipynb-cells',
-      // Which headings to grab inside of the contentSelector element.
-      headingSelector: 'h2, h3',
-      listClass: 'menu-list',
-      activeLinkClass: 'is-active',
-      orderedList: false,
-     });
+		tocbot.init({
+			// Where to render the table of contents.
+			tocSelector: '.js-toc',
+			// Where to grab the headings to build the table of contents.
+			contentSelector: '.ipynb-cells',
+			// Which headings to grab inside of the contentSelector element.
+			headingSelector: 'h2, h3',
+			listClass: 'menu-list',
+			activeLinkClass: 'is-active',
+			orderedList: false,
+		});
 
-
-		 tippy('i', {
-		 	arrow: false,
-		 	content(reference) {
-		 		const title = reference.getAttribute('title');
-		 		reference.removeAttribute('title');
-		 		return title;
-		 	},
-		 });
+		tippy('i', {
+			arrow: false,
+			content(reference) {
+				const title = reference.getAttribute('title');
+				reference.removeAttribute('title');
+				return title;
+			},
+		});
     	
 	},
 	methods: {

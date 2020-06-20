@@ -22,6 +22,33 @@
 
 	export default {
 		layout: 'default',
+		head () {
+			return {
+				meta: [
+					{
+						hid: 'description',
+						name: 'description',
+						content: this.post.description
+					},
+					{
+						hid: 'og:title',
+						property: 'og:title',
+						content: this.post.title
+					},
+					{
+						hid: 'og:image',
+						property: 'og:image',
+						content: this.post.thumbnail ? `/img/thumbnails/${this.post.thumbnail}` : '/img/cover.jpg'
+					},
+					{
+						hid: 'og:description',
+						property: 'og:description',
+						content: this.post.description
+					},
+					{ hid: 'author', name: 'author', content: "Олег Нагорный"},
+				]
+			}
+		},
 		async asyncData (context) {
 
 			let post = undefined;
