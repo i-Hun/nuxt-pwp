@@ -1,12 +1,10 @@
 <template>
 	<div class="places">
-		<div v-for="place in places">
-			<h2>
-				<a class="navbar-item" :href="'/travel/places/' + place.place_id" active-class="is-active">
-					{{place.place_title}}
-				</a>
-			</h2>
-		</div>
+		<ul>
+			<li v-for="place in places">
+				{{place.place_title}}
+			</li>
+		</ul>
 	</div>
 </template>
 
@@ -21,7 +19,6 @@
 	const cheerio = require('cheerio');
 	import {groupBy} from 'lodash';
 	import sql_to_object from "@/plugins/sql_to_object.js";
-
 
 
 	export default {

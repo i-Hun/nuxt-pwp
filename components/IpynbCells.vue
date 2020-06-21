@@ -48,21 +48,19 @@
 
 <script>
 
+import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
+import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-// import Prism from 'prismjs';
+import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 
 import * as tocbot from 'tocbot';
-// import 'tocbot/src/scss/tocbot';
 
-let katex;
-let Prism;
+
 if (process.server) {
-	katex = require('katex');
-	Prism = require('prismjs');
 	const loadLanguages = require('prismjs/components/');
 	loadLanguages(['python', 'r', 'sql', 'julia']);
 }
@@ -79,19 +77,7 @@ var md = require('markdown-it')({
 export default {
 	name: 'ipynb-cells',
 	props: ["cells", "language"],
-	// head: {
-	// 	script: [
-	// 		{ src: 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.js', ssr: false, defer: true },
-	// 		{ src: 'https://cdn.plot.ly/plotly-latest.min.js', ssr: false, defer: true },
-	// 		{ src: 'https://unpkg.com/@popperjs/core@2', ssr: false, defer: true},
-	// 		{ src: 'https://unpkg.com/tippy.js@6', ssr: false, defer: true}
-	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js', ssr: false, defer: true },
-	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js', ssr: false, defer: true },
-	// 		{ src: 'https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/copy-tex.min.js', ssr: false, defer: true },
-	// 	]
-	// },
 	mounted(){
-		console.log("mounted")
 
 		tocbot.init({
 			// Where to render the table of contents.
@@ -130,14 +116,6 @@ export default {
 			result = result.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/g, function(outer, inner) {
 			    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true, throwOnError: false, strict: "ignore"});
 			})
-
-			// const $ = cheerio.load(result);
-			// $('i[title]').each(function(){
-			// 	const title = $(this).attr('title');
-			// 	console.log(title)
-			// 	$(this).attr("data-tooltip", title);
-			// });
-			// result = $.html();
 
 			return result
 		},

@@ -28,7 +28,7 @@
 		</nav>
     <IpynbCells :cells="cells" :language="language"></IpynbCells>
     <References :references="references" :language="lesson.lang"></References>
-    <!-- <Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments> -->
+    <Comments :pagePath="$nuxt.$route.path" :language="lesson.lang"></Comments>
 	</section>
 </template>
 
@@ -102,74 +102,73 @@ export default {
 			} 
 		}
 
-		const notebookPath = `static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
-		let notebook = undefined;
-
 		if (!process.browser) {
-			notebook = JSON.parse(require('fs').readFileSync(notebookPath, 'utf-8'))
-		}
+			const notebookPath = `static/notebooks/${context.params.courseId}/${context.params.lessonId}.ipynb`
+
+			let notebook = JSON.parse(require('fs').readFileSync(notebookPath, 'utf-8'))
 		
-		let cells = notebook["cells"];
+			let cells = notebook["cells"];
 
-		let references = {};
+			let references = {};
 
-		cells =	cells.map(cell => {
-			if (cell.cell_type === "markdown") {
-				let cell_text = cell.source.join('')
-				var regex = /\[.*?\]\(https:\/\/www.zotero.org\/.*?\)/g;
-				let regex2 = /\(https:\/\/www.zotero.org\/.*?\)/g;
-				var found_refs = cell_text.match(regex2);
+			cells =	cells.map(cell => {
+				if (cell.cell_type === "markdown") {
+					let cell_text = cell.source.join('')
+					var regex = /\[.*?\]\(https:\/\/www.zotero.org\/.*?\)/g;
+					let regex2 = /\(https:\/\/www.zotero.org\/.*?\)/g;
+					var found_refs = cell_text.match(regex2);
 
-				if (found_refs) {
-					for (let found_ref of found_refs){
-						found_ref = found_ref.slice(1, -1)
-						if (!references.hasOwnProperty(found_ref)) {
-							references[found_ref] = Object.keys(references).length + 1;
-						}	
+					if (found_refs) {
+						for (let found_ref of found_refs){
+							found_ref = found_ref.slice(1, -1)
+							if (!references.hasOwnProperty(found_ref)) {
+								references[found_ref] = Object.keys(references).length + 1;
+							}	
+						}
 					}
-				}
 
-				for (let reference of Object.keys(references)) {
-					cell_text = cell_text.replace(
-						new RegExp(`\\(${reference}\\)`, 'gi'),
-						// `<a href='#ref-${references[reference]}' class='intext-ref'>[${references[reference]}]</a>`
-						`<span class='intext-ref'>[${references[reference]}]</span>`
-						)
-				}
+					for (let reference of Object.keys(references)) {
+						cell_text = cell_text.replace(
+							new RegExp(`\\(${reference}\\)`, 'gi'),
+							// `<a href='#ref-${references[reference]}' class='intext-ref'>[${references[reference]}]</a>`
+							`<span class='intext-ref'>[${references[reference]}]</span>`
+							)
+					}
 
-				cell.source = cell_text
-				return cell;
-			} else return cell
-		})
-
-
-		let promises = Object.entries(references).map(ref => {
-			let url = ref[0];
-			let order = ref[1];
-
-			let refId = url.split('/')[url.split('/').length-1];
-
-
-			return axios.get(`https://www.zotero.org/api/users/2770884/items/${refId}?format=bib&style=apa&linkwrap=1`)
-			.then(response => {
-				const $ = cheerio.load(response.data);
-
-				return {"order": order, "data": $('.csl-entry').html()};
+					cell.source = cell_text
+					return cell;
+				} else return cell
 			})
-			.catch(e => {
-				console.error(e);
+
+
+			let promises = Object.entries(references).map(ref => {
+				let url = ref[0];
+				let order = ref[1];
+
+				let refId = url.split('/')[url.split('/').length-1];
+
+
+				return axios.get(`https://www.zotero.org/api/users/2770884/items/${refId}?format=bib&style=apa&linkwrap=1`)
+				.then(response => {
+					const $ = cheerio.load(response.data);
+
+					return {"order": order, "data": $('.csl-entry').html()};
+				})
+				.catch(e => {
+					console.error(e);
+				})
 			})
-		})
 
 
-		let refs = await Promise.all(promises);
+			let refs = await Promise.all(promises);
 
-		return {
-			cells: cells,
-			references: refs.filter(el => {return el != null}),
-			lesson: thisLesson,
-			course: thisCourse,
-			language: notebook['metadata']['kernelspec']['language']
+			return {
+				cells: cells,
+				references: refs.filter(el => {return el != null}),
+				lesson: thisLesson,
+				course: thisCourse,
+				language: notebook['metadata']['kernelspec']['language']
+			}
 		}
 
 	},

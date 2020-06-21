@@ -28,25 +28,10 @@ Object.defineProperty(Array.prototype, 'flat', {
 	}
 });
 
-
 let allRoutes = coursesUrls.flat().concat(eventsUrls)
 
 var postsPlaces = initSqlJs().then(function(SQL){
 	const db = new SQL.Database(filebuffer);
-	const places_sql = db.exec(
-		`SELECT
-			places.id as place_id,
-			places.name_ru as place_title,
-			COUNT(*) as visits_num
-		FROM places
-		LEFT JOIN visits
-			ON visits.place = places.id
-		GROUP BY places.id
-		ORDER BY places.name_ru;`
-	);
-
-	const places = sql_to_object(places_sql);
-	const placesUrl = places.map(place => 'travel/places/' + place.place_id);
 
 	const posts_sql = db.exec(
 		`SELECT
@@ -55,7 +40,7 @@ var postsPlaces = initSqlJs().then(function(SQL){
 	);
 	const posts = sql_to_object(posts_sql);
 	const postsUrl = posts.map(post => 'blog/' + post.id);
-	return placesUrl.flat().concat(postsUrl);
+	return postsUrl;
 }).catch(function(err){
 	console.error(err.message);
 });
