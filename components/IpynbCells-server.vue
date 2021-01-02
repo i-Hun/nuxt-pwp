@@ -48,22 +48,21 @@
 
 <script>
 
-import katex from 'katex';
-import 'katex/dist/katex.min.css';
+// import katex from 'katex';
+// import 'katex/dist/katex.min.css';
 
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
-
-import * as tocbot from 'tocbot';
-
-
+// import Prism from 'prismjs';
+// import 'prismjs/themes/prism.css';
 if (process.server) {
+	const Prism = require('prismjs');
 	const loadLanguages = require('prismjs/components/');
 	loadLanguages(['python', 'r', 'sql', 'julia']);
 }
+
+import * as tocbot from 'tocbot';
 
 
 var md = require('markdown-it')({
@@ -77,6 +76,25 @@ var md = require('markdown-it')({
 export default {
 	name: 'ipynb-cells',
 	props: ["cells", "language"],
+	head: {
+		// script: [
+		// 	{
+		// 		src: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js',
+		// 		ssr: false,
+		// 		defer: true
+		// 	},
+		// ],
+		link: [
+			{
+				rel: 'stylesheet',
+				href: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css'
+			},
+			{
+				rel: 'stylesheet',
+				href: 'https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism.min.css'
+			}
+		]
+	},
 	mounted(){
 		tocbot.init({
 			// Where to render the table of contents.
@@ -102,21 +120,30 @@ export default {
 	},
 	methods: {
 		renderText: function (text) {
-			text = text.replace(/\\\\/g, "\\\\\\\\");
-			let result = md.render(text);
-			result = result.replace(/img\//g, "/img/content/");
+			if (process.server) {
+				const katex = require('katex');
 
-			result = result.replace(/\$\$(.*?)\$\$/g, function(outer, inner) {
-			    return katex.renderToString(inner, { displayMode: true, throwOnError: false, strict: "ignore"});
-			})
-			result = result.replace(/\$(.*?)\$/g, function(outer, inner) {
-			    return katex.renderToString(inner, { displayMode: false, throwOnError: false, strict: "ignore"});
-			})
-			result = result.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/g, function(outer, inner) {
-			    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true, throwOnError: false, strict: "ignore"});
-			})
+				text = text.replace(/\\\\/g, "\\\\\\\\");
+				let result = md.render(text);
+				result = result.replace(/img\//g, "/img/content/");
 
-			return result
+				result = result.replace(/\|/g, " ");
+
+				result = result.replace(/\$\$(.*?)\$\$/g, function(outer, inner) {
+				    return katex.renderToString(inner, { displayMode: true, throwOnError: false, strict: "ignore"});
+				})
+				result = result.replace(/\$(.*?)\$/g, function(outer, inner) {
+				    return katex.renderToString(inner, { displayMode: false, throwOnError: false, strict: "ignore"});
+				})
+				result = result.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/g, function(outer, inner) {
+				    return katex.renderToString("\\begin{aligned}" + inner + "\\end{aligned}", { displayMode: true, throwOnError: false, strict: "ignore"});
+				})
+
+				return result
+			} else {
+				return text
+			}
+
 		},
 		renderOutput: function (text) {
 			// TODO удалять только внутри тэга
@@ -124,14 +151,28 @@ export default {
 			return text
 		},
 		highlightCode: function(code, language) {
-			const html = Prism.highlight(code, Prism.languages[language.toLowerCase()], language.toLowerCase());
-			return html
+			if (process.server) {
+				const Prism = require('prismjs');
+				const html = Prism.highlight(code, Prism.languages[language.toLowerCase()], language.toLowerCase());
+				return html
+			} else {
+				return code
+			}
 		}
 	}
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	// @font-face {
+	// 	font-family: 'KaTeX_Main';
+	// 	font-style: normal;
+	// 	font-weight: 400;
+	// 	src: url('~assets/katex-fonts/fonts/KaTeX_Main-Regular.woff2') format('woff2'),
+	// 		url('~assets/katex-fonts/fonts/KaTeX_Main-Regular.woff') format('woff'),
+	// 		url('~assets/katex-fonts/fonts/KaTeX_Main-Regular.ttf') format('truetype');
+	// }
+
 	img {
 		margin: 10px;
 	}

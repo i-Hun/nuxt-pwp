@@ -50,6 +50,7 @@ export default async () => {
 	const postsPlacesRes = await postsPlaces;
 	allRoutes = allRoutes.concat(postsPlacesRes);
 	return {
+		target: 'static',
 		mode: 'universal',
 		router: {
 			base: '/'
